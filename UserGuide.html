@@ -14,19 +14,15 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></li>
+<li><a href="#listing-all-requests-health-workers-patients-code-list-code">3.2. Listing all requests/health workers/patients : <code>list</code></a></li>
+<li><a href="#adding-a-request-health-worker-patient-code-add-code">3.3. Adding a request/health worker/patient: <code>add</code></a></li>
+<li><a href="#editing-a-request-health-worker-patient-code-edit-code">3.4. Editing a request/health worker/patient : <code>edit</code></a></li>
+<li><a href="#locating-request-health-worker-patient-by-name-code-find-code">3.5. Locating request/health worker/patient by name: <code>find</code></a></li>
+<li><a href="#deleting-a-request-health-worker-patient-code-delete-code">3.6. Deleting a request/health worker/patient : <code>delete</code></a></li>
+<li><a href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">3.7. Assigning a health worker to an existing open request : <code>assign</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.13. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.10. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -38,7 +34,8 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 4 (AB4) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB4 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>AddressBook Level 4 (AB4) is a application that allows users to add, manage and close requests from patients for health services. AB4 provides a <strong>Graphical User Interface</strong> for administrative staff of health organization and hospitals to manage requests from all potential home stay patients, and is also <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI).<br>
+Looking to improve and ease management of requests from cusomters and patients? Look no further, AB4 provides all the utility and functions you need to streamline your workflow. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -51,18 +48,7 @@
 <p>Ensure you have Java version <code>9</code> or later installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level4/releases">here</a>.</p>
-</li>
-<li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
-</li>
-<li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
-</div>
-</div>
+<p>Additional installation guides will be added further into the project.</p>
 </li>
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
@@ -73,13 +59,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><strong><code>list</code></strong> : lists all requests</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>i/3 n/John Doe p/98765432 a/John street, block 123, #01-01</code> : adds a patient named <code>John Doe</code> to the application.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>delete</code></strong><code>t/R n/4</code> : deletes the 4th request shown by the list command</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -97,6 +83,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Note that the current application is a work in progress. The following description of the features and commands are prototypes and specific details and implementation may vary over the course of the project.</p>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -105,16 +94,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>&lt;tags&gt;</code> are the parameters to be supplied by the user e.g. in <code>add n/&lt;name&gt;</code>, <code>&lt;name&gt;</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>n/&lt;name&gt; [s/&lt;specialisation&gt;]</code> can be used as <code>n/John Doe s/Gynaecology</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[s/&lt;specialisation&gt;]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>n/&lt;name&gt; p/&lt;phone_number&gt;</code>, <code>p/&lt;phonenumber&gt; n/&lt;name&gt;</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -125,24 +114,49 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
+<div class="paragraph">
+<p>Lists all available commands, their parameters and their function.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<h3 id="listing-all-requests-health-workers-patients-code-list-code"><a class="link" href="#listing-all-requests-health-workers-patients-code-list-code">3.2. Listing all requests/health workers/patients : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Shows a list of all requests, health workers or patients based on the <code>&lt;type&gt;</code> parameters .<br>
+Format: <code>list &lt;type&gt;</code></p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list 1</code> lists all requests stored in the system, and their corresponding details</p>
+</li>
+<li>
+<p><code>list 2</code> lists all health workers stored in the system, and the skills and certifications they posses</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-request-health-worker-patient-code-add-code"><a class="link" href="#adding-a-request-health-worker-patient-code-add-code">3.3. Adding a request/health worker/patient: <code>add</code></a></h3>
+<div class="paragraph">
+<p>Adds a request, health worker or patient to the application based on the <code>&lt;type&gt;</code> parameter accepted<br>
+Format: <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br>
+Types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1: Adding a request <code>add 1 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+</li>
+<li>
+<p>2: Adding a health worker <code>add 2 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>3: Adding a patient <code>add 3 n/&lt;patient_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -150,45 +164,58 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>add 1 n/Lucas Choong c/Arthritis d/05/02/2019 t/1400</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>add 2 n/John Doe p/98765432 a/John street, block 123, #01-01</code></p>
+</li>
+<li>
+<p><code>add 3 n/Betsy Crowe t/friend a/Newgate Prison p/1234567 t/criminal</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<h3 id="editing-a-request-health-worker-patient-code-edit-code"><a class="link" href="#editing-a-request-health-worker-patient-code-edit-code">3.4. Editing a request/health worker/patient : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Edits a request, health worker or patient to the application based on the <code>&lt;type&gt;</code> parameter accepted.<br>
+Format: <code>edit &lt;type&gt; &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br>
+Types:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>1: Edit a request <code>edit 1 &lt;index&gt; n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+</li>
+<li>
+<p>2: Edit a health worker <code>edit 2 &lt;index&gt; n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>3: Edit a patient <code>edit 3 &lt;index&gt; n/&lt;patient_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;</code></p>
+</li>
+</ul>
 </div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Notes:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Edits the corresponding request/health worker/patient at the specified <code>&lt;index&gt;</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>At least one of the optional fields must be provided.</p>
+<p>Each of the additional parameters must be filled up unless optional.</p>
 </li>
 <li>
 <p>Existing values will be updated to the input values.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p>When editing specialisations, the existing specialisations of the person will be removed i.e adding of specialisation is not cumulative.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>You can remove all the person&#8217;s speciailisation by typing <code>s/</code> without specifying any parameters after it.</p>
 </li>
 </ul>
 </div>
@@ -200,21 +227,38 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>edit 2 1 p/91234567 n/John Doe</code><br>
+Edits the phone number and name of the 1st health worker to be <code>91234567</code> and <code>John Doe</code> respectively.<br></p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>edit 3 2 n/Betsy Crower</code><br>
+Edits the name of the 2nd patient to be <code>Betsy Crower</code>.<br></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<h3 id="locating-request-health-worker-patient-by-name-code-find-code"><a class="link" href="#locating-request-health-worker-patient-by-name-code-find-code">3.5. Locating request/health worker/patient by name: <code>find</code></a></h3>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Finds requests/health workers/patients whose names contain any of the given keywords. For requests, the requests containing the patient name with the keywords specified will be displayed.<br>
+Format: <code>find &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code><br>
+Types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1: Find a request <code>find 1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+<li>
+<p>2: Find a health worker <code>find 2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+<li>
+<p>3: Find a patient <code>find 3 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -245,28 +289,45 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
+<p><code>find 3 John</code><br>
+Returns patients named <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>find 1 Betsy Tim John</code><br>
+Returns requests that involved patients whose names are <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<h3 id="deleting-a-request-health-worker-patient-code-delete-code"><a class="link" href="#deleting-a-request-health-worker-patient-code-delete-code">3.6. Deleting a request/health worker/patient : <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+<p>Deletes a request, health worker or patient to the application based on the <code>&lt;type&gt;</code> parameter accepted.<br>
+Format: <code>delete &lt;type&gt; &lt;index&gt;</code><br>
+Types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1: Edit a request <code>edit 1 &lt;index&gt;</code></p>
+</li>
+<li>
+<p>2: Edit a health worker <code>edit 2</code></p>
+</li>
+<li>
+<p>3: Edit a patient <code>edit 3 &lt;index&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
+<p>Deletes the corresponding request/health worker/patient at the specified <code>&lt;index&gt;</code>.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the displayed person list.</p>
@@ -285,35 +346,31 @@ Format: <code>delete INDEX</code></p>
 <ul>
 <li>
 <p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
+<code>delete 1 2</code><br>
+Deletes the 2nd request in the application.</p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p><code>delete 3 1</code><br>
+Deletes the 1st patient in the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></h3>
+<h3 id="assigning-a-health-worker-to-an-existing-open-request-code-assign-code"><a class="link" href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">3.7. Assigning a health worker to an existing open request : <code>assign</code></a></h3>
 <div class="paragraph">
-<p>Selects the person identified by the index number used in the displayed person list.<br>
-Format: <code>select INDEX</code></p>
+<p>Assigns a health worker in the system to an existing open request.<br>
+Format: <code>assign p/&lt;patient_name&gt; h/&lt;health_worker_name&gt;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
+<p>Health worker that is assigned must be available at the current time stated by the request.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+<p>Health worker must have the necessary skillset and certifications that allow him to be able to take up the corresponding request.</p>
 </li>
 </ul>
 </div>
@@ -325,14 +382,8 @@ Format: <code>select INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>select 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
+<p><code>assign p/John Doe h/Dog Tor</code><br>
+Assigns the health worker named Dog Tor to a request containing a patient with the name John Doe.</p>
 </li>
 </ul>
 </div>
@@ -359,107 +410,17 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
-<div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></h3>
-<div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.10. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>Application data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
@@ -479,44 +440,30 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
+<p><strong>List</strong> : <code>list &lt;type&gt;</code></p>
+</li>
+<li>
+<p><strong>Add</strong> : <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><strong>Edit</strong> : <code>edit &lt;type&gt; &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>delete &lt;type&gt; &lt;index&gt;</code></p>
+</li>
+<li>
+<p><strong>Assign</strong> : <code>assign p/&lt;patient_name&gt; h/&lt;health_worker_name&gt;</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-01-06 15:43:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-23 02:14:54 UTC</div></div></div></body></html>
