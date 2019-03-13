@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyHealthWorkerBook;
 import seedu.address.model.ReadOnlyRequestBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
@@ -22,7 +21,6 @@ public class StorageManager implements Storage {
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
     private RequestBookStorage requestBookStorage;
-    private HealthWorkerBookStorage healthWorkerBookStorage;
 
 
     public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
@@ -32,12 +30,11 @@ public class StorageManager implements Storage {
     }
 
     public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefStorage,
-                          RequestBookStorage requestBookStorage, HealthWorkerBookStorage healthWorkerBookStorage) {
+                          RequestBookStorage requestBookStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefStorage;
         this.requestBookStorage = requestBookStorage;
-        this.healthWorkerBookStorage = healthWorkerBookStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -58,7 +55,12 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ RequestBook methods ==============================
+    // ================ AddressBook methods ==============================
+
+    @Override
+    public Path getAddressBookFilePath() {
+        return addressBookStorage.getAddressBookFilePath();
+    }
 
     /**
      * Returns the file path of the data file.
@@ -90,16 +92,6 @@ public class StorageManager implements Storage {
         requestBookStorage.saveRequestBook(readOnlyRequestBook, filePath);
     }
 
-    // ================ AddressBook methods ==============================
-
-    /**
-     * Returns the file path of the data file.
-     */
-    @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
-    }
-
     @Override
     public Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException {
         return readAddressBook(addressBookStorage.getAddressBookFilePath());
@@ -120,38 +112,6 @@ public class StorageManager implements Storage {
     public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         addressBookStorage.saveAddressBook(addressBook, filePath);
-    }
-
-    // ================ HealthWorkerBook methods ==============================
-    /**
-     * Returns the file path of the data file.
-     */
-    @Override
-    public Path getHealthWorkerBookFilePath() {
-        return healthWorkerBookStorage.getHealthWorkerBookFilePath();
-    }
-
-    @Override
-    public Optional<ReadOnlyHealthWorkerBook> readHealthWorkerBook() throws DataConversionException, IOException {
-        return readHealthWorkerBook(healthWorkerBookStorage.getHealthWorkerBookFilePath());
-    }
-
-    @Override
-    public Optional<ReadOnlyHealthWorkerBook> readHealthWorkerBook(Path filePath)
-            throws DataConversionException, IOException {
-        logger.fine("Attempting to read data from file: " + filePath);
-        return healthWorkerBookStorage.readHealthWorkerBook(filePath);
-    }
-
-    @Override
-    public void saveHealthWorkerBook(ReadOnlyHealthWorkerBook healthWorkerBook) throws IOException {
-        saveHealthWorkerBook(healthWorkerBook, healthWorkerBookStorage.getHealthWorkerBookFilePath());
-    }
-
-    @Override
-    public void saveHealthWorkerBook(ReadOnlyHealthWorkerBook healthWorkerBook, Path filePath) throws IOException {
-        logger.fine("Attempting to write to data file: " + filePath);
-        healthWorkerBookStorage.saveHealthWorkerBook(healthWorkerBook, filePath);
     }
 
 }

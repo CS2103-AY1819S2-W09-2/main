@@ -13,8 +13,4 @@ public interface ReadOnlyUserPrefs {
 
     Path getAddressBookFilePath();
 
-    Path getRequestBookFilePath();
-
-    Path getHealthWorkerBookFilePath();
-
 }

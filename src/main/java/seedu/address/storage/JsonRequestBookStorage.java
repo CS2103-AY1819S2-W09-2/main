@@ -41,7 +41,7 @@ public class JsonRequestBookStorage implements RequestBookStorage {
     }
 
     /**
-     * Similar to {@link #readRequestBook()}.
+     * Similar to {@link #readAddressBook()}.
      *
      * @param filePath location of the data. Cannot be null.
      * @throws DataConversionException if the file is not in the correct format.

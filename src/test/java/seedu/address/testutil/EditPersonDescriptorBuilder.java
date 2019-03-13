@@ -90,7 +90,6 @@ public class EditPersonDescriptorBuilder {
         descriptor.setNric(new Nric(nric));
         return this;
     }
-
     public EditPersonDescriptor build() {
         return descriptor;
     }

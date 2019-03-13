@@ -2,11 +2,9 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
@@ -36,34 +34,20 @@ public class EditHealthWorkerCommand extends EditCommand implements HealthWorker
         super(index);
         requireNonNull(editHealthWorkerDescriptor);
 
-        this.editHealthWorkerDescriptor = new EditHealthWorkerDescriptor(editHealthWorkerDescriptor);
+        this.editHealthWorkerDescriptor = editHealthWorkerDescriptor;
     }
 
     @Override
     public void edit(Model model, Object toEdit, Object edited) {
         model.setHealthWorker((HealthWorker) toEdit, (HealthWorker) edited);
-        model.updateFilteredHealthWorkerList(Model.PREDICATE_SHOW_ALL_HEALTHWORKERS);
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
     }
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
-        requireNonNull(model);
-        List<HealthWorker> lastShownList = model.getFilteredHealthWorkerList();
-
-        if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        }
-
-        HealthWorker toEdit = lastShownList.get(index.getZeroBased());
-        HealthWorker edited = createEditedHealthWorker(toEdit, editHealthWorkerDescriptor);
-
-        if (!toEdit.isSameHealthWorker(edited) && model.hasHealthWorker(edited)) {
-            throw new CommandException(DUPLICATE_HEALTH_WORKER);
-        }
-
-        edit(model, toEdit, edited);
-        return new CommandResult(String.format(MESSAGE_EDIT_HEALTHWORKER_SUCCESS, edited));
+        // TODO: create getFilteredHealthWorkerList method. Implement execute.
+        return null;
     }
 
     /**
@@ -113,10 +97,11 @@ public class EditHealthWorkerCommand extends EditCommand implements HealthWorker
 
         public EditHealthWorkerDescriptor() {}
 
-        public EditHealthWorkerDescriptor(EditHealthWorkerDescriptor toCopy) {
+        public EditHealthWorkerDescriptor(EditPersonCommand.EditPersonDescriptor toCopy,
+                                          Organization organization, Skills skills) {
             super(toCopy);
-            this.organization = toCopy.organization;
-            this.skills = toCopy.skills;
+            this.organization = organization;
+            this.skills = skills;
         }
 
         @Override
