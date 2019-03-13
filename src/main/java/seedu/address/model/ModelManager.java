@@ -28,14 +28,14 @@ public class ModelManager implements Model {
 
     private final VersionedAddressBook versionedAddressBook;
     private final VersionedHealthWorkerBook versionedHealthWorkerBook;
-    // private final VersionedRequest
-    private final UserPrefs userPrefs;
+
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<HealthWorker> filteredHealthWorkers;
     // TODO make the relevant changes to the model manager
     // TODO get versionedAddressBook tests to pass
     // private final FilteredList<Request> filteredRequests;
     private final SimpleObjectProperty<Person> selectedPerson = new SimpleObjectProperty<>();
+    private final UserPrefs userPrefs;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -143,7 +143,7 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteHealthWorker(HealthWorker target) {
-        this.versionedAddressBook.removeHealthWorker(target);
+        this.versionedHealthWorkerBook.removeHealthWorker(target);
     }
 
     @Override
@@ -218,6 +218,7 @@ public class ModelManager implements Model {
     @Override
     public void commitAddressBook() {
         versionedAddressBook.commit();
+        versionedHealthWorkerBook.commit();
     }
 
     //=========== Selected person ===========================================================================
