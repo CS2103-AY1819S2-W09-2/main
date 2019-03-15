@@ -11,6 +11,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.CommandMode;
 import seedu.address.model.Model;
 import seedu.address.model.request.Request;
 
@@ -19,16 +20,16 @@ import seedu.address.model.request.Request;
  */
 public class CreateRequestCommand extends AddCommand {
 
-    public static final String COMMAND_WORD = "request";
+    public static final String COMMAND_WORD = "3";
 
-    public static final String MESSAGE_USAGE = AddCommand.COMMAND_WORD + " " + COMMAND_WORD
-        + ": Creates a new request in the request book. " + "Parameters: "
+    public static final String MESSAGE_USAGE = AddCommand.COMMAND_WORD + " " + CommandMode.MODE_REQUEST
+        + " : Creates a new request in the request book. " + "Parameters: "
         + PREFIX_NAME + "NAME "
         + PREFIX_PHONE + "PHONE "
         + PREFIX_ADDRESS + "ADDRESS "
-        + PREFIX_DATE + "DATETIME"
+        + PREFIX_DATE + "DATETIME "
         + PREFIX_CONDITION + "CONDITION...\n"
-        + "Example: " + RequestCommand.COMMAND_WORD + " " + COMMAND_WORD + " "
+        + "Example: " + RequestCommand.COMMAND_WORD + " " + COMMAND_WORD + " " + CommandMode.MODE_REQUEST
         + PREFIX_NAME + "John Doe "
         + PREFIX_PHONE + "81234567 "
         + PREFIX_ADDRESS + "123, Sengkang Ave 3, #04-12, 214632 "
@@ -71,9 +72,14 @@ public class CreateRequestCommand extends AddCommand {
     }
 
     @Override
+    public String toString() {
+        return newRequest.toString();
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this
             || (other instanceof CreateRequestCommand
-            && newRequest.equals(((CreateRequestCommand) other).newRequest));
+            && newRequest.isSameRequest(((CreateRequestCommand) other).newRequest));
     }
 }

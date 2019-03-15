@@ -7,6 +7,8 @@ import java.util.List;
 import seedu.address.model.RequestBook;
 import seedu.address.model.request.Request;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+
 /**
  * A utility class containing {@code Request} objects to be used in tests.
  */

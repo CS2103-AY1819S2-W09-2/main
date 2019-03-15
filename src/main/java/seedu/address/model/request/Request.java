@@ -57,6 +57,10 @@ public class Request {
         this.healthWorker = Optional.of(healthStaff);
     }
 
+    public void unassignHealthStaff() {
+        this.healthWorker = Optional.empty();
+    }
+
     /**
      * Returns true if both requests of the same ID and date have at least one other
      * property field that is the same.
@@ -68,7 +72,6 @@ public class Request {
         }
 
         return otherRequest != null
-                && otherRequest.getId().equals(this.id)
                 && otherRequest.getRequestDate().equals(this.requestDate)
                 && ((otherRequest.getPatient().equals(this.patient)) || otherRequest
                 .getConditions().equals(this.conditions));

@@ -1,61 +1,22 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BETTY;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BETTY;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ORGANIZATION_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_SKILLS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.MODE_HEALTHWORKER;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BETTY;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.NRIC_DESC_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.NRIC_DESC_BETTY;
-import static seedu.address.logic.commands.CommandTestUtil.ORGANIZATION_DESC_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.ORGANIZATION_DESC_BETTY;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BETTY;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
-import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.CommandTestUtil.SKILLS_DESC_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ORGANIZATION_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_ANDY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CommandMode.MODE_REQUEST;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalHealthWorkers.ANDY;
 import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalRequests.ALICE_ID;
+import static seedu.address.testutil.TypicalRequests.ALICE_REQUEST;
 
 import org.junit.Test;
 
 import seedu.address.logic.commands.AddHealthWorkerCommand;
 import seedu.address.logic.commands.AddPersonCommand;
+import seedu.address.logic.commands.request.CreateRequestCommand;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -63,13 +24,20 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.healthworker.HealthWorker;
 import seedu.address.model.person.healthworker.Organization;
+import seedu.address.model.request.Request;
+import seedu.address.model.request.RequestDate;
+import seedu.address.model.request.RequestStatus;
 import seedu.address.model.tag.Specialisation;
 import seedu.address.model.tag.Tag;
-import seedu.address.testutil.HealthWorkerBuilder;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.model.util.SampleDataUtil;
+import seedu.address.testutil.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 // TODO: Modify tests to include command mode after all commands implemented using command mode.
 public class AddCommandParserTest {
+    private static final String DATE_DESC_BOB = " " + PREFIX_DATE + "01-01-2019 08:00:00";
     private AddCommandParser parser = new AddCommandParser();
 
     @Test
@@ -168,6 +136,63 @@ public class AddCommandParserTest {
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPersonCommand.MESSAGE_USAGE));
     }
 
+    @Test
+    public void parseAddRequest() {
+        Request expectedRequest = new RequestBuilder(ALICE_REQUEST).withId(ALICE_ID).build();
+        expectedRequest.unassignHealthStaff();
+
+        // whitespace only preamble
+        assertParseSuccess(parser,
+            PREAMBLE_WHITESPACE + MODE_REQUEST + NAME_DESC_ALICE + PHONE_DESC_ALICE + EMAIL_DESC_ALICE
+            + NRIC_DESC_ALICE + ADDRESS_DESC_ALICE + DATE_DESC_ALICE + COND_DESC_ALICE,
+            new CreateRequestCommand(expectedRequest));
+
+        // missing name -> failure
+        assertParseFailure(parser,
+            PREAMBLE_WHITESPACE + MODE_REQUEST + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + NRIC_DESC_BOB
+            + DATE_DESC_ALICE + COND_DESC_ALICE, String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateRequestCommand.MESSAGE_USAGE));
+
+        // missing phone -> failure
+        assertParseFailure(parser,
+            PREAMBLE_WHITESPACE + MODE_REQUEST + NAME_DESC_BOB + ADDRESS_DESC_BOB + NRIC_DESC_BOB
+                + DATE_DESC_ALICE + COND_DESC_ALICE, String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateRequestCommand.MESSAGE_USAGE));
+
+        // missing address -> failure
+        assertParseFailure(parser,
+            PREAMBLE_WHITESPACE + MODE_REQUEST + PHONE_DESC_BOB + NAME_DESC_BOB + ADDRESS_DESC_BOB + NRIC_DESC_BOB
+                + DATE_DESC_ALICE + COND_DESC_ALICE, String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateRequestCommand.MESSAGE_USAGE));
+
+        // missing email -> failure
+        assertParseFailure(parser,
+            PREAMBLE_WHITESPACE + MODE_REQUEST + NAME_DESC_ALICE + PHONE_DESC_ALICE
+                + NRIC_DESC_ALICE + ADDRESS_DESC_ALICE + DATE_DESC_ALICE + COND_DESC_ALICE,
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateRequestCommand.MESSAGE_USAGE));
+
+        // missing nric -> failure
+        assertParseFailure(parser,
+            PREAMBLE_WHITESPACE + MODE_REQUEST + NAME_DESC_ALICE + PHONE_DESC_ALICE
+                + EMAIL_DESC_ALICE + ADDRESS_DESC_ALICE + DATE_DESC_ALICE + COND_DESC_ALICE,
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateRequestCommand.MESSAGE_USAGE));
+
+        // missing address -> failure
+        assertParseFailure(parser,
+            PREAMBLE_WHITESPACE + MODE_REQUEST + NAME_DESC_ALICE + PHONE_DESC_ALICE
+                + NRIC_DESC_ALICE + EMAIL_DESC_ALICE + DATE_DESC_ALICE + COND_DESC_ALICE,
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateRequestCommand.MESSAGE_USAGE));
+
+        // missing date -> failure
+        assertParseFailure(parser,
+            PREAMBLE_WHITESPACE + MODE_REQUEST + NAME_DESC_ALICE + PHONE_DESC_ALICE
+                + NRIC_DESC_ALICE + ADDRESS_DESC_ALICE + EMAIL_DESC_ALICE + COND_DESC_ALICE,
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateRequestCommand.MESSAGE_USAGE));
+
+        // missing condition -> failure
+        assertParseFailure(parser,
+            PREAMBLE_WHITESPACE + MODE_REQUEST + NAME_DESC_ALICE + PHONE_DESC_ALICE
+                + NRIC_DESC_ALICE + ADDRESS_DESC_ALICE + DATE_DESC_ALICE,
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateRequestCommand.MESSAGE_USAGE));
+
+    }
     // =================== Tests for parseAddHealthWorker ===================
     // @author Lookaz
 

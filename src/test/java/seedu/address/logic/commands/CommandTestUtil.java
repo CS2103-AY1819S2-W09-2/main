@@ -2,15 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADD_HEALTHWORKER;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ORGANIZATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SKILLS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +50,15 @@ public class CommandTestUtil {
     public static final String VALID_ORGANIZATION_ANDY = "NUH";
     public static final String VALID_ORGANIZATION_BETTY = "Clinic B";
 
+    // Default strings for Request objects
+    public static final String VALID_NAME_ALICE = "Alice Pauline";
+    public static final String VALID_EMAIL_ALICE = "alice@example.com";
+    public static final String VALID_PHONE_ALICE = "94351253";
+    public static final String VALID_ADDRESS_ALICE = "123, Jurong West Ave 6, #08-111";
+    public static final String VALID_NRIC_ALICE = "S9671249G";
+    public static final String VALID_TAG_PHYSIO = "Physiotherapy";
+    public static final String VALID_DATE_ALICE = "01-01-2019 10:00:00";
+
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
@@ -86,6 +87,15 @@ public class CommandTestUtil {
     public static final String ORGANIZATION_DESC_BETTY = " " + PREFIX_ORGANIZATION + VALID_ORGANIZATION_BETTY;
     public static final String SKILLS_DESC_ANDY = " " + PREFIX_SKILLS + Specialisation.GENERAL_PRACTICE.name()
             + " " + PREFIX_SKILLS + Specialisation.PHYSIOTHERAPY.name();
+
+    // Default Descriptors for Request objects
+    public static final String NAME_DESC_ALICE = " " + PREFIX_NAME + VALID_NAME_ALICE;
+    public static final String EMAIL_DESC_ALICE = " " + PREFIX_EMAIL + VALID_EMAIL_ALICE;
+    public static final String NRIC_DESC_ALICE = " " + PREFIX_NRIC + VALID_NRIC_ALICE;
+    public static final String PHONE_DESC_ALICE = " " + PREFIX_PHONE + VALID_PHONE_ALICE;
+    public static final String ADDRESS_DESC_ALICE = " " + PREFIX_ADDRESS + VALID_ADDRESS_ALICE;
+    public static final String DATE_DESC_ALICE = " " + PREFIX_DATE + VALID_DATE_ALICE;
+    public static final String COND_DESC_ALICE = " " + PREFIX_CONDITION + VALID_TAG_PHYSIO;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones

@@ -53,9 +53,22 @@ public class AddCommandParser implements Parser<AddCommand> {
             return parseAddRequest(args);
         }
 
-        Person person = getPersonFromArgs(args);
+        ArgumentMultimap argMultimap =
+            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+                PREFIX_ADDRESS, PREFIX_TAG, PREFIX_NRIC);
 
-        return new AddPersonCommand(person);
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
+            || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPersonCommand.MESSAGE_USAGE));
+        }
+
+        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
+        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+
+        return new AddPersonCommand(new Person(name, phone, email, address, tagList));
     }
 
     /**
@@ -67,23 +80,29 @@ public class AddCommandParser implements Parser<AddCommand> {
         UUID uuid = UUID.randomUUID();
         String requestId = uuid.toString();
 
-        Person patient = getPersonFromArgs(args);
+        ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME,
+            PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_NRIC, PREFIX_CONDITION,
+            PREFIX_DATE);
 
-        ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_DATE,
-            PREFIX_CONDITION);
-
-        if (!arePrefixesPresent(argumentMultimap, PREFIX_DATE, PREFIX_CONDITION)) {
+        if (!arePrefixesPresent(argumentMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+            PREFIX_ADDRESS, PREFIX_NRIC, PREFIX_CONDITION, PREFIX_DATE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 CreateRequestCommand.MESSAGE_USAGE));
         }
 
+        Name name = ParserUtil.parseName(argumentMultimap.getValue(PREFIX_NAME).get());
+        Phone phone = ParserUtil.parsePhone(argumentMultimap.getValue(PREFIX_PHONE).get());
+        Email email = ParserUtil.parseEmail(argumentMultimap.getValue(PREFIX_EMAIL).get());
+        Address address = ParserUtil.parseAddress(argumentMultimap.getValue(PREFIX_ADDRESS).get());
+        Set<Tag> conditions = ParserUtil.parseTags(argumentMultimap.getAllValues(PREFIX_CONDITION));
+
+        Person patient = new Person(name, phone, email,address, conditions);
+
         RequestDate requestDate =
             ParserUtil.parseRequestDate(argumentMultimap.getValue(PREFIX_DATE).get());
 
-        Set<Tag> conditions = ParserUtil.parseTags(argumentMultimap.getAllValues(PREFIX_CONDITION));
-
-        return new CreateRequestCommand(new Request(requestId, patient, null, requestDate, conditions,
-            new RequestStatus("PENDING")));
+        return new CreateRequestCommand(new Request(requestId, patient, requestDate,
+            conditions, new RequestStatus("PENDING")));
 
     }
 
@@ -129,7 +148,8 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     private Person getPersonFromArgs(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+                PREFIX_ADDRESS, PREFIX_TAG, PREFIX_NRIC);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
             || !argMultimap.getPreamble().isEmpty()) {

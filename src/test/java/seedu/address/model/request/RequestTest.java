@@ -5,12 +5,12 @@ import static org.junit.Assert.assertTrue;
 
 import static seedu.address.testutil.TypicalHealthWorkers.BETTY;
 import static seedu.address.testutil.TypicalPatients.BENSON;
-import static seedu.address.testutil.TypicalRequests.ALICE_REQUEST;
-import static seedu.address.testutil.TypicalRequests.BENSON_REQUEST;
+import static seedu.address.testutil.TypicalRequests.*;
 
 import org.junit.Test;
 
 import seedu.address.testutil.RequestBuilder;
+import seedu.address.testutil.TypicalHealthWorkers;
 
 public class RequestTest {
 
@@ -22,9 +22,9 @@ public class RequestTest {
         // null -> returns false
         assertFalse(ALICE_REQUEST.isSameRequest(null));
 
-        // different id -> returns false
+        // different id -> returns true
         Request editedAlice = new RequestBuilder(ALICE_REQUEST).withId("12").build();
-        assertFalse(ALICE_REQUEST.isSameRequest(editedAlice));
+        assertTrue(ALICE_REQUEST.isSameRequest(editedAlice));
 
         // everything same, but conditions different -> returns true
         editedAlice = new RequestBuilder(ALICE_REQUEST).withConditions("Stroke").build();
@@ -78,5 +78,14 @@ public class RequestTest {
         // different isComplete status -> returns false
         editedAlice = new RequestBuilder(ALICE_REQUEST).withStatus("COMPLETED").build();
         assertFalse(ALICE_REQUEST.equals(editedAlice));
+
+        editedAlice =
+            new RequestBuilder(ALICE_REQUEST).withHealthStaff(TypicalHealthWorkers.FIONE).build();
+        assertFalse(ALICE_REQUEST.equals(editedAlice));
+
+        editedAlice = new RequestBuilder(ALICE_REQUEST).build();
+        editedAlice.unassignHealthStaff();
+        assertFalse(ALICE_REQUEST.equals(editedAlice));
+
     }
 }
