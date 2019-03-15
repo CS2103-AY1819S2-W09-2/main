@@ -252,7 +252,8 @@ public class AddPersonCommandTest {
          */
         @Override
         public Path getRequestBookFilePath() {
-            throw new AssertionError("This method should not be called.");
+            // TODO
+            return null;
         }
 
         /**
@@ -262,7 +263,7 @@ public class AddPersonCommandTest {
          */
         @Override
         public void setRequestBookFilePath(Path requestBookFilePath) {
-            throw new AssertionError("This method should not be called.");
+            // TODO
         }
 
         /**
@@ -272,7 +273,7 @@ public class AddPersonCommandTest {
          */
         @Override
         public void setRequestBook(ReadOnlyRequestBook requestBook) {
-            throw new AssertionError("This method should not be called.");
+            // TODO
         }
 
         /**
@@ -280,7 +281,8 @@ public class AddPersonCommandTest {
          */
         @Override
         public ReadOnlyRequestBook getRequestBook() {
-            throw new AssertionError("This method should not be called.");
+            return null;
+            // TODO
         }
 
         /**
@@ -291,7 +293,8 @@ public class AddPersonCommandTest {
          */
         @Override
         public boolean hasRequest(Request request) {
-            throw new AssertionError("This method should not be called.");
+            return false;
+            // TODO
         }
 
         /**
@@ -302,7 +305,7 @@ public class AddPersonCommandTest {
          */
         @Override
         public void deleteRequest(Request target) {
-            throw new AssertionError("This method should not be called.");
+            // TODO
         }
 
         /**
@@ -313,7 +316,7 @@ public class AddPersonCommandTest {
          */
         @Override
         public void addRequest(Request request) {
-            throw new AssertionError("This method should not be called.");
+            // TODO
         }
 
         /**
@@ -327,12 +330,7 @@ public class AddPersonCommandTest {
          */
         @Override
         public void setRequest(Request target, Request editedRequest) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void commitRequestBook() {
-            throw new AssertionError("This method should not be called.");
+            // TODO
         }
     }
 

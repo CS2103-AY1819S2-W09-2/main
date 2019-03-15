@@ -9,8 +9,6 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.person.healthworker.HealthWorker;
-import seedu.address.model.person.healthworker.UniqueHealthWorkerList;
 
 /**
  * Wraps all data at the address-book level
@@ -20,7 +18,6 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
-    private final UniqueHealthWorkerList healthWorkers;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -31,7 +28,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
-        healthWorkers = new UniqueHealthWorkerList();
     }
 
     public AddressBook() {}
@@ -119,23 +115,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     protected void indicateModified() {
         invalidationListenerManager.callListeners(this);
-    }
-
-    //// util methods
-    /**
-     * Returns an unmodifiable view of the healthworkers list.
-     * This list will not contain any duplicate healthworkers
-     */
-    public ObservableList<HealthWorker> getHealthWorkerList() {
-        return healthWorkers.asUnmodifiableObservableList();
-    }
-
-    public Person getPersonAt(int index) {
-        return this.persons.getAt(index);
-    }
-
-    public HealthWorker getHealthWorkerAt(int index) {
-        return this.healthWorkers.getAt(index);
     }
 
     @Override

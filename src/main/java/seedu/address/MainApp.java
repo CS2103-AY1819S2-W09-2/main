@@ -22,9 +22,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyHealthWorkerBook;
-import seedu.address.model.ReadOnlyRequestBook;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.RequestBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
@@ -90,20 +88,12 @@ public class MainApp extends Application {
         Optional<ReadOnlyHealthWorkerBook> healthWorkerBookOptional;
         ReadOnlyAddressBook initialAddressBook;
         ReadOnlyHealthWorkerBook initialHealthWorkerBook;
-        ReadOnlyRequestBook initialRequestBook;
-        Optional<ReadOnlyRequestBook> requestBookOptional;
 
         try {
             addressBookOptional = storage.readAddressBook();
-            requestBookOptional = storage.readRequestBook();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample AddressBook");
             }
-
-            if (!requestBookOptional.isPresent()) {
-                logger.info("Request file not found. Will be starting with sample RequestBook");
-            }
-            initialRequestBook = new RequestBook();
             initialAddressBook = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
             healthWorkerBookOptional = storage.readHealthWorkerBook();
             if (!addressBookOptional.isPresent()) {
@@ -116,16 +106,13 @@ public class MainApp extends Application {
             logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
             initialAddressBook = new AddressBook();
             initialHealthWorkerBook = new HealthWorkerBook();
-            initialRequestBook = new RequestBook();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
             initialAddressBook = new AddressBook();
             initialHealthWorkerBook = new HealthWorkerBook();
-            initialRequestBook = new RequestBook();
         }
 
-        return new ModelManager(initialAddressBook, initialHealthWorkerBook, initialRequestBook,
-            userPrefs);
+        return new ModelManager(initialAddressBook, initialHealthWorkerBook, userPrefs);
     }
 
     private void initLogging(Config config) {
