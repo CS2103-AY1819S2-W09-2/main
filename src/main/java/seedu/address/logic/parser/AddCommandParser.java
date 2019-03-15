@@ -96,7 +96,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = ParserUtil.parseAddress(argumentMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> conditions = ParserUtil.parseTags(argumentMultimap.getAllValues(PREFIX_CONDITION));
 
-        Person patient = new Person(name, phone, email,address, conditions);
+        Person patient = new Person(name, phone, email, address, conditions);
 
         RequestDate requestDate =
             ParserUtil.parseRequestDate(argumentMultimap.getValue(PREFIX_DATE).get());

@@ -5,7 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import static seedu.address.testutil.TypicalHealthWorkers.BETTY;
 import static seedu.address.testutil.TypicalPatients.BENSON;
-import static seedu.address.testutil.TypicalRequests.*;
+import static seedu.address.testutil.TypicalRequests.ALICE_REQUEST;
+import static seedu.address.testutil.TypicalRequests.BENSON_REQUEST;
 
 import org.junit.Test;
 
