@@ -29,7 +29,7 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#add-feature">3.1. Add feature</a></li>
+<li><a href="#add-edit-delete-feature">3.1. Add/Edit/Delete feature</a></li>
 <li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">3.4. Logging</a></li>
@@ -566,14 +566,80 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="add-feature"><a class="link" href="#add-feature">3.1. Add feature</a></h3>
+<h3 id="add-edit-delete-feature"><a class="link" href="#add-edit-delete-feature">3.1. Add/Edit/Delete feature</a></h3>
 <div class="paragraph">
-<p>The <code>add</code> command has been tweaked from the original AB4 to include addition of
- <code>HealthWorker</code>, <code>Patient</code> and <code>Request</code>.</p>
+<p>The <code>add</code>, <code>edit</code> and <code>delete</code> command have been tweaked from the original AB4
+ to include addition of <code>HealthWorker</code>, <code>Patient</code> and <code>Request</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="additional-implementation-from-v1-1"><a class="link" href="#additional-implementation-from-v1-1">3.1.1. Additional Implementation from v1.1</a></h4>
-
+<div class="ulist">
+<ul>
+<li>
+<p><code>CommandMode</code> Enum class was introduced in v1.1 to allow for <code>add</code>, <code>edit</code>
+and <code>delete</code> different types of objects respective to the different
+<code>CommandMode</code> Enums. The various <code>CommandMode</code> enums are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CommandMode.HEALTHWORKER</code></p>
+</li>
+<li>
+<p><code>CommandMode.REQUEST</code></p>
+</li>
+<li>
+<p><code>CommandMode.PATIENT</code></p>
+</li>
+<li>
+<p><code>CommandMode.OTHER</code></p>
+</li>
+<li>
+<p><code>CommandMode.INVALID</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Each of the <code>add</code>, <code>edit</code> and <code>delete</code> command is parsed through the
+<code>EditCommandParser</code>, <code>AddCommandParser</code> and <code>DeleteCommandParser</code> classes,
+where the <code>CommandMode</code> is parsed to return the appropriate type of <code>Command</code>
+ class:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AddCommand</code></p>
+</li>
+<li>
+<p><code>EditCommand</code></p>
+</li>
+<li>
+<p><code>DeleteCommand</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Each of the <code>AddCommand</code> and <code>EditCommand</code> and <code>DeleteCommand</code> provides
+subclasses for each of the <code>Command</code> classes respective to <code>Patient</code>,
+<code>HealthWorker</code> and <code>Request</code> class which adds respective objects to
+<code>PatientBook</code>, <code>RequestBook</code> and <code>HealthWorkerBook</code> for storage, for example
+the subclasses for <code>AddCommand</code> for <code>Request</code> are as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AddRequestCommand</code></p>
+</li>
+<li>
+<p><code>EditRequestCommand</code></p>
+</li>
+<li>
+<p><code>DeleteRequestCommand</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2444,4 +2510,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 16:00:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 16:02:55 UTC</div></div></div></body></html>
