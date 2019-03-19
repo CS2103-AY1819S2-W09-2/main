@@ -1,32 +1,33 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 4 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>HealthHub - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="header"><h1>AddressBook Level 4 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="header"><h1>HealthHub - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team W9-02 (HealthHub)</code>      Since: <code>Jan 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#notation">2. Notation</a></li>
+<li><a href="#quick-start">3. Quick Start</a></li>
+<li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#listing-all-requests-health-workers-patients-code-list-code">3.2. Listing all requests/health workers/patients : <code>list</code></a></li>
-<li><a href="#adding-a-request-health-worker-patient-code-add-code">3.3. Adding a request/health worker/patient: <code>add</code></a></li>
-<li><a href="#editing-a-request-health-worker-patient-code-edit-code">3.4. Editing a request/health worker/patient : <code>edit</code></a></li>
-<li><a href="#locating-request-health-worker-patient-by-name-code-find-code">3.5. Locating request/health worker/patient by name: <code>find</code></a></li>
-<li><a href="#deleting-a-request-health-worker-patient-code-delete-code">3.6. Deleting a request/health worker/patient : <code>delete</code></a></li>
-<li><a href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">3.7. Assigning a health worker to an existing open request : <code>assign</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.10. Saving the data</a></li>
+<li><a href="#viewing-help-code-help-code">4.1. Viewing help : <code>help</code></a></li>
+<li><a href="#listing-all-requests-health-workers-patients-code-list-code">4.2. Listing all requests/health workers/patients : <code>list</code></a></li>
+<li><a href="#adding-a-request-health-worker-patient-code-add-code">4.3. Adding a request/health worker/patient: <code>add</code></a></li>
+<li><a href="#editing-a-request-health-worker-patient-code-edit-code">4.4. Editing a request/health worker/patient : <code>edit</code></a></li>
+<li><a href="#filtering-request-health-worker-patient-by-parameters-code-filter-code">4.5. Filtering request/health worker/patient by parameters: <code>filter</code></a></li>
+<li><a href="#deleting-a-request-health-worker-patient-code-delete-code">4.6. Deleting a request/health worker/patient : <code>delete</code></a></li>
+<li><a href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">4.7. Assigning a health worker to an existing open request : <code>assign</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">4.8. Listing entered commands : <code>history</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">4.9. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">4.10. Saving the data</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -34,13 +35,58 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 4 (AB4) is a application that allows users to add, manage and close requests from patients for health services. AB4 provides a <strong>Graphical User Interface</strong> for administrative staff of health organization and hospitals to manage requests from all potential home stay patients, and is also <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI).<br>
-Looking to improve and ease management of requests from cusomters and patients? Look no further, AB4 provides all the utility and functions you need to streamline your workflow. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>HealthHub is a application that allows users to add, manage and close requests from
+patients for health services. AB4 provides a <strong>Graphical User Interface</strong> for administrative staff of health organization and hospitals to manage requests from all potential home stay patients, and is also <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI).<br></p>
+</div>
+<div class="paragraph">
+<p>Looking to improve and ease management of requests from customers and patients?
+Look no further, AB4 provides all the utility and functions you need to streamline your workflow. Interested? Jump to the <a href="#quick-start">Section 3, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<h2 id="notation"><a class="link" href="#notation">2. Notation</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Words that are highlighted with a grey background in monospaced font
+represent a <code>parameter</code> or <code>command</code> that is present or are to be used in the
+application.</p>
+</li>
+<li>
+<p>All indices mentioned in this document are one-indexed, meaning that the
+first item in the list starts at 1.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Documentation displayed under the this section may be useful shortcuts on the
+ application alternative to the CLI.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Descriptions wrapped in a grey background are helpful tips and tricks that
+may aid you when you use the application.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="link" href="#quick-start">3. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -62,26 +108,28 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all requests</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>i/3 n/John Doe p/98765432 a/John street, block 123, #01-01</code> : adds a patient named <code>John Doe</code> to the application.</p>
+<p><strong><code>add</code></strong> <code>3 i/3 n/John Doe p/98765432 a/John street, block 123, #01-01</code> :
+adds a patient named <code>John Doe</code> to the application.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>t/R n/4</code> : deletes the 4th request shown by the list command</p>
+<p><strong><code>delete</code></strong> <code>4 n/4</code> : deletes the 4th request shown by the list command</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong><code>exit</code></strong> : exits the application, saving any changes made to the parameters
+in the application.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a> for a detailed explanation of each command.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Note that the current application is a work in progress. The following description of the features and commands are prototypes and specific details and implementation may vary over the course of the project.</p>
@@ -89,7 +137,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Command Format</strong></p>
+<p><strong>General Command Format</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -97,10 +145,11 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Words in <code>&lt;tags&gt;</code> are the parameters to be supplied by the user e.g. in <code>add n/&lt;name&gt;</code>, <code>&lt;name&gt;</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/&lt;name&gt; [s/&lt;specialisation&gt;]</code> can be used as <code>n/John Doe s/Gynaecology</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>n/&lt;name&gt; [c/&lt;condition&gt;]</code>
+can be used as <code>n/John Doe c/Claustrophobia</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[s/&lt;specialisation&gt;]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>s/&lt;specialisation&gt;&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
 </li>
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>n/&lt;name&gt; p/&lt;phone_number&gt;</code>, <code>p/&lt;phonenumber&gt; n/&lt;name&gt;</code> is also acceptable.</p>
@@ -110,7 +159,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
@@ -119,10 +168,21 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-requests-health-workers-patients-code-list-code"><a class="link" href="#listing-all-requests-health-workers-patients-code-list-code">3.2. Listing all requests/health workers/patients : <code>list</code></a></h3>
+<h3 id="listing-all-requests-health-workers-patients-code-list-code"><a class="link" href="#listing-all-requests-health-workers-patients-code-list-code">4.2. Listing all requests/health workers/patients : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all requests, health workers or patients based on the <code>&lt;type&gt;</code> parameters .<br>
-Format: <code>list &lt;type&gt;</code></p>
+<p>Shows a list of all requests, health workers or patients based on the <code>&lt;type&gt;</code> parameters .<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>list &lt;type&gt;</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>This command may be useful for users to identify existing personnel,
+patients or requests in the system before assigning and closing existing
+requests for specific health services.</p>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -133,28 +193,99 @@ Format: <code>list &lt;type&gt;</code></p>
 <p><code>list 1</code> lists all requests stored in the system, and their corresponding details</p>
 </li>
 <li>
-<p><code>list 2</code> lists all health workers stored in the system, and the skills and certifications they posses</p>
+<p><code>list 2</code> lists all health workers stored in the system, and the skills and
+certifications they possess</p>
+</li>
+<li>
+<p><code>list 3</code> lists all patients registered in the system, their NRIC and any
+medical statuses or past conditions.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-request-health-worker-patient-code-add-code"><a class="link" href="#adding-a-request-health-worker-patient-code-add-code">3.3. Adding a request/health worker/patient: <code>add</code></a></h3>
+<h3 id="adding-a-request-health-worker-patient-code-add-code"><a class="link" href="#adding-a-request-health-worker-patient-code-add-code">4.3. Adding a request/health worker/patient: <code>add</code></a></h3>
 <div class="paragraph">
-<p>Adds a request, health worker or patient to the application based on the <code>&lt;type&gt;</code> parameter accepted<br>
-Format: <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br>
-Types:</p>
+<p>Before you can jump right into the core feature of our application, which is
+to streamline the process of adding requests from patients and to assign
+requests to experts in the medical field, it is essential to first ensure
+that the respective health staff and patients are registered in the system
+with all the key information.</p>
+</div>
+<div class="paragraph">
+<p>Add a request, health worker or patient to the application based on the
+<code>&lt;type&gt;</code> parameter accepted, using the <code>add</code> command, to register new health
+staff, patients and requests.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>1: Adding a request <code>add 1 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+<p><strong>Adding a health worker</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Format: <code>add 1 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>2: Adding a health worker <code>add 2 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
+<p>Command that registers a new Health Worker person to the current roster.</p>
 </li>
 <li>
-<p>3: Adding a patient <code>add 3 n/&lt;patient_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;</code></p>
+<p>Health Workers comprises of personnel who are authorized to work in sectors in the
+healthcare industry in accordance to their <code>specialisation</code>.</p>
+</li>
+<li>
+<p>Health Workers authorized for medical practice specific to their
+<code>specialisation</code> include doctors, nurses and community health workers that
+are officially certified by certain medical practices</p>
+</li>
+<li>
+<p>To view all available specialisations in the application, type <code>add help</code>
+in the command line.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Adding a patient</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Format: <code>add 3 n/&lt;patient_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;</code></p>
+</li>
+<li>
+<p>Command that registers a new patient into the application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Adding a request</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Format: <code>add 2 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+</li>
+<li>
+<p>Registers a new open request from <code>patient</code> of <code>&lt;patient_name&gt;</code> into the
+application.</p>
+</li>
+<li>
+<p>Each request also states the <code>&lt;condition&gt;</code> that the patient is
+experiencing. Administrative staff can then inspect the conditions that are
+stated by the <code>patient</code> and assign the appropriate health worker to handle
+these requests in the <code>assign</code> command.</p>
+</li>
+<li>
+<p>Format for the time is <code>HH:mm:ss</code>.</p>
+</li>
+<li>
+<p>Format for the date is <code>dd-MM-yyyy</code>.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -164,34 +295,65 @@ Types:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add 1 n/Lucas Choong c/Arthritis d/05/02/2019 t/1400</code></p>
+<p><code>add 1 n/Dog Terr p/92837710 i/S98817471Z s/GENERAL_PRACTICE
+s/ORTHOPAEDIC</code></p>
 </li>
 <li>
-<p><code>add 2 n/John Doe p/98765432 a/John street, block 123, #01-01</code></p>
+<p><code>add 3 n/Pay Shun i/S9928747A p/89896672</code></p>
 </li>
 <li>
-<p><code>add 3 n/Betsy Crowe t/friend a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>add 2 n/Pay Shun c/Heart Attack t/14:00:00 d/05:05:2019</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-request-health-worker-patient-code-edit-code"><a class="link" href="#editing-a-request-health-worker-patient-code-edit-code">3.4. Editing a request/health worker/patient : <code>edit</code></a></h3>
+<h3 id="editing-a-request-health-worker-patient-code-edit-code"><a class="link" href="#editing-a-request-health-worker-patient-code-edit-code">4.4. Editing a request/health worker/patient : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits a request, health worker or patient to the application based on the <code>&lt;type&gt;</code> parameter accepted.<br>
-Format: <code>edit &lt;type&gt; &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br>
-Types:</p>
+<p>Sometimes, information on a request of health staff may be keyed in wrongly
+into the application. Fret not, for you can replace the wrong information
+with the correct ones using the <code>edit</code> command to modify existing personnel
+records or request descriptions in HealthHub.</p>
+</div>
+<div class="paragraph">
+<p>The <code>edit</code> may come in handy when there is a need update to a request&#8217;s
+status, patient&#8217;s condition or a health worker&#8217;s skills, based on the
+<code>&lt;type&gt;</code> parameter accepted.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit &lt;type&gt; &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>1: Edit a request <code>edit 1 &lt;index&gt; n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+<p><strong>Editing a health worker</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>2: Edit a health worker <code>edit 2 &lt;index&gt; n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
+<p><strong>Editing a request</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 2 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>3: Edit a patient <code>edit 3 &lt;index&gt; n/&lt;patient_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;</code></p>
+<p><strong>Editing a patient</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 3 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -206,16 +368,24 @@ Types:</p>
 <p>Edits the corresponding request/health worker/patient at the specified <code>&lt;index&gt;</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>Each of the additional parameters must be filled up unless optional.</p>
-</li>
-<li>
 <p>Existing values will be updated to the input values.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Apart from <code>specialisations</code> in health workers and <code>condition</code> in
+patients, each field can only have a single value and multiple edit values
+for other fields will only cause the last one to be accepted.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>When editing specialisations, the existing specialisations of the person will be removed i.e adding of specialisation is not cumulative.</p>
+<p>When editing specialisations for health workers, the existing specialisations
+of the person will be removed i.e adding of specialisation is not cumulative.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s speciailisation by typing <code>s/</code> without specifying any parameters after it.</p>
+<p>You can remove all the person&#8217;s specialisation by typing <code>s/</code> without
+specifying any parameters after it.</p>
 </li>
 </ul>
 </div>
@@ -238,24 +408,58 @@ Edits the name of the 2nd patient to be <code>Betsy Crower</code>.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-request-health-worker-patient-by-name-code-find-code"><a class="link" href="#locating-request-health-worker-patient-by-name-code-find-code">3.5. Locating request/health worker/patient by name: <code>find</code></a></h3>
+<h3 id="filtering-request-health-worker-patient-by-parameters-code-filter-code"><a class="link" href="#filtering-request-health-worker-patient-by-parameters-code-filter-code">4.5. Filtering request/health worker/patient by parameters: <code>filter</code></a></h3>
 <div class="paragraph">
-<p>Finds requests/health workers/patients whose names contain any of the given keywords. For requests, the requests containing the patient name with the keywords specified will be displayed.<br>
-Format: <code>find &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code><br>
-Types:</p>
+<p>When identifying and sieving health workers to assign to an open request, or
+to look for a particular patient details, it may be useful to filter out only
+ items in a list that match a particular constraint.</p>
+</div>
+<div class="paragraph">
+<p>Using the <code>filter</code> command, you can sieve out requests/health workers/patients
+whose fields match the <code>keywords`that are specified in the `filter</code> command,
+allowing you to find the doctors who are experts in cardiology much quicker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>filter &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>1: Find a request <code>find 1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
-</li>
+<p><strong>Filter a health worker</strong></p>
+<div class="ulist">
+<ul>
 <li>
-<p>2: Find a health worker <code>find 2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
-</li>
-<li>
-<p>3: Find a patient <code>find 3 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+<p><code>filter 1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </li>
 </ul>
+</div>
+</li>
+<li>
+<p><strong>Filter a request</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter 2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Filter a patient</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter 3 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>&lt;more_keywords&gt;</code> represents the fields and parameters that can be used to
+identify requests or personnel, using the same prefixes as in add, edit and
+delete commands. Some examples of keywords are shown below.</p>
 </div>
 <div class="paragraph">
 <p>Notes:</p>
@@ -265,19 +469,30 @@ Types:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+<p>The search is case insensitive for fields not including specialisation. e.g
+<code>hans</code> will match <code>Hans</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>For specialisation fields, parameters are case sensitive, and only valid
+parameters will be accepted</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
 </li>
 <li>
-<p>Only the name is searched.</p>
-</li>
+<p>Search using partial words will return all results with fields containing
+that subword.</p>
+<div class="ulist">
+<ul>
 <li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+<p><code>filter 1 n/Tan</code> may return people with the surnames Tan or Tang</p>
 </li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -289,33 +504,61 @@ Types:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find 3 John</code><br>
+<p><code>filter 3 n/John</code><br>
 Returns patients named <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
-<p><code>find 1 Betsy Tim John</code><br>
-Returns requests that involved patients whose names are <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>filter 1 s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
+Returns all health workers whose field of expertise include general practice
+or gynaecology.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-request-health-worker-patient-code-delete-code"><a class="link" href="#deleting-a-request-health-worker-patient-code-delete-code">3.6. Deleting a request/health worker/patient : <code>delete</code></a></h3>
+<h3 id="deleting-a-request-health-worker-patient-code-delete-code"><a class="link" href="#deleting-a-request-health-worker-patient-code-delete-code">4.6. Deleting a request/health worker/patient : <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Deletes a request, health worker or patient to the application based on the <code>&lt;type&gt;</code> parameter accepted.<br>
-Format: <code>delete &lt;type&gt; &lt;index&gt;</code><br>
-Types:</p>
+<p>Should there be any invalid or expired request, health worker or patient in
+the application, you may also remove them to prevent cluttering of
+unnecessary data by using the <code>delete</code> command to remove them from the
+application based on the`&lt;type&gt;` parameter accepted, according to the
+index of the respective <code>type</code>
+shown using the <code>list</code> command, or the index displayed on the GUI.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete &lt;type&gt; &lt;index&gt;</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>1: Edit a request <code>edit 1 &lt;index&gt;</code></p>
+<p><strong>Delete a health worker</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1 &lt;index&gt;</code></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>2: Edit a health worker <code>edit 2</code></p>
+<p><strong>Delete a request</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 2 &lt;index&gt;</code></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>3: Edit a patient <code>edit 3 &lt;index&gt;</code></p>
+<p><strong>Delete a patient</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 3 &lt;index&gt;</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -330,7 +573,8 @@ Types:</p>
 <p>Deletes the corresponding request/health worker/patient at the specified <code>&lt;index&gt;</code>.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed person list.</p>
+<p>The index refers to the index number shown in the displayed request/health
+worker/patient list using the <code>list</code> command, or displayed through the GUI.</p>
 </li>
 <li>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
@@ -345,22 +589,25 @@ Types:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 1 2</code><br>
+<p><code>delete 1 2</code><br>
 Deletes the 2nd request in the application.</p>
 </li>
 <li>
 <p><code>delete 3 1</code><br>
-Deletes the 1st patient in the results of the <code>find</code> command.</p>
+Deletes the 1st patient in the results of the <code>list</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="assigning-a-health-worker-to-an-existing-open-request-code-assign-code"><a class="link" href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">3.7. Assigning a health worker to an existing open request : <code>assign</code></a></h3>
+<h3 id="assigning-a-health-worker-to-an-existing-open-request-code-assign-code"><a class="link" href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">4.7. Assigning a health worker to an existing open request : <code>assign</code></a></h3>
 <div class="paragraph">
-<p>Assigns a health worker in the system to an existing open request.<br>
-Format: <code>assign p/&lt;patient_name&gt; h/&lt;health_worker_name&gt;</code></p>
+<p>After registering a new request using the <code>add 2</code> command, you may proceed to
+ assign an existing health worker in the system to handle the request,
+ allocating medical resources to it and closing the request.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>assign &lt;request_index&gt; &lt;health_worker_index&gt;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -382,17 +629,28 @@ Format: <code>assign p/&lt;patient_name&gt; h/&lt;health_worker_name&gt;</code><
 <div class="ulist">
 <ul>
 <li>
-<p><code>assign p/John Doe h/Dog Tor</code><br>
-Assigns the health worker named Dog Tor to a request containing a patient with the name John Doe.</p>
+<p><code>assign 1 2</code><br>
+Assigns the health worker at the second index to the first request in the
+request list.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">4.8. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
+<p>In the case where you have been using the application for a while now, and
+wish to track and see the past commands that you have entered into the
+application, or where you have taken over the application from another
+person, you can do so using the <code>history</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Using the <code>history</code> command, you can view the previous commands entered in
+the application in chronological order, allowing you to identify the order in
+ which commands are keyed in previously.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>history</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -410,23 +668,32 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.9. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>Once you are done using the application, you can exit the application by
+entering the <code>exit</code> command, hereby saving any information at the current
+point in time before shutting down.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.10. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.10. Saving the data</a></h3>
 <div class="paragraph">
-<p>Application data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<p>All application data are saved in the hard disk automatically after exiting
+the application, removing the need to save manually.<br></p>
+</div>
+<div class="paragraph">
+<p>Changes to the data in the application are also saved that any command that
+modifies application parameters, making sure that minimal data is lost should
+ any unforeseen circumstances happen.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -435,7 +702,7 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -452,13 +719,13 @@ There is no need to save manually.</p>
 <p><strong>Edit</strong> : <code>edit &lt;type&gt; &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code></p>
+<p><strong>Filter</strong> : <code>filter &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>delete &lt;type&gt; &lt;index&gt;</code></p>
 </li>
 <li>
-<p><strong>Assign</strong> : <code>assign p/&lt;patient_name&gt; h/&lt;health_worker_name&gt;</code></p>
+<p><strong>Assign</strong> : <code>assign &lt;patient_index&gt; &lt;health_worker_index&gt;</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
@@ -466,4 +733,4 @@ There is no need to save manually.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-15 07:07:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 16:00:13 UTC</div></div></div></body></html>
