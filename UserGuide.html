@@ -365,7 +365,9 @@ status, patient&#8217;s condition or a health worker&#8217;s skills, based on th
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the corresponding request/health worker/patient at the specified <code>&lt;index&gt;</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Edits the corresponding request/health worker/patient at the specified <code>&lt;index&gt;</code>. The index refers to the
+index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;
+and not greater than the number of requests/health workers/patients in the current list.</p>
 </li>
 <li>
 <p>Existing values will be updated to the input values.</p>
@@ -462,6 +464,22 @@ identify requests or personnel, using the same prefixes as in add, edit and
 delete commands. Some examples of keywords are shown below.</p>
 </div>
 <div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter 3 n/John</code><br>
+Returns patients named <code>john</code> and <code>John Doe</code></p>
+</li>
+<li>
+<p><code>filter 1 s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
+Returns all health workers whose field of expertise include general practice
+or gynaecology.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p>Notes:</p>
 </div>
 <div class="sidebarblock">
@@ -497,22 +515,6 @@ that subword.</p>
 </ul>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter 3 n/John</code><br>
-Returns patients named <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>filter 1 s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
-Returns all health workers whose field of expertise include general practice
-or gynaecology.</p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
@@ -577,7 +579,8 @@ shown using the <code>list</code> command, or the index displayed on the GUI.<br
 worker/patient list using the <code>list</code> command, or displayed through the GUI.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203; and not greater
+than the number of requests/health workers/patients in the current list.</p>
 </li>
 </ul>
 </div>
@@ -590,7 +593,7 @@ worker/patient list using the <code>list</code> command, or displayed through th
 <ul>
 <li>
 <p><code>delete 1 2</code><br>
-Deletes the 2nd request in the application.</p>
+Deletes the 2nd health worker in the application.</p>
 </li>
 <li>
 <p><code>delete 3 1</code><br>
@@ -613,6 +616,10 @@ Deletes the 1st patient in the results of the <code>list</code> command.</p>
 <div class="content">
 <div class="ulist">
 <ul>
+<li>
+<p>The <code>request_index</code> and <code>health_worker_index</code> fields <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203; and not greater
+than the number of requests/health workers in the current list.</p>
+</li>
 <li>
 <p>Health worker that is assigned must be available at the current time stated by the request.</p>
 </li>
@@ -733,4 +740,4 @@ modifies application parameters, making sure that minimal data is lost should
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 16:12:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-21 04:46:43 UTC</div></div></div></body></html>
