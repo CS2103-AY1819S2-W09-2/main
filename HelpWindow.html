@@ -12,22 +12,23 @@
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#notation">2. Notation</a></li>
 <li><a href="#quick-start">3. Quick Start</a></li>
-<li><a href="#Features">4. Features</a>
+<li><a href="#what-s-new-in-v1-2">4. What&#8217;s new in v1.2</a></li>
+<li><a href="#Features">5. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">4.1. Viewing help : <code>help</code></a></li>
-<li><a href="#listing-all-requests-health-workers-patients-code-list-code">4.2. Listing all requests/health workers/patients : <code>list</code></a></li>
-<li><a href="#adding-a-request-health-worker-patient-code-add-code">4.3. Adding a request/health worker/patient: <code>add</code></a></li>
-<li><a href="#editing-a-request-health-worker-patient-code-edit-code">4.4. Editing a request/health worker/patient : <code>edit</code></a></li>
-<li><a href="#filtering-request-health-worker-patient-by-parameters-code-filter-code">4.5. Filtering request/health worker/patient by parameters: <code>filter</code></a></li>
-<li><a href="#deleting-a-request-health-worker-patient-code-delete-code">4.6. Deleting a request/health worker/patient : <code>delete</code></a></li>
-<li><a href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">4.7. Assigning a health worker to an existing open request : <code>assign</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">4.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">4.9. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">4.10. Saving the data</a></li>
+<li><a href="#viewing-help-code-help-code">5.1. Viewing help : <code>help</code></a></li>
+<li><a href="#listing-all-requests-health-workers-patients-code-list-code">5.2. Listing all requests/health workers/patients : <code>list</code></a></li>
+<li><a href="#adding-a-request-health-worker-patient-code-add-code">5.3. Adding a request/health worker/patient: <code>add</code></a></li>
+<li><a href="#editing-a-request-health-worker-patient-code-edit-code">5.4. Editing a request/health worker/patient : <code>edit</code></a></li>
+<li><a href="#filtering-request-health-worker-patient-by-parameters-code-filter-code">5.5. Filtering request/health worker/patient by parameters: <code>filter</code></a></li>
+<li><a href="#deleting-a-request-health-worker-patient-code-delete-code">5.6. Deleting a request/health worker/patient : <code>delete</code></a></li>
+<li><a href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">5.7. Assigning a health worker to an existing open request : <code>assign</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">5.8. Listing entered commands : <code>history</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.9. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">5.10. Saving the data</a></li>
 </ul>
 </li>
-<li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a></li>
+<li><a href="#faq">6. FAQ</a></li>
+<li><a href="#command-summary">7. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -35,17 +36,18 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>HealthHub is a desktop application which allows health administrative staff to add, manage and close requests from
-patients. These patients are people who do not require 24-hour round' the clock medical attention but perhaps some
-other health care services such as the changing of tubing.<br></p>
+<p>HealthHub is connects home care patients to qualified professionals seamlessly.</p>
 </div>
 <div class="paragraph">
-<p>HealthHub provides a <strong>Graphical User Interface</strong> for administrative staff of health organizations and hospitals to manage requests
+<p>HealthHub is a desktop application which allows health administrative staff to add, manage and close requests from
+patients. These patients are people who do not require 24-hour round' the clock medical attention but perhaps some
+other health care services such as the changing of tubing.<br>
+8
+HealthHub provides a <strong>Graphical User Interface</strong> for administrative staff of health organizations and hospitals to manage requests
 from all potential home stay patients, and is also <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI).<br></p>
 </div>
 <div class="paragraph">
-<p>Looking to improve and ease management of requests from your patients?
-Look no further, HealthHub provides all the utility and functions you need to streamline your workflow. Interested? Jump to the <a href="#quick-start">Section 3, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Let&#8217;s get you started with how to install and use HealthHub!</p>
 </div>
 </div>
 </div>
@@ -127,14 +129,32 @@ in the application.</p>
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a> for a detailed explanation of each command.</p>
+<p>Refer to <a href="#Features">Section 5, &#8220;Features&#8221;</a> for a detailed explanation of each command.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
+<h2 id="what-s-new-in-v1-2"><a class="link" href="#what-s-new-in-v1-2">4. What&#8217;s new in v1.2</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><code>add healthworker</code> command: Adds a <code>Healthworker</code> to the application.</p>
+</li>
+<li>
+<p><code>add request</code> command: Creates a new <code>Request</code> for the hospital management to attend to.</p>
+</li>
+<li>
+<p><code>assign request</code> command: Assigns a <code>Request</code> to a <code>Healthworker</code>, to attend to the request.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Features"><a class="link" href="#Features">5. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Note that the current application is a work in progress. The screenshot below shows how the application
@@ -169,7 +189,7 @@ can be used as <code>n/John Doe c/Claustrophobia</code> or as <code>n/John Doe</
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1. Viewing help : <code>help</code></a></h3>
+<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">5.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
@@ -178,7 +198,7 @@ can be used as <code>n/John Doe c/Claustrophobia</code> or as <code>n/John Doe</
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-requests-health-workers-patients-code-list-code"><a class="link" href="#listing-all-requests-health-workers-patients-code-list-code">4.2. Listing all requests/health workers/patients : <code>list</code></a></h3>
+<h3 id="listing-all-requests-health-workers-patients-code-list-code"><a class="link" href="#listing-all-requests-health-workers-patients-code-list-code">5.2. Listing all requests/health workers/patients : <code>list</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all requests, health workers or patients based on the <code>&lt;type&gt;</code> parameters .<br></p>
 </div>
@@ -214,7 +234,7 @@ medical statuses or past conditions.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-request-health-worker-patient-code-add-code"><a class="link" href="#adding-a-request-health-worker-patient-code-add-code">4.3. Adding a request/health worker/patient: <code>add</code></a></h3>
+<h3 id="adding-a-request-health-worker-patient-code-add-code"><a class="link" href="#adding-a-request-health-worker-patient-code-add-code">5.3. Adding a request/health worker/patient: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Before you can jump right into the core feature of our application, which is
 to streamline the process of adding requests from patients and to assign
@@ -318,7 +338,7 @@ s/ORTHOPAEDIC</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-request-health-worker-patient-code-edit-code"><a class="link" href="#editing-a-request-health-worker-patient-code-edit-code">4.4. Editing a request/health worker/patient : <code>edit</code></a></h3>
+<h3 id="editing-a-request-health-worker-patient-code-edit-code"><a class="link" href="#editing-a-request-health-worker-patient-code-edit-code">5.4. Editing a request/health worker/patient : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Sometimes, information on a request of health staff may be keyed in wrongly
 into the application. Fret not, for you can replace the wrong information
@@ -420,7 +440,7 @@ Edits the name of the 2nd patient to be <code>Betsy Crower</code>.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="filtering-request-health-worker-patient-by-parameters-code-filter-code"><a class="link" href="#filtering-request-health-worker-patient-by-parameters-code-filter-code">4.5. Filtering request/health worker/patient by parameters: <code>filter</code></a></h3>
+<h3 id="filtering-request-health-worker-patient-by-parameters-code-filter-code"><a class="link" href="#filtering-request-health-worker-patient-by-parameters-code-filter-code">5.5. Filtering request/health worker/patient by parameters: <code>filter</code></a></h3>
 <div class="paragraph">
 <p>When identifying and sieving health workers to assign to an open request, or
 to look for a particular patient details, it may be useful to filter out only
@@ -528,7 +548,7 @@ that subword.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-request-health-worker-patient-code-delete-code"><a class="link" href="#deleting-a-request-health-worker-patient-code-delete-code">4.6. Deleting a request/health worker/patient : <code>delete</code></a></h3>
+<h3 id="deleting-a-request-health-worker-patient-code-delete-code"><a class="link" href="#deleting-a-request-health-worker-patient-code-delete-code">5.6. Deleting a request/health worker/patient : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Should there be any invalid or expired request, health worker or patient in
 the application, you may also remove them to prevent cluttering of
@@ -613,7 +633,7 @@ Deletes the 1st patient in the results of the <code>list</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="assigning-a-health-worker-to-an-existing-open-request-code-assign-code"><a class="link" href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">4.7. Assigning a health worker to an existing open request : <code>assign</code></a></h3>
+<h3 id="assigning-a-health-worker-to-an-existing-open-request-code-assign-code"><a class="link" href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">5.7. Assigning a health worker to an existing open request : <code>assign</code></a></h3>
 <div class="paragraph">
 <p>After registering a new request using the <code>add 2</code> command, you may proceed to
  assign an existing health worker in the system to handle the request,
@@ -654,7 +674,7 @@ request list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">4.8. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">5.8. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>In the case where you have been using the application for a while now, and
 wish to track and see the past commands that you have entered into the
@@ -685,7 +705,7 @@ the application in chronological order, allowing you to identify the order in
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.9. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.9. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Once you are done using the application, you can exit the application by
 entering the <code>exit</code> command, hereby saving any information at the current
@@ -696,7 +716,7 @@ point in time before shutting down.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.10. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.10. Saving the data</a></h3>
 <div class="paragraph">
 <p>All application data are saved in the hard disk automatically after exiting
 the application, removing the need to save manually.<br></p>
@@ -710,7 +730,7 @@ modifies application parameters, making sure that minimal data is lost should
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">6. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -719,7 +739,7 @@ modifies application parameters, making sure that minimal data is lost should
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">7. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -750,4 +770,4 @@ modifies application parameters, making sure that minimal data is lost should
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-21 15:14:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-22 01:27:00 UTC</div></div></div></body></html>
