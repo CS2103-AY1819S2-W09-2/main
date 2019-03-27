@@ -19,13 +19,14 @@
 <li><a href="#listing-all-requests-health-workers-patients-code-list-code">5.2. Listing all requests/health workers/patients : <code>list</code></a></li>
 <li><a href="#adding-a-request-health-worker-patient-code-add-code">5.3. Adding a request/health worker/patient: <code>add</code></a></li>
 <li><a href="#editing-a-request-health-worker-patient-code-edit-code">5.4. Editing a request/health worker/patient : <code>edit</code></a></li>
-<li><a href="#filtering-request-health-worker-patient-by-parameters-code-filter-code">5.5. Filtering request/health worker/patient by parameters: <code>filter</code></a></li>
-<li><a href="#deleting-a-request-health-worker-patient-code-delete-code">5.6. Deleting a request/health worker/patient : <code>delete</code></a></li>
-<li><a href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">5.7. Assigning a health worker to an existing open request : <code>assign</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">5.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#selecting-a-request-to-view-it-code-sr-code">5.9. Selecting a request to view it : <code>sr</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">5.10. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">5.11. Saving the data</a></li>
+<li><a href="#filtering-health-worker-by-parameters-code-filter-code">5.5. Filtering health worker by parameters: <code>filter</code></a></li>
+<li><a href="#finding-a-request-code-frequest-code">5.6. Finding a request: <code>frequest</code></a></li>
+<li><a href="#deleting-a-request-health-worker-patient-code-delete-code">5.7. Deleting a request/health worker/patient : <code>delete</code></a></li>
+<li><a href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">5.8. Assigning a health worker to an existing open request : <code>assign</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">5.9. Listing entered commands : <code>history</code></a></li>
+<li><a href="#selecting-a-request-to-view-it-code-sr-code">5.10. Selecting a request to view it : <code>sr</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.11. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">5.12. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">6. FAQ</a></li>
@@ -455,14 +456,14 @@ Edits the name of the 2nd patient to be <code>Betsy Crower</code>.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="filtering-request-health-worker-patient-by-parameters-code-filter-code"><a class="link" href="#filtering-request-health-worker-patient-by-parameters-code-filter-code">5.5. Filtering request/health worker/patient by parameters: <code>filter</code></a></h3>
+<h3 id="filtering-health-worker-by-parameters-code-filter-code"><a class="link" href="#filtering-health-worker-by-parameters-code-filter-code">5.5. Filtering health worker by parameters: <code>filter</code></a></h3>
 <div class="paragraph">
 <p>When identifying and sieving health workers to assign to an open request, or
 to look for a particular patient details, it may be useful to filter out only
  items in a list that match a particular constraint.</p>
 </div>
 <div class="paragraph">
-<p>Using the <code>filter</code> command, you can sieve out requests/health workers/patients
+<p>Using the <code>filter</code> command, you can sieve out health workers
 whose fields match the <code>keywords`that are specified in the `filter</code> command,
 allowing you to find the doctors who are experts in cardiology much quicker.<br></p>
 </div>
@@ -481,26 +482,6 @@ allowing you to find the doctors who are experts in cardiology much quicker.<br>
 </ul>
 </div>
 </li>
-<li>
-<p><strong>Filter a request</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter 2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Filter a patient</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter 3 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
-</li>
-</ul>
-</div>
-</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -513,10 +494,6 @@ delete commands. Some examples of keywords are shown below.</p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><code>filter 3 n/John</code><br>
-Returns patients named <code>john</code> and <code>John Doe</code></p>
-</li>
 <li>
 <p><code>filter 1 s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
 Returns all health workers whose field of expertise include general practice
@@ -563,7 +540,103 @@ that subword.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-request-health-worker-patient-code-delete-code"><a class="link" href="#deleting-a-request-health-worker-patient-code-delete-code">5.6. Deleting a request/health worker/patient : <code>delete</code></a></h3>
+<h3 id="finding-a-request-code-frequest-code"><a class="link" href="#finding-a-request-code-frequest-code">5.6. Finding a request: <code>frequest</code></a></h3>
+<div class="paragraph">
+<p>When identifying and sieving through requests</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>frequest &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Find a request by patient name</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>frequest n/alice</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>&lt;more_keywords&gt;</code> represents the fields and parameters that can be used to
+identify requests or personnel, using the same prefixes as in add, edit and
+delete commands. Some examples of keywords are shown below.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>frequest n/alice</code><br>
+Returns all patients whose name contains "alice".</p>
+</li>
+<li>
+<p><code>frequest p/9177</code><br>
+Returns all requests with contacts numbers that have "9177" in it&#8217;s field.</p>
+</li>
+<li>
+<p><code>frequest dt/30-01-2019 10:00:00</code><br>
+Returns all requests scheduled on 30th Jan 2019, at 10 am sharp.</p>
+</li>
+<li>
+<p><code>frequest a/jurong</code><br>
+Returns all requests that are located in Jurong.</p>
+</li>
+<li>
+<p><code>frequest i/9670</code><br>
+Returns all requests with patients whom have "9670" in their NRIC number.</p>
+</li>
+<li>
+<p><code>frequest c/Physiotherapy</code><br>
+Returns all requests requesting for treatment for physiotherapy</p>
+</li>
+<li>
+<p><code>frequest st/pending</code>
+Returns all requests that are pending.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive for fields. e.g
+<code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Search using partial words will return all results with fields containing
+that subword.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>frequest n/Tan</code> may return requests with patient surnames Tan or Tang</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Multiple filters can be added simultaneously: e.g <code>frequest n/alice c/physio</code> returns all requests with patient names
+Alice and require Physiotherapy treatment.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-request-health-worker-patient-code-delete-code"><a class="link" href="#deleting-a-request-health-worker-patient-code-delete-code">5.7. Deleting a request/health worker/patient : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Should there be any invalid or expired request, health worker or patient in
 the application, you may also remove them to prevent cluttering of
@@ -662,7 +735,7 @@ Deletes the 1st patient in the results of the <code>list</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="assigning-a-health-worker-to-an-existing-open-request-code-assign-code"><a class="link" href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">5.7. Assigning a health worker to an existing open request : <code>assign</code></a></h3>
+<h3 id="assigning-a-health-worker-to-an-existing-open-request-code-assign-code"><a class="link" href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">5.8. Assigning a health worker to an existing open request : <code>assign</code></a></h3>
 <div class="paragraph">
 <p>After registering a new request using the <code>add 2</code> command, you may proceed to
  assign an existing health worker in the system to handle the request,
@@ -703,7 +776,7 @@ request list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">5.8. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">5.9. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>In the case where you have been using the application for a while now, and
 wish to track and see the past commands that you have entered into the
@@ -734,7 +807,7 @@ the application in chronological order, allowing you to identify the order in
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-request-to-view-it-code-sr-code"><a class="link" href="#selecting-a-request-to-view-it-code-sr-code">5.9. Selecting a request to view it : <code>sr</code></a></h3>
+<h3 id="selecting-a-request-to-view-it-code-sr-code"><a class="link" href="#selecting-a-request-to-view-it-code-sr-code">5.10. Selecting a request to view it : <code>sr</code></a></h3>
 <div class="paragraph">
 <p>Using the select command, you can select a particular request for you to view it&#8217;s details in full.</p>
 </div>
@@ -743,7 +816,7 @@ the application in chronological order, allowing you to identify the order in
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.10. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.11. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Once you are done using the application, you can exit the application by
 entering the <code>exit</code> command, hereby saving any information at the current
@@ -754,7 +827,7 @@ point in time before shutting down.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.11. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.12. Saving the data</a></h3>
 <div class="paragraph">
 <p>All application data are saved in the hard disk automatically after exiting
 the application, removing the need to save manually.<br></p>
@@ -808,4 +881,4 @@ modifies application parameters, making sure that minimal data is lost should
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-27 06:32:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-27 09:35:26 UTC</div></div></div></body></html>
