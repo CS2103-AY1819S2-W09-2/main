@@ -12,30 +12,35 @@
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#notation">2. Notation</a></li>
 <li><a href="#quick-start">3. Quick Start</a></li>
-<li><a href="#v1-2-release-notes">4. v1.2 Release Notes</a></li>
-<li><a href="#v1-3-release-notes">5. v1.3 Release Notes</a></li>
-<li><a href="#v1-4-release-notes">6. v1.4 Release Notes</a></li>
-<li><a href="#Features">7. Features</a>
+<li><a href="#changelog">4. ChangeLog</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">7.1. Viewing help : <code>help</code></a></li>
-<li><a href="#listing-all-requests-health-workers-patients-code-list-code">7.2. Listing all requests/health workers/patients : <code>list</code></a></li>
-<li><a href="#adding-a-request-health-worker-patient-code-add-code">7.3. Adding a request/health worker/patient: <code>add</code></a></li>
-<li><a href="#editing-a-request-health-worker-patient-code-edit-code">7.4. Editing a request/health worker/patient : <code>edit</code></a></li>
-<li><a href="#filtering-health-worker-by-parameters-code-filter-code">7.5. Filtering health worker by parameters: <code>filter</code></a></li>
-<li><a href="#finding-a-request-code-frequest-code">7.6. Finding a request: <code>frequest</code></a></li>
-<li><a href="#deleting-a-request-health-worker-patient-code-delete-code">7.7. Deleting a request/health worker/patient : <code>delete</code></a></li>
-<li><a href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">7.8. Assigning a health worker to an existing open request : <code>assign</code></a></li>
-<li><a href="#clearing-requests-code-clr-code">7.9. Clearing Requests : <code>clr</code></a></li>
-<li><a href="#completing-requests-code-complete-code">7.10. Completing Requests : <code>complete</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">7.11. Listing entered commands : <code>history</code></a></li>
-<li><a href="#selecting-a-request-to-view-it-code-sr-code">7.12. Selecting a request to view it : <code>sr</code></a></li>
-<li><a href="#setting-a-reminder-for-yourself-code-setreminder-code">7.13. Setting a reminder for yourself: <code>setreminder</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">7.14. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">7.15. Saving the data</a></li>
+<li><a href="#v1-1-release-notes">4.1. v1.1 Release Notes</a></li>
+<li><a href="#v1-2-release-notes">4.2. v1.2 Release Notes</a></li>
+<li><a href="#v1-3-release-notes">4.3. v1.3 Release Notes</a></li>
+<li><a href="#v1-4-release-notes">4.4. v1.4 Release Notes</a></li>
+<li><a href="#v2-0-release-notes">4.5. v2.0 Release Notes</a></li>
 </ul>
 </li>
-<li><a href="#faq">8. FAQ</a></li>
-<li><a href="#command-summary">9. Command Summary</a></li>
+<li><a href="#Features">5. Features</a>
+<ul class="sectlevel2">
+<li><a href="#viewing-help-code-help-code">5.1. Viewing Help : <code>help</code></a></li>
+<li><a href="#showing-all-requests-health-workers-code-list-code">5.2. Showing all requests/health workers : <code>list</code></a></li>
+<li><a href="#adding-requests-health-workers-code-add-code">5.3. Adding requests/health workers: <code>add</code></a></li>
+<li><a href="#editing-requests-health-workers-code-edit-code">5.4. Editing requests/health workers : <code>edit</code></a></li>
+<li><a href="#filtering-health-workers-requests-code-filter-code">5.5. Filtering health workers/requests: <code>filter</code></a></li>
+<li><a href="#deleting-requests-health-workers-code-delete-code">5.6. Deleting requests/health workers : <code>delete</code></a></li>
+<li><a href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></li>
+<li><a href="#clearing-requests-code-clr-code">5.8. Clearing Requests : <code>clr</code></a></li>
+<li><a href="#closing-requests-code-complete-code">5.9. Closing Requests : <code>complete</code></a></li>
+<li><a href="#listing-previous-commands-code-history-code">5.10. Listing previous commands : <code>history</code></a></li>
+<li><a href="#viewing-a-request-code-sr-code">5.11. Viewing a request : <code>sr</code></a></li>
+<li><a href="#setting-reminder-alerts-code-setreminder-code">5.12. Setting Reminder Alerts: <code>setreminder</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.13. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">5.14. Saving the data</a></li>
+</ul>
+</li>
+<li><a href="#faqh">6. FAQH</a></li>
+<li><a href="#command-summary">7. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -55,7 +60,8 @@ other health care services such as the changing of tubing.<br></p>
 from all potential home stay patients, and is also <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI).<br></p>
 </div>
 <div class="paragraph">
-<p>First, let&#8217;s get you started with how to install and use HealthHub!</p>
+<p>Want to jump right into using HealthHub? Head over to <a href="#quick-start">Section 3, &#8220;Quick Start&#8221;</a> to
+install and configure the application, and you&#8217;re good to go!</p>
 </div>
 </div>
 </div>
@@ -72,6 +78,10 @@ application.</p>
 <li>
 <p>All numbers mentioned with commands begins with the number 1, representing the first item in the list.</p>
 </li>
+<li>
+<p>Words that are highlighted in white represent a <kbd>keyboard</kbd> button that
+can be pressed to invoke a described function.</p>
+</li>
 </ul>
 </div>
 <div class="admonitionblock note">
@@ -82,33 +92,76 @@ application.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Documentation displayed under the this section may be useful shortcuts on the
- application alternative to the CLI.</p>
+<p>Documentation displayed under the this section may be additional useful
+information regarding HealthHub.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Descriptions wrapped in a grey background are helpful tips and tricks that
-may aid you when you use the application.</p>
+<p>Information under this section denotes shortcuts and alternative commands to
+the format of certain functions in HealthHub.</p>
 </div>
+</td>
+</tr>
+</table>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Information under this section highlights potential risks that may happen in
+using a specific feature.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="quick-start"><a class="link" href="#quick-start">3. Quick Start</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>New to HealthHub? Follow our quick and easy steps below to get started on
+HealthHub in no time!</p>
+</div>
+<div class="paragraph">
+<p>Before you start, ensure you have Java version <code>9</code> or later installed in your computer.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you do not have Java 9 installed, you may download the latest version of
+the Java Runtime Environment at this link: <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" class="bare">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version <code>9</code> or later installed in your Computer.</p>
-</li>
-<li>
-<p>Additional installation guides will be added further into the project.</p>
+<p>Upon installing the application, click on HealthHub.jar file to open up
+HealthHub. You should be greeted by the following interface:
+&lt;INSERT IMAGE HERE&gt;</p>
 </li>
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
@@ -136,81 +189,154 @@ in the application.</p>
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 7, &#8220;Features&#8221;</a> for a detailed explanation of each command.</p>
+<p>Refer to <a href="#Features">Section 5, &#8220;Features&#8221;</a> for a detailed explanation of each command.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="v1-2-release-notes"><a class="link" href="#v1-2-release-notes">4. v1.2 Release Notes</a></h2>
+<h2 id="changelog"><a class="link" href="#changelog">4. ChangeLog</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Returning user but not sure what has changed since you left?</p>
+</div>
+<div class="paragraph">
+<p>Listed below are the enhancements made to HealthHub, their version
+ releases and the respective improvement made:</p>
+</div>
+<div class="sect2">
+<h3 id="v1-1-release-notes"><a class="link" href="#v1-1-release-notes">4.1. v1.1 Release Notes</a></h3>
+<div class="paragraph">
+<p>In this patch, the functionality to register new health workers into the
+application has been implemented. Users may now also add new requests from
+patients into Health Hub for future assignment using the <code>assign</code> command.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add healthworker</code> command: Adds a health worker to the application.</p>
+<p><code>add healthworker</code> command: Adds a health worker to the application, for
+future assignment to open requests in HealtHub. For details on the</p>
 </li>
 <li>
-<p><code>add request</code> command: Registers a new request for the hospital management to attend to.</p>
+<p><code>add request</code> command: Registers a new open request into the application.
+The open request can then be assigned by the user using the <code>assign</code> command.</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more explicit information on the <code>add</code> command, visit <a href="#Features">Section 5, &#8220;Features&#8221;</a>,
+under Adding a Health Worker/Request.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>assign request</code> command: Assigns an open request to an available health worker.</p>
+<p><code>assign</code> command: Assigns an open request to an available health worker
+that is already registered in the system</p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="v1-3-release-notes"><a class="link" href="#v1-3-release-notes">5. v1.3 Release Notes</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="v1-2-release-notes"><a class="link" href="#v1-2-release-notes">4.2. v1.2 Release Notes</a></h3>
 <div class="paragraph">
-<p>Added shorthand parameters for the different commands. For example,</p>
+<p>Version 1.2 provides more utility to the application through the
+implementation of the <code>edit</code> and <code>delete</code> command that allows the user to
+modify and remove requests and health workers from the application.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add healthworker/h/1</code> command: Adds a health worker to the application.</p>
+<p><code>edit healthworker/h/1</code>: Modifies the details of an existing health staff
+registered in HealthHub.</p>
 </li>
 <li>
-<p><code>add request/r/2</code> command: Registers a new request for the hospital management to attend to.</p>
+<p><code>edit request/r/2</code>: Modifies the details of existing request records in the
+application.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more explicit information on the <code>edit</code> command, visit <a href="#Features">Section 5, &#8220;Features&#8221;</a>,
+under Editing a Health Worker/Request.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="v1-3-release-notes"><a class="link" href="#v1-3-release-notes">4.3. v1.3 Release Notes</a></h3>
+<div class="paragraph">
+<p>With the release of version 1.3, we have set out to improve the already
+simple and easy to use HealthHub with command shortcuts, as well as <code>filter</code>
+command to easily search for staff with the skillset you are looking for.</p>
+</div>
+<div class="paragraph">
+<p><strong>Shortcuts</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add healthworker/h/1</code>: Adds a health worker to the application.</p>
 </li>
 <li>
-<p><code>filter healthworker/h/1</code> command: Filters a healthworker by the individual&#8217;s name, phone, organisation or
+<p><code>add request/r/2</code>: Registers a new request for the hospital management to attend to.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Filtering requests and health workers</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter healthworker/h/1</code>: Filters a healthworker by the individual&#8217;s name, phone, organisation or
 specialisation.</p>
 </li>
+<li>
+<p><code>filter request/r/2</code>: Filters a request by the patient&#8217;s name, address, or the
+date and time of the request and the status of the request</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Other modified or extension commands include:</p>
+<p>Other enhancements made to HealthHub include:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>setreminder</code> command: Sets a reminder with a customised message for the hospital admin.</p>
+<p><code>setreminder</code> command: Allows the user to set and register reminders in the
+application.</p>
 </li>
 <li>
 <p><code>undo/redo</code> command: Undo a previous action or redo everything.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>For more explicit information on the <code>filter</code>,<code>setreminder</code> and <code>undo/redo</code>
+command, visit <a href="#Features">Section 5, &#8220;Features&#8221;</a>, under Filtering Health Workers/Requests.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="v1-4-release-notes"><a class="link" href="#v1-4-release-notes">4.4. v1.4 Release Notes</a></h3>
+<div class="paragraph">
+<p>v1.4 to be released</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="v2-0-release-notes"><a class="link" href="#v2-0-release-notes">4.5. v2.0 Release Notes</a></h3>
+<div class="paragraph">
+<p>v2.0 to be released</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="v1-4-release-notes"><a class="link" href="#v1-4-release-notes">6. v1.4 Release Notes</a></h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">7. Features</a></h2>
+<h2 id="Features"><a class="link" href="#Features">5. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following description of the features and commands are prototypes and specific details and implementation may vary over the course of the project.</p>
 </div>
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
-<p><strong>General Command Format</strong></p>
+<p><strong>General Command Format</strong>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -229,51 +355,39 @@ can be used as <code>n/John Doe c/Claustrophobia</code> or as <code>n/John Doe</
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">7.1. Viewing help : <code>help</code></a></h3>
+<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">5.1. Viewing Help : <code>help</code></a></h3>
+<div class="paragraph">
+<p>Upon first starting the application as a new user, or perhaps a returning
+user, you may open up the help menu using the <code>help</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Upon entering the <code>help</code> command, the help menu renders separately from the
+HealthHub main application. Therefore, you do not have to worry about losing
+any existing work on HealthHub when you are viewing the help menu!</p>
+</div>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
 <div class="paragraph">
-<p>Lists all available commands, their parameters and their function.</p>
+<p>The help menu displays a list of available commands for HealthHub, their
+parameters and their functions. Should you ever forget the commands for
+HealthHub, feel free to enter the <code>help</code> command to revisit this guide.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-requests-health-workers-patients-code-list-code"><a class="link" href="#listing-all-requests-health-workers-patients-code-list-code">7.2. Listing all requests/health workers/patients : <code>list</code></a></h3>
+<h3 id="showing-all-requests-health-workers-code-list-code"><a class="link" href="#showing-all-requests-health-workers-code-list-code">5.2. Showing all requests/health workers : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all requests, health workers or patients based on the <code>&lt;type&gt;</code> parameters .<br></p>
+<p>The <code>list</code> command is a simple and basic command that on entering, displays
+all health workers/requests in the HealthHub GUI.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>list &lt;type&gt;</code></p>
 </div>
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
-<p>This command may be useful for users to identify existing personnel,
-patients or requests in the system before assigning and closing existing
-requests for specific health services.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list 1</code> lists all requests stored in the system, and their corresponding details</p>
-</li>
-<li>
-<p><code>list 2</code> lists all health workers stored in the system, and the skills and
-certifications they possess</p>
-</li>
-<li>
-<p><code>list 3</code> lists all patients registered in the system, their NRIC and any
-medical statuses or past conditions.</p>
-</li>
-</ul>
+<p>Where <code>&lt;type&gt;</code> refers to either <code>healthworker</code>, <code>h</code>, or <code>1</code> to display health
+workers registered in HealthHub, or <code>request</code>, <code>r</code>, <code>2</code> to display all
+registered requests.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -283,18 +397,36 @@ medical statuses or past conditions.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>As a shortcut, you can use <code>lr</code> to list all requests!</p>
+<p>This command may be useful for users to identify existing personnel,
+patients or requests in the system before assigning and closing existing
+requests for specific health services.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list healthworker/h/1</code> lists all health workers stored in the system,
+their personal particulars, and their skills in the healthcare field.</p>
+</li>
+<li>
+<p><code>list request/r/2</code> lists all requests stored in the system, as well as the
+details of the request such as the patient to tend to, the date and time of
+the request and the type of service requested.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-request-health-worker-patient-code-add-code"><a class="link" href="#adding-a-request-health-worker-patient-code-add-code">7.3. Adding a request/health worker/patient: <code>add</code></a></h3>
+<h3 id="adding-requests-health-workers-code-add-code"><a class="link" href="#adding-requests-health-workers-code-add-code">5.3. Adding requests/health workers: <code>add</code></a></h3>
 <div class="paragraph">
-<p>Before you can jump right into the core feature of our application, which is
-to streamline the process of adding requests from patients and to assign
+<p>Before you can jump right into the core feature of our application and
+streamline the process of adding requests from patients and to assign
 requests to experts in the medical field, it is essential to first ensure
 that the respective health staff and patients are registered in the system
 with all the key information.</p>
@@ -307,15 +439,12 @@ staff, patients and requests.<br></p>
 <div class="paragraph">
 <p>Format: <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br></p>
 </div>
+<div class="paragraph">
+<p><strong>Adding a health worker</strong>: <code>add healthworker/h/1 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;
+                          s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
+</div>
 <div class="ulist">
 <ul>
-<li>
-<p><strong>Adding a health worker</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Format: <code>add 1 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
-</li>
 <li>
 <p>Command that registers a new Health Worker person to the current roster.</p>
 </li>
@@ -334,27 +463,11 @@ in the command line.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Adding a patient</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Format: <code>add 3 n/&lt;patient_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;</code></p>
-</li>
-<li>
-<p>Command that registers a new patient into the application.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Adding a request</strong>: <code>add request/r/2 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
 </div>
-</li>
-<li>
-<p><strong>Adding a request</strong></p>
 <div class="ulist">
 <ul>
-<li>
-<p>Format: <code>add 2 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
-</li>
 <li>
 <p>Registers a new open request from <code>patient</code> of <code>&lt;patient_name&gt;</code> into the
 application.</p>
@@ -373,9 +486,6 @@ these requests in the <code>assign</code> command.</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -386,20 +496,20 @@ these requests in the <code>assign</code> command.</p>
 s/ORTHOPAEDIC</code></p>
 </li>
 <li>
-<p><code>add 3 n/Pay Shun i/S9928747A p/89896672</code></p>
-</li>
-<li>
-<p><code>add 2 n/Pay Shun c/Heart Attack t/14:00:00 d/05:05:2019</code></p>
+<p><code>add request n/Pay Shun c/Heart Attack t/14:00:00 d/05:05:2019</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-request-health-worker-patient-code-edit-code"><a class="link" href="#editing-a-request-health-worker-patient-code-edit-code">7.4. Editing a request/health worker/patient : <code>edit</code></a></h3>
+<h3 id="editing-requests-health-workers-code-edit-code"><a class="link" href="#editing-requests-health-workers-code-edit-code">5.4. Editing requests/health workers : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Sometimes, information on a request of health staff may be keyed in wrongly
-into the application. Fret not, for you can replace the wrong information
-with the correct ones using the <code>edit</code> command to modify existing personnel
+into the application, or you may need to update existing outdated information.</p>
+</div>
+<div class="paragraph">
+<p>To do this, you can replace the current information
+with the new one using the <code>edit</code> command to modify existing personnel
 records or request descriptions in HealthHub.</p>
 </div>
 <div class="paragraph">
@@ -410,56 +520,50 @@ status, patient&#8217;s condition or a health worker&#8217;s skills, based on th
 <div class="paragraph">
 <p>Format: <code>edit &lt;type&gt; &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Editing a health worker</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 1 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Editing a request</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 2 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Editing a patient</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 3 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Editing a health worker</strong>: <code>edit healthworker/h/1 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Notes:</p>
+<p>Edits the details of an existing health worker registered in HealthHub, at
+the <code>&lt;index&gt;</code> specified in the health worker list upon entering the <code>edit
+healthworker/h/1</code> command with valid inputs.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p><strong>Editing a request</strong>: <code>edit request/r/2 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Edits the details of a request registered in HealthHub, at
+the <code>&lt;index&gt;</code> specified in the request list upon entering the <code>edit
+request/r/2</code> command with valid inputs.</p>
+</div>
+<div class="paragraph">
+<p>Any changes made to existing fields in requests and healthworkers are
+immediately reflected in the list shown on the HealthHub GUI.</p>
+</div>
+<div class="paragraph">
+<p>&#160;</p>
+</div>
+<div class="paragraph">
+<p>Upon entering the <code>edit</code> command with all the necessary and valid paramters,
+the corresponding request/health worker at the specified <code>&lt;index&gt;</code>. The index refers to the
+index number shown in the displayed person list.</p>
+</div>
+<div class="paragraph">
+<p>Existing values of the health worker or request will be updated to the valid
+input values based on the prefix specified.</p>
+</div>
+<div class="paragraph">
+<p>&#160;</p>
+</div>
+<div class="paragraph">
+<p><strong>Notes</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the corresponding request/health worker/patient at the specified <code>&lt;index&gt;</code>. The index refers to the
-index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;
 and not greater than the number of requests/health workers/patients in the current list.</p>
 </li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-<div class="ulist">
-<ul>
 <li>
 <p>Apart from <code>specialisations</code> in health workers and <code>condition</code> in
 patients, each field can only have a single value and multiple edit values
@@ -467,18 +571,35 @@ for other fields will only cause the last one to be accepted.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
 <p>When editing specialisations for health workers, the existing specialisations
-of the person will be removed i.e adding of specialisation is not cumulative.</p>
-</li>
-<li>
+ of the person will be removed i.e adding of specialisation is not cumulative.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
 <p>You can remove all the person&#8217;s specialisation by typing <code>s/</code> without
 specifying any parameters after it.</p>
-</li>
-</ul>
 </div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -486,49 +607,130 @@ specifying any parameters after it.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 2 1 p/91234567 n/John Doe</code><br>
-Edits the phone number and name of the 1st health worker to be <code>91234567</code> and <code>John Doe</code> respectively.<br></p>
+<p><code>edit healthworker 1 p/91234567 n/John Doe</code><br>
+Edits the phone number and name of the 1st health worker shown in the health
+worker list to be <code>91234567</code> and <code>John Doe</code> respectively.<br></p>
 </li>
 <li>
-<p><code>edit 3 2 n/Betsy Crower</code><br>
-Edits the name of the 2nd patient to be <code>Betsy Crower</code>.<br></p>
+<p><code>edit request 2 n/Betsy Crower</code><br>
+Edits the patient name of the 2nd request in the request list to be <code>Betsy
+Crower</code>.<br></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="filtering-health-worker-by-parameters-code-filter-code"><a class="link" href="#filtering-health-worker-by-parameters-code-filter-code">7.5. Filtering health worker by parameters: <code>filter</code></a></h3>
+<h3 id="filtering-health-workers-requests-code-filter-code"><a class="link" href="#filtering-health-workers-requests-code-filter-code">5.5. Filtering health workers/requests: <code>filter</code></a></h3>
 <div class="paragraph">
 <p>When identifying and sieving health workers to assign to an open request, or
-to look for a particular patient details, it may be useful to filter out only
- items in a list that match a particular constraint.</p>
+to look for a particular patient details in certain requests, it may be useful
+ to filter out only items in a list that match a particular constraint.</p>
 </div>
 <div class="paragraph">
-<p>Using the <code>filter</code> command, you can sieve out health workers
+<p>Using the <code>filter</code> command, you can sieve out health workers and requests
 whose fields match the <code>keywords`that are specified in the `filter</code> command,
 allowing you to find the doctors who are experts in cardiology much quicker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>filter &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code><br></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Filter a health worker</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter 1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Filter health workers</strong>: <code>filter healthworker/h/1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </div>
+<div class="paragraph">
+<p>Upon entering the command with valid inputs, searches the entire list of health
+workers in HealthHub, and only displays the health workers whose fields matches the parameters specified in the
+<code>filter</code> command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For specialisation fields, parameters are case sensitive, and only valid
+parameters will be accepted</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Filter requests</strong>: <code>filter request/r/2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</div>
+<div class="paragraph">
+<p>After entering the command with valid inputs, searches the entire list of
+requests in HealthHub, and only displays the requests whose fields matches
+ the parameters specified in the
+<code>filter</code> command.</p>
+</div>
+<div class="paragraph">
+<p>&#160;</p>
+</div>
+<div class="paragraph">
+<p>where <code>&lt;more_keywords&gt;</code> represents the fields and parameters that can be used to
+identify requests or personnel, using the same prefixes as in <code>add</code>, <code>edit</code> and
+<code>delete</code> commands. Some examples of keywords are shown below.</p>
+</div>
+<div class="paragraph">
+<p><strong>Notes</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The search is <strong>case insensitive</strong> for all fields apart from specialisation(e.g
+<code>hans</code> will match <code>Hans</code>), and the <strong>order of the keywords</strong> does not matter(e.g
+<code>Hans Bo</code> will match <code>Bo Hans</code>).</p>
+</li>
+<li>
+<p>Search using partial words will return all results with fields containing
+that subword. (e.g <code>filter 1 n/Tan</code> may return people with the surnames Tan or
+Tang)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><code>&lt;more_keywords&gt;</code> represents the fields and parameters that can be used to
-identify requests or personnel, using the same prefixes as in add, edit and
-delete commands. Some examples of keywords are shown below.</p>
+<p>&#160;</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Multiple conditions for filtering health workers and requests can be added
+simultaneously for more expressive search.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p><code>filter r n/&lt;name&gt; p/&lt;phone&gt;</code>
+filters the request list for requests whose patient&#8217;s name contains the
+specified name substring <strong>and</strong> the specified phone number.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To view the original health worker/request list, enter the <code>list
+healthworker</code> or <code>list request</code> command respectively.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -536,148 +738,27 @@ delete commands. Some examples of keywords are shown below.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>filter 1 s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
+<p><code>filter h s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
 Returns all health workers whose field of expertise include general practice
 or gynaecology.</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Notes:</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
 <li>
-<p>The search is case insensitive for fields not including specialisation. e.g
-<code>hans</code> will match <code>Hans</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>For specialisation fields, parameters are case sensitive, and only valid
-parameters will be accepted</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Search using partial words will return all results with fields containing
-that subword.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter 1 n/Tan</code> may return people with the surnames Tan or Tang</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="finding-a-request-code-frequest-code"><a class="link" href="#finding-a-request-code-frequest-code">7.6. Finding a request: <code>frequest</code></a></h3>
-<div class="paragraph">
-<p>When identifying and sieving through requests</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>frequest &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code><br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Find a request by patient name</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>frequest n/alice</code></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><code>&lt;more_keywords&gt;</code> represents the fields and parameters that can be used to
-identify requests or personnel, using the same prefixes as in add, edit and
-delete commands. Some examples of keywords are shown below.</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>frequest n/alice</code><br>
+<p><code>filter request n/alice</code><br>
 Returns all patients whose name contains "alice".</p>
 </li>
 <li>
-<p><code>frequest p/9177</code><br>
+<p><code>filter r p/9177</code><br>
 Returns all requests with contacts numbers that have "9177" in it&#8217;s field.</p>
 </li>
 <li>
-<p><code>frequest dt/30-01-2019 10:00:00</code><br>
+<p><code>filter 2 dt/30-01-2019 10:00:00</code><br>
 Returns all requests scheduled on 30th Jan 2019, at 10 am sharp.</p>
 </li>
-<li>
-<p><code>frequest a/jurong</code><br>
-Returns all requests that are located in Jurong.</p>
-</li>
-<li>
-<p><code>frequest i/9670</code><br>
-Returns all requests with patients whom have "9670" in their NRIC number.</p>
-</li>
-<li>
-<p><code>frequest c/Physiotherapy</code><br>
-Returns all requests requesting for treatment for physiotherapy</p>
-</li>
-<li>
-<p><code>frequest st/pending</code>
-Returns all requests that are pending.</p>
-</li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Notes:</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive for fields. e.g
-<code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Search using partial words will return all results with fields containing
-that subword.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>frequest n/Tan</code> may return requests with patient surnames Tan or Tang</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Multiple filters can be added simultaneously: e.g <code>frequest n/alice c/physio</code> returns all requests with patient names
-Alice and require Physiotherapy treatment.</p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-request-health-worker-patient-code-delete-code"><a class="link" href="#deleting-a-request-health-worker-patient-code-delete-code">7.7. Deleting a request/health worker/patient : <code>delete</code></a></h3>
+<h3 id="deleting-requests-health-workers-code-delete-code"><a class="link" href="#deleting-requests-health-workers-code-delete-code">5.6. Deleting requests/health workers : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Should there be any invalid or expired request, health worker or patient in
 the application, you may also remove them to prevent cluttering of
@@ -689,45 +770,22 @@ shown using the <code>list</code> command, or the index displayed on the GUI.<br
 <div class="paragraph">
 <p>Format: <code>delete &lt;type&gt; &lt;index&gt;</code><br></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Delete a health worker</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1 &lt;index&gt;</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Delete a request</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 2 &lt;index&gt;</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Delete a patient</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 3 &lt;index&gt;</code></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Delete a health worker</strong>: <code>delete healthworker/h/1 &lt;index&gt;</code></p>
 </div>
 <div class="paragraph">
-<p>Notes:</p>
+<p>Deletes the health worker at the <code>&lt;index&gt;</code> position in shown in the health
+worker list.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p><strong>Delete a request</strong>: <code>delete request/r/2 &lt;index&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Deletes the request at the <code>&lt;index&gt;</code> position in shown in the list of requests.</p>
+</div>
+<div class="paragraph">
+<p><strong>Notes</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -743,20 +801,20 @@ than the number of requests/health workers/patients in the current list.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1 2</code><br>
-Deletes the 2nd health worker in the application.</p>
+<p><code>delete healthworker 2</code><br>
+Deletes the 2nd health worker registered in the list of healthworkers in
+HealthHub.</p>
 </li>
 <li>
-<p><code>delete 3 1</code><br>
-Deletes the 1st patient in the results of the <code>list</code> command.</p>
+<p><code>delete request 1</code><br>
+Deletes the 1st request as shown in the list of requests on the GUI of the
+application</p>
 </li>
 </ul>
 </div>
@@ -768,7 +826,13 @@ Deletes the 1st patient in the results of the <code>list</code> command.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>As a shortcut, you can use <code>dr [INDEX]</code> to delete the request with a particular index!</p>
+<p>Accidentally deleted the wrong health worker or request? Don&#8217;t worry, the
+deletion can be undone using the <code>undo</code> command as long as the application is
+ still running.</p>
+</div>
+<div class="paragraph">
+<p>To undo the most recent <code>delete</code> command entered by entering the <code>undo</code>
+command immediately after the previous <code>delete</code> command to undo the deletion.</p>
 </div>
 </td>
 </tr>
@@ -776,17 +840,23 @@ Deletes the 1st patient in the results of the <code>list</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="assigning-a-health-worker-to-an-existing-open-request-code-assign-code"><a class="link" href="#assigning-a-health-worker-to-an-existing-open-request-code-assign-code">7.8. Assigning a health worker to an existing open request : <code>assign</code></a></h3>
+<h3 id="assigning-health-workers-to-an-open-request-code-assign-code"><a class="link" href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></h3>
 <div class="paragraph">
-<p>After registering a new request using the <code>add 2</code> command, you may proceed to
- assign an existing health worker in the system to handle the request,
- allocating medical resources to it and closing the request.<br></p>
+<p>After registering a new request using the <code>add request/r/2</code> command, you may
+proceed to assign an existing health worker in the system to handle the request,
+ allocating medical resources to it and closing the request using the simple
+ <code>assign</code> command<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>assign &lt;request_index&gt; &lt;health_worker_index&gt;</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p>Where the <code>&lt;request_index&gt;</code> and <code>&lt;health_worker_index&gt;</code> are as shown in the
+respective health worker and requests lists in the HealthHub GUI.</p>
+</div>
+<div class="paragraph">
+<p><strong>Notes</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -800,8 +870,6 @@ than the number of requests/health workers in the current list.</p>
 <p>Health worker must have the necessary skillset and certifications that allow him to be able to take up the corresponding request.</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -817,24 +885,14 @@ request list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-requests-code-clr-code"><a class="link" href="#clearing-requests-code-clr-code">7.9. Clearing Requests : <code>clr</code></a></h3>
+<h3 id="clearing-requests-code-clr-code"><a class="link" href="#clearing-requests-code-clr-code">5.8. Clearing Requests : <code>clr</code></a></h3>
 <div class="paragraph">
-<p>After all requests have been completed and storage data has been backed up, you can clear all the records of completed requests if you want to.</p>
+<p>After closing all existing requests, you also have the option of clearing all
+ requests from the request list, regardless of the state of the request, upon
+  entering the <code>clr</code> command.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>clr</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>request_index</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203; and not greater
-than the number of requests in the current list.</p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -843,23 +901,36 @@ than the number of requests in the current list.</p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Clearing requests would delete all records of completed requests. If you would like to delete just one particular request, use <code>delete &lt;index&gt;</code>.
+<div class="paragraph">
+<p>Clearing requests would delete all records of completed requests.</p>
+</div>
+<div class="paragraph">
+<p>If you would like to delete just one particular request, consider using the
+<code>delete</code> command instead.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="completing-requests-code-complete-code"><a class="link" href="#completing-requests-code-complete-code">7.10. Completing Requests : <code>complete</code></a></h3>
+<h3 id="closing-requests-code-complete-code"><a class="link" href="#closing-requests-code-complete-code">5.9. Closing Requests : <code>complete</code></a></h3>
 <div class="paragraph">
-<p>After the healthworker has done the patient visit and given the necessary treatment, you can simply complete a particular request
-using the <code>complete</code> command.</p>
+<p>After an assigned task has been completed by the assigned health staff, who
+has administered the necessary medical treatment, you can mark the request as
+ closed, using the <code>complete</code> command.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>complete &lt;request_index&gt;</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p>Upon entering the <code>complete</code> command, you should notice the status of the
+request at position <code>&lt;request_index&gt;</code> changed to <code>COMPLETED</code>, marking the
+request closed.</p>
+</div>
+<div class="paragraph">
+<p><strong>Notes</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -868,8 +939,6 @@ than the number of requests in the current list.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -877,13 +946,13 @@ than the number of requests in the current list.</p>
 <ul>
 <li>
 <p><code>complete 1</code><br>
-Completes the first request in the list of requests.</p>
+Marks the first request in the list as completed.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">7.11. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-previous-commands-code-history-code"><a class="link" href="#listing-previous-commands-code-history-code">5.10. Listing previous commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>In the case where you have been using the application for a while now, and
 wish to track and see the past commands that you have entered into the
@@ -896,8 +965,12 @@ the application in chronological order, allowing you to identify the order in
  which commands are keyed in previously.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>history</code><br>
-Example output:</p>
+<p>Format: <code>history</code><br></p>
+</div>
+<div class="paragraph">
+<p>Upon keying in the <code>history</code> command, a log of recent commands in order of
+decreasing timestamp(earliest to latest) will appear on the terminal as shown
+ below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -920,29 +993,58 @@ Example output:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-request-to-view-it-code-sr-code"><a class="link" href="#selecting-a-request-to-view-it-code-sr-code">7.12. Selecting a request to view it : <code>sr</code></a></h3>
+<h3 id="viewing-a-request-code-sr-code"><a class="link" href="#viewing-a-request-code-sr-code">5.11. Viewing a request : <code>sr</code></a></h3>
 <div class="paragraph">
-<p>Using the select command, you can select a particular request for you to view it&#8217;s details in full.</p>
+<p>With the flexibility in managing and adding, editing and deleting requests,
+existing functionality for the user to view the details of requests in
+HealthHub has also been implemented to improve the user experience.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>sr</code></p>
+<p>Format: <code>sr &lt;request_index&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Entering the <code>sr</code> command allows the application to select the request at the
+ specified <code>&lt;request_index&gt;</code>, and displays the full details of the selected
+ request on the GUI.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Users also have the option of clicking on a request in the request list on
+the GUI, which automatically selects the clicked request as the displayed
+request.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-a-reminder-for-yourself-code-setreminder-code"><a class="link" href="#setting-a-reminder-for-yourself-code-setreminder-code">7.13. Setting a reminder for yourself: <code>setreminder</code></a></h3>
+<h3 id="setting-reminder-alerts-code-setreminder-code"><a class="link" href="#setting-reminder-alerts-code-setreminder-code">5.12. Setting Reminder Alerts: <code>setreminder</code></a></h3>
 <div class="paragraph">
-<p>If you wish to contact a patient on the day of his appointment to remind him that a health worker will be visting his
-home, you can set a reminder on the application, with a customised message that you can include.</p>
-</div>
-<div class="paragraph">
-<p>The app will set a reminder to alert you when the time has come.</p>
+<p>Sometimes, it can be difficult to keep track of multiple tasks and specific
+details for different requests. In addition to the already expressive
+function of keying in the description of a request upon registering, the
+<code>setreminder</code> command now also allows you to set customised reminder alerts
+to aid you so that you do not have to cram a large amount of details in memory.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>setreminder t/&lt;hh:mm:ss&gt; m/&lt;customised_message&gt;</code><br></p>
 </div>
 <div class="paragraph">
-<p>In the scenario below, a reminder has been set to go off at 6:00AM with the customised message to
-"to call patient John Doe for his appointment".</p>
+<p>Using the <code>setreminder</code> command, you can register a reminder message in
+HealthHub with your own customised message as well as date and time, that
+automatically alerts you by displaying the entered message 5 minutes before the
+chosen date and time.</p>
+</div>
+<div class="paragraph">
+<p>As in the example below, a reminder has been set to go off at 6:00AM with
+the customised message to "to call patient John Doe for his appointment".</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -951,7 +1053,7 @@ home, you can set a reminder on the application, with a customised message that 
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">7.14. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.13. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Once you are done using the application, you can exit the application by
 entering the <code>exit</code> command, hereby saving any information at the current
@@ -962,7 +1064,7 @@ point in time before shutting down.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">7.15. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.14. Saving the data</a></h3>
 <div class="paragraph">
 <p>All application data are saved in the hard disk automatically after exiting
 the application, removing the need to save manually.<br></p>
@@ -976,7 +1078,7 @@ any unforeseen circumstances happen.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">8. FAQ</a></h2>
+<h2 id="faqh"><a class="link" href="#faqh">6. FAQH</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -985,53 +1087,47 @@ any unforeseen circumstances happen.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">9. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">7. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p><a href="#viewing-help-code-help-code">Section 5.1, &#8220;Viewing Help : <code>help</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list &lt;type&gt;</code></p>
+<p><a href="#showing-all-requests-health-workers-code-list-code">Section 5.2, &#8220;Showing all requests/health workers : <code>list</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>Add</strong> : <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+<p><a href="#adding-requests-health-workers-code-add-code">Section 5.3, &#8220;Adding requests/health workers: <code>add</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit &lt;type&gt; &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+<p><a href="#editing-requests-health-workers-code-edit-code">Section 5.4, &#8220;Editing requests/health workers : <code>edit</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>Clear Requests</strong> : <code>clr</code></p>
+<p><a href="#filtering-health-workers-requests-code-filter-code">Section 5.5, &#8220;Filtering health workers/requests: <code>filter</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>Complete Request</strong> : <code>complete &lt;index&gt;</code></p>
+<p><a href="#deleting-requests-health-workers-code-delete-code">Section 5.6, &#8220;Deleting requests/health workers : <code>delete</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>Filter</strong> : <code>filter &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code></p>
+<p><a href="#assigning-health-workers-to-an-open-request-code-assign-code">Section 5.7, &#8220;Assigning health workers to an open request : <code>assign</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete &lt;type&gt; &lt;index&gt;</code></p>
+<p><a href="#clearing-requests-code-clr-code">Section 5.8, &#8220;Clearing Requests : <code>clr</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>Assign</strong> : <code>assign &lt;patient_index&gt; &lt;health_worker_index&gt;</code></p>
+<p><a href="#closing-requests-code-complete-code">Section 5.9, &#8220;Closing Requests : <code>complete</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>History</strong> : <code>history</code></p>
+<p><a href="#listing-previous-commands-code-history-code">Section 5.10, &#8220;Listing previous commands : <code>history</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>Set Reminder</strong>: <code>setreminder</code></p>
+<p><a href="#viewing-a-request-code-sr-code">Section 5.11, &#8220;Viewing a request : <code>sr</code>&#8221;</a></p>
 </li>
 <li>
-<p><strong>Statistics</strong>: <code>statistics</code></p>
-</li>
-<li>
-<p><strong>Undo</strong>: <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong>: <code>redo</code></p>
+<p><a href="#setting-reminder-alerts-code-setreminder-code">Section 5.12, &#8220;Setting Reminder Alerts: <code>setreminder</code>&#8221;</a></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 09:20:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 15:04:49 UTC</div></div></div></body></html>
