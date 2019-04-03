@@ -7,6 +7,14 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hello there! I am Rohan Dev, a Year 2 Computer Science undergraduate from the National University of Singapore (NUS). This portfolio documents the contributions I have made to Project HealthHub over the course of 1 semester. HealthHub has exposed me and my team to making contributions to a pre-existing code base and morphing it into a desktop application of our choice. I have picked up many relevant skills and software engineering principles en route to completing this project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -24,26 +32,36 @@ for health care professionals to tend to these people. Yet, the current messy sy
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Adding the <strong>ability to view the most common health conditions</strong> amongst patients registered on HealthHub</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the administrative staff to call for the frequencies of all health conditions registered on HealthHub. It can also call the frequency of a specific health condition.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: It is imperative for the health administrators to know which health conditions have been seeing an increasing trend, as well as take note of those which have been experiencing a decline. Upon collating such data, the administrative staff can feedback and make suggestions to the hospital to increase or decrease training in certain departments. The staff can even suggest to the government to ramp up efforts in its Work Skills Qualification certification for certain healthcare skills to be taught to new aspiring healthcare professionals.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: The statistics feature needs to be able to ensure that the administrative staff can extract relevant information as fast as possible. Therefore, the TreeMap data structure was used to contain all occurrences of health conditions on HealthHub for the best overall performance for speed. Calling the statistics command will display a formatted list of all health conditions registered and its related frequencies in descending order. Calling the statistics command specific to a particular condition will likewise display the number of occurrences of that health condition.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: Incorporated a patient’s set of health conditions into requests for home care.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: When adding a request for home care in HealthHub, instead of merely typing in 1 health condition per request, the administrative staff can now add in a set of all health conditions the particular patient may suffer from.</p>
+</li>
+<li>
+<p>Justification: Health practitioners, before attempting treatment on any patient, would want to know all health conditions the particular patient might be suffering from. There have been plenty of cases in the past where the administered treatment by the health care professional on a patient had triggered other health conditions in the patient, which the healthcare professionals were completely unaware of. Therefore, instead of just adding a request for a particular treatment, administrators can add a request with multiple health conditions.</p>
+</li>
+<li>
+<p>Highlights: When the administrator adds a request for home care on the HealthHub platform, it takes in all the patient’s particulars (name, NRIC, phone number, home address) and a set of health conditions the patient suffers from. I made use of the hashset data structure to contain the set of health conditions inside it for each patient. The set of conditions guarantees no duplicate health condition being found inside and it can also speedily access any specific health condition the administrative staff may be looking for or may be interested in for further investigation.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
@@ -57,7 +75,7 @@ for health care professionals to tend to these people. Yet, the current messy sy
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Setup codacy and coveralls badges for the team on GitHub:</p>
 </li>
 </ul>
 </div>
@@ -67,10 +85,10 @@ for health care professionals to tend to these people. Yet, the current messy sy
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Wrote Conditions class based off Tag class from Address Book 4, and incorporated additional functionality for it to accept more than just 1 string input.</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote tests for Condition class and condition-related features in Request class, including various test utility classes to assist other team members in their testing (Pull requests #105, #110)</p>
 </li>
 </ul>
 </div>
@@ -392,4 +410,4 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:59:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-03 02:42:25 UTC</div></div></div></body></html>
