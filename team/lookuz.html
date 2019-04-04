@@ -10,386 +10,506 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Health Hub is a desktop application designed for hospital administrative staff. With many people requiring Intermediate and Long-Term Care (ILTC) services, there is a growing need
-for health care professionals to tend to these people. Yet, the current messy system requires a lot of manual work from the admin&#8217;s perspective. Health Hub aims to eradicate all of these.</p>
+<p>In light of the overwhelming workload of hospital administration teams due
+to rising need for more and better healthcare services, we at
+team W09-2 have designed and developed a desktop application that aims to
+improve the hectic workload of hospital administrative staff by providing a
+simple and efficient solution for managing requests for healthcare services
+from home-stay patients: <strong>HealthHub</strong>.</p>
 </div>
 <div class="paragraph">
-<p>The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>HealthHub is a desktop application built in Java and JavaFX that supports
+both a Command Line Interface(CLI) and a Graphical User Interface(GUI),
+providing the user with the flexbility to choose the mode of use that he or
+she prefers.</p>
+</div>
+<div class="paragraph">
+<p>As a member of the team tasked with the development of HealthHub, my role was
+to design the command logic structure for parsing commands and inputs
+entered by the user, as well as implementing the logic for commands
+involving <code>HealthWorker</code> which represents the details of medical experts
+register in HealthHub.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<h2 id="notation"><a class="link" href="#notation">Notation</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p>Words used that are highlighted in grey represents an existing <code>Class</code> or
+<code>Object</code> that is implemented in HealthHub. E.g <code>HealthWorker</code> denotes the
+object used to describe the details representing a registered medical expert.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Documentation under this section denotes any additional information used to
+supplement existing description.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions"><a class="link" href="#contributions">Contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Major Enhancements</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>Implemented the logical structure for representing a person working in the
+medical profession through the <code>HealthWorker</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Before health staff can be assigned to <code>Request</code> in HealthHub, there needs
+to be a way for a person working in the medical profession to be represented
+ in the system. Through my contribution in form of creation of the
+ <code>HealthWorker</code> logic structure, this allows users to create a
+ representation of medical workers in HealthHub</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
-</li>
-<li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>When designing and implementing the <code>HealthWorker</code> class, one of the
+considerations I had was to only maintain information necessary to the user such
+ as the medical specialisations that the worker has, in order to reduce
+ cluttering of information and keep the application simple and easy to use.
+ With that in mind, the necessary</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Reworked the <code>CommandParser</code> classes in HealthHub to facilitate the parsing
+of inputs for commands involving both <code>HealthWorker</code> and <code>Request</code> objects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Introduced the <code>CommandMode</code> class that differentiated the new design of
+<code>CommandParser</code> from the original by allowing the same <code>CommandParser</code> class to
+parse commands involving multiple different classes such as both
+<code>HealthWorker</code> and <code>Request</code> classes, giving it more expressive power than
+it&#8217;s original implementation</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>My contribution through the modification of the existing <code>CommandParser</code>
+architecture paved the way for other team members to utilize the new reworked
+<code>CommandParser</code> class for their individual contributions to HealthHub.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
+<p>Implemented the <code>add</code> command to facilitate the registering of a new health
+staff through adding the represented <code>HealthWorker</code> class to HealthHub.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For users to assign health staff to existing requests, the user needs to make
+sure that the <code>HealthWorker</code> representation of the worker is already
+registered in the HealthHub system for tracking and management</p>
+</li>
+<li>
+<p>With this command, users can now register a new health staff into the
+system by creating a representation of his/her details in HealthHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Implemented the <code>edit</code> command to facilitate the registering of a new health
+staff through modifying an existing <code>HealthWorker</code> object in HealthHub.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The ability to modify details of an existing <code>HealthWorker</code> allows the
+user to update any outdated or incorrect information stored in HealthHub that
+ may hinder the streamlining of handling requests by users.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Implemented the <code>delete</code> command to facilitate the registering of a new health
+staff through removing the selected <code>HealthWorker</code> object to HealthHub.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The roster of health staff in a medical organization may change over time.
+By adding the <code>delete</code> command, users now have the ability to remove medical
+ staff that are no longer employed or available to handle requests.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Added the functionality to filter <code>HealthWorker</code> objects in the HealthHub
+system using various fields.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Through my implementation of the ability to filter the existing list of
+<code>HealthWorker</code> in HealthHub, users are able to reduce their search for the
+most appropriate health staff for assignment to requests to a shorter list
+based on filter conditions they input.</p>
+</li>
+<li>
+<p>A significant difficulty that was faced when implementing this feature, is
+the ability to combine multiple conditions of user inputs. The following
+considerations and possible solutions for this problem are as follows:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">List of <code>Predicate</code></th>
+<th class="tableblock halign-left valign-top">Composing using <code>and</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using this method, all the conditions collected by the user through input
+are parsed into <code>Predicate</code> equivalents.</p>
+<p class="tableblock"> An <code>ArrayList</code> is then maintained that keeps all the parsed <code>Predicates</code>.
+ During the filter process, the system uses the maintained list of
+ <code>Predicate</code> to check for items that match the entire list of conditions</p>
+<p class="tableblock"> <strong>Pros</strong>:</p>
+<p class="tableblock"> Easy to manage all the conditions, as they are kept separate in a list and
+ individual <code>Predicate</code> are easily managed.</p>
+<p class="tableblock"> <strong>Cons</strong>:</p>
+<p class="tableblock"> Limited expressiveness in implementing functions that use the <code>List</code> of
+ <code>Predicate</code> due to the additional layer of abstraction provided by <code>List</code>.
+ Even if a single condition is supplied, it must be wrapped in a <code>List</code> for
+ standardization.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Similar to using a List of <code>Predicate</code>, all user input conditions are
+ first parsed into it&#8217;s <code>Predicate</code> equivalents.</p>
+<p class="tableblock"> After this step, all the <code>Predicate</code> are composed into a single <code>Predicate</code>
+ using the provided <code>and</code> method in the <code>Predicate</code> library in Java.</p>
+<p class="tableblock"> <strong>Pros</strong>:</p>
+<p class="tableblock"> Higher expressive power. The end result of the <code>and</code> function produces a
+ <code>Predicate</code> which can be easily passed to function calls.</p>
+<p class="tableblock"> <strong>Cons</strong>:</p>
+<p class="tableblock"> No way to track individual conditions for additional granularity.</p>
+<p class="tableblock"> I decided to go with this option as the expressive power of using the <code>and</code>
+ function to compose multiple <code>Predicate</code> into a single one allows for other
+ team members to use my implementation without having to understand any
+ additional logic used if a <code>List</code> of <code>Predicate</code> were used instead, and also
+  allows for future implementations to be more flexible in using just a
+  <code>Predicate</code> rather than having to account for multiple <code>Predicate</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Added the functionality to display all <code>HealthWorker</code> objects in the
+HealthHub system through the GUI. This provides functionality for the user to
+ return from looking at a list of filtered <code>HealthWorker</code> to the original
+ list of <code>HealthWorker</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Minor Enhancements</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adjusted the implementation for <code>FilterCommandParser</code>, <code>ListCommandParser</code>
+and <code>DeleteCommandParser</code> implemented by my teammates to for a more seamless
+ integration of the <code>filter</code>, <code>list</code> and <code>delete</code> commands into HealthHub.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p><strong>Other contributions</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Proposed the layout and structure of the implementation of the current
+Graphical User Interface(GUI) of HealthHub.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
+<div class="paragraph">
+<p><strong>Project Management</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Proposed the architecture design of the current implementation for the
+command logic side of HealthHub.</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Delegated features and roles to various team members for their
+contributions to HealthHub.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Documentation:</p>
+<div class="paragraph">
+<p><strong>Enhancements to existing features</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Wrote incremental integration tests for existing features in HealthHub, as
+well as features implemented by my teammates to ensure that the logic and
+model components in HealthHub are integrated together smoothly without hiccups.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Community:</p>
+<div class="paragraph">
+<p><strong>Documentation</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>Created the base skeleton and layout for the HealthHub User Guide
+documentation.</p>
+</li>
+<li>
+<p>Contributed to the descriptions of each feature by reviewing the
+explanation of features in the User Guide, and overhauling it to be more
+informative and audience-focused.</p>
+</li>
+<li>
+<p>Provided the notation and structure for my team to follow when documenting
+our changes and contributions made to HealthHub in the User Guide.</p>
+</li>
+<li>
+<p>Provided easy navigation through the User Guide by adding links to various
+sections both at the start and at the summary.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Community</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reviewed PRs of fellow teammates, and gave suggestions on certain code
+snippets</p>
 </li>
 <li>
 <p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
 </li>
 <li>
 <p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Tools:</p>
+<div class="paragraph">
+<p><strong>Tools</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Set up the continuous integration plugins TravisCI for the team repository
+for HealthHub.</p>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Set up auto-publishing of documentation for HealthHub for the team
+repository.</p>
 </li>
 </ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
+<div class="paragraph">
+<p>As my team and I morphed the original implementation of AddressBook4 to
+HealthHub, we have also extensively updated the User Guide to allow for users
+ to better understand what HealthHub aims to achieve, and how it does so.</p>
+</div>
+<div class="paragraph">
+<p>The following sections details my contribution to the User Guide up til
+HealthHub version release v1.4.</p>
+</div>
+<div class="sect2">
+<h3 id="adding-requests-health-workers-code-add-code"><a class="link" href="#adding-requests-health-workers-code-add-code">Adding requests/health workers: <code>add</code></a></h3>
+<div class="paragraph">
+<p>Before you can jump right into the core feature of our application and
+streamline the process of adding requests from patients and to assign
+requests to experts in the medical field, it is essential to first ensure
+that the respective health staff and patients are registered in the system
+with all the key information.</p>
+</div>
+<div class="paragraph">
+<p>Add a request, health worker or patient to the application based on the
+<code>&lt;type&gt;</code> parameter accepted, using the <code>add</code> command, to register new health
+staff, patients and requests.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br></p>
+</div>
+<div class="sect3">
+<h4 id="strong-adding-a-health-worker-strong-code-add-healthworker-h-1-n-worker_name-i-nric-n-phone_number-s-specialisation-code"><a class="link" href="#strong-adding-a-health-worker-strong-code-add-healthworker-h-1-n-worker_name-i-nric-n-phone_number-s-specialisation-code"><strong>Adding a health worker</strong>: <code>add healthworker/h/1 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Command that registers a new Health Worker person to the current roster.</p>
+</li>
+<li>
+<p>Health Workers comprises of personnel who are authorized to work in sectors in the
+healthcare industry in accordance to their <code>specialisation</code>.</p>
+</li>
+<li>
+<p>Health Workers authorized for medical practice specific to their
+<code>specialisation</code> include doctors, nurses and community health workers that
+are officially certified by certain medical practices</p>
+</li>
+<li>
+<p>To view all available specialisations in the application, type <code>add help</code>
+in the command line.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-requests-health-workers-code-edit-code"><a class="link" href="#editing-requests-health-workers-code-edit-code">Editing requests/health workers : <code>edit</code></a></h3>
+<div class="paragraph">
+<p>Sometimes, information on a request of health staff may be keyed in wrongly
+into the application, or you may need to update existing outdated information.</p>
+</div>
+<div class="paragraph">
+<p>To do this, you can replace the current information
+with the new one using the <code>edit</code> command to modify existing personnel
+records or request descriptions in Health Hub.</p>
+</div>
+<div class="paragraph">
+<p>The <code>edit</code> may come in handy when there is a need update to a request&#8217;s
+status, patient&#8217;s condition or a health worker&#8217;s skills, based on the
+<code>&lt;type&gt;</code> parameter accepted.<br></p>
+</div>
+<div class="sect3">
+<h4 id="strong-editing-a-health-worker-strong"><a class="link" href="#strong-editing-a-health-worker-strong"><strong>Editing a health worker</strong></a></h4>
+<div class="paragraph">
+<p>Format: <code>edit healthworker/h/1 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Edits the details of an existing health worker registered in Health Hub, at
+the <code>&lt;index&gt;</code> specified in the health worker list upon entering the <code>edit
+healthworker/h/1</code> command with valid inputs.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="showing-all-requests-health-workers-code-list-code"><a class="link" href="#showing-all-requests-health-workers-code-list-code">Showing all requests/health workers : <code>list</code></a></h3>
+<div class="paragraph">
+<p>The <code>list</code> command is a simple and basic command that on entering, displays
+all health workers/requests in the Health Hub GUI.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>list &lt;type&gt;</code></p>
+</div>
+<div class="sect3">
+<h4 id="showing-all-health-workers"><a class="link" href="#showing-all-health-workers">Showing all health workers</a></h4>
+<div class="paragraph">
+<p>Format: <code>list healthworker/h/1</code></p>
+</div>
+<div class="paragraph">
+<p>Upon entering the command to list health workers, all currently registered
+health workers in the Health Hub system will be displayed on the list on the
+right side of the GUI.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-requests-health-workers-code-delete-code"><a class="link" href="#deleting-requests-health-workers-code-delete-code">Deleting requests/health workers : <code>delete</code></a></h3>
+<div class="paragraph">
+<p>Should there be any invalid or expired request, health worker or patient in
+the application, you may also remove them to prevent cluttering of
+unnecessary data by using the <code>delete</code> command to remove them from the
+application based on the`&lt;type&gt;` parameter accepted, according to the
+index of the respective <code>type</code>
+shown using the <code>list</code> command, or the index displayed on the GUI.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete &lt;type&gt; &lt;index&gt;</code><br></p>
+</div>
+<div class="sect3">
+<h4 id="strong-delete-a-health-worker-strong"><a class="link" href="#strong-delete-a-health-worker-strong"><strong>Delete a health worker</strong>:</a></h4>
+<div class="paragraph">
+<p>Format: <code>delete healthworker/h/1 &lt;index&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Deletes the health worker at the <code>&lt;index&gt;</code> position in shown in the health
+worker list.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="filtering-health-workers-requests-code-filter-code"><a class="link" href="#filtering-health-workers-requests-code-filter-code">Filtering health workers/requests: <code>filter</code></a></h3>
+<div class="paragraph">
+<p>When identifying health workers to assign to an open request, or
+to look for a particular patient details in certain requests, it may be useful
+ to only display items in a list that match a particular constraint.</p>
+</div>
+<div class="paragraph">
+<p>Using the <code>filter</code> command, you can set the GUI to display health workers and
+requests whose fields match the <code>keywords`that are specified in the `filter</code>
+command, allowing you to find the doctors who are experts in cardiology much quicker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>filter &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code><br></p>
+</div>
+<div class="sect3">
+<h4 id="strong-filter-health-workers-strong"><a class="link" href="#strong-filter-health-workers-strong"><strong>Filter health workers</strong>:</a></h4>
+<div class="paragraph">
+<p>Format: <code>filter healthworker/h/1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</div>
+<div class="paragraph">
+<p>Upon entering the command with valid inputs, searches the entire list of health
+workers in Health Hub, and only displays the health workers whose fields matches the parameters specified in the
+<code>filter</code> command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For specialisation fields, parameters are case sensitive, and only valid
+parameters will be accepted</p>
+</div>
+</td>
 </tr>
-</tbody>
 </table>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedBook</code>.
-There are two implementations of it. One extending <code>HealthWorkerBook</code> and the other extending <code>RequestBook</code>.
-Both contain an undo/redo history, stored internally as an <code>healthWorkerBookStateList</code>/<code>requestBookStateList</code>
- and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedBook#commit()</code>&#8201;&#8212;&#8201;Saves the current request/healthworker book state in its history.</p>
-</li>
-<li>
-<p><code>VersionedBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous request/healthworker book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone request/healthworker book state from its history.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code>
-and <code>Model#redoAddressBook()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>The feature also makes use <code>ModifyCommandManager</code> to keep track of the commands that modified the books. It contains
-<code>currentStatePointer</code> and a list of <code>CommandType</code> enums to differenciate the type of command to undo or redo.
-Similar to <code>CommandMode</code>, the various <code>CommandType</code> enums are:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>CommandType.HEALTHWORKER_COMMAND</code></p>
-</li>
-<li>
-<p><code>CommandType.REQUEST_COMMAND</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-{to be updated}</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 03:02:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 05:38:39 UTC</div></div></div></body></html>

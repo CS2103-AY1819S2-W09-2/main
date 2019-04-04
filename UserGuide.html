@@ -407,10 +407,26 @@ all health workers/requests in the Health Hub GUI.</p>
 <div class="paragraph">
 <p>Format: <code>list &lt;type&gt;</code></p>
 </div>
+<div class="sect3">
+<h4 id="showing-all-health-workers"><a class="link" href="#showing-all-health-workers">5.2.1. Showing all health workers</a></h4>
 <div class="paragraph">
-<p>Where <code>&lt;type&gt;</code> refers to either <code>healthworker</code>, <code>h</code>, or <code>1</code> to display health
-workers registered in Health Hub, or <code>request</code>, <code>r</code>, <code>2</code> to display all
-registered requests.</p>
+<p>Format: <code>list healthworker/h/1</code></p>
+</div>
+<div class="paragraph">
+<p>Upon entering the command to list health workers, all currently registered
+health workers in the Health Hub system will be displayed on the list on the
+right side of the GUI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="showing-all-requests"><a class="link" href="#showing-all-requests">5.2.2. Showing all requests</a></h4>
+<div class="paragraph">
+<p>Format: <code>list request/r/2</code></p>
+</div>
+<div class="paragraph">
+<p>After entering the command to list requests, you should see the list on the
+left side of the GUI being populated with all requests that are added to
+HealthHub.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -445,6 +461,7 @@ the request and the type of service requested.</p>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="adding-requests-health-workers-code-add-code"><a class="link" href="#adding-requests-health-workers-code-add-code">5.3. Adding requests/health workers: <code>add</code></a></h3>
 <div class="paragraph">
@@ -462,10 +479,8 @@ staff, patients and requests.<br></p>
 <div class="paragraph">
 <p>Format: <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br></p>
 </div>
-<div class="paragraph">
-<p><strong>Adding a health worker</strong>: <code>add healthworker/h/1 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;
-                          s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
-</div>
+<div class="sect3">
+<h4 id="strong-adding-a-health-worker-strong-code-add-healthworker-h-1-n-worker_name-i-nric-n-phone_number-s-specialisation-code"><a class="link" href="#strong-adding-a-health-worker-strong-code-add-healthworker-h-1-n-worker_name-i-nric-n-phone_number-s-specialisation-code">5.3.1. <strong>Adding a health worker</strong>: <code>add healthworker/h/1 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -486,9 +501,9 @@ in the command line.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>Adding a request</strong>: <code>add request/r/2 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
 </div>
+<div class="sect3">
+<h4 id="strong-adding-a-request-strong-code-add-request-r-2-n-patient_name-c-condition-d-date-t-time-code"><a class="link" href="#strong-adding-a-request-strong-code-add-request-r-2-n-patient_name-c-condition-d-date-t-time-code">5.3.2. <strong>Adding a request</strong>: <code>add request/r/2 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -524,6 +539,7 @@ s/ORTHOPAEDIC</code></p>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="editing-requests-health-workers-code-edit-code"><a class="link" href="#editing-requests-health-workers-code-edit-code">5.4. Editing requests/health workers : <code>edit</code></a></h3>
 <div class="paragraph">
@@ -540,31 +556,26 @@ records or request descriptions in Health Hub.</p>
 status, patient&#8217;s condition or a health worker&#8217;s skills, based on the
 <code>&lt;type&gt;</code> parameter accepted.<br></p>
 </div>
+<div class="sect3">
+<h4 id="strong-editing-a-health-worker-strong"><a class="link" href="#strong-editing-a-health-worker-strong">5.4.1. <strong>Editing a health worker</strong></a></h4>
 <div class="paragraph">
-<p>Format: <code>edit &lt;type&gt; &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br></p>
-</div>
-<div class="paragraph">
-<p><strong>Editing a health worker</strong>: <code>edit healthworker/h/1 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+<p>Format: <code>edit healthworker/h/1 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Edits the details of an existing health worker registered in Health Hub, at
 the <code>&lt;index&gt;</code> specified in the health worker list upon entering the <code>edit
 healthworker/h/1</code> command with valid inputs.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="strong-editing-a-request-strong"><a class="link" href="#strong-editing-a-request-strong">5.4.2. <strong>Editing a request</strong></a></h4>
 <div class="paragraph">
-<p><strong>Editing a request</strong>: <code>edit request/r/2 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+<p>Format: <code>edit request/r/2 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Edits the details of a request registered in Health Hub, at
 the <code>&lt;index&gt;</code> specified in the request list upon entering the <code>edit
 request/r/2</code> command with valid inputs.</p>
-</div>
-<div class="paragraph">
-<p>Any changes made to existing fields in requests and healthworkers are
-immediately reflected in the list shown on the Health Hub GUI.</p>
-</div>
-<div class="paragraph">
-<p>&#160;</p>
 </div>
 <div class="paragraph">
 <p>Upon entering the <code>edit</code> command with all the necessary and valid paramters,
@@ -574,6 +585,10 @@ index number shown in the displayed person list.</p>
 <div class="paragraph">
 <p>Existing values of the health worker or request will be updated to the valid
 input values based on the prefix specified.</p>
+</div>
+<div class="paragraph">
+<p>Any changes made to existing fields in requests and healthworkers are
+immediately reflected in the list shown on the HealthHub GUI.</p>
 </div>
 <div class="paragraph">
 <p>&#160;</p>
@@ -642,23 +657,26 @@ Crower</code>.<br></p>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="filtering-health-workers-requests-code-filter-code"><a class="link" href="#filtering-health-workers-requests-code-filter-code">5.5. Filtering health workers/requests: <code>filter</code></a></h3>
 <div class="paragraph">
-<p>When identifying and sieving health workers to assign to an open request, or
+<p>When identifying health workers to assign to an open request, or
 to look for a particular patient details in certain requests, it may be useful
- to filter out only items in a list that match a particular constraint.</p>
+ to only display items in a list that match a particular constraint.</p>
 </div>
 <div class="paragraph">
-<p>Using the <code>filter</code> command, you can sieve out health workers and requests
-whose fields match the <code>keywords`that are specified in the `filter</code> command,
-allowing you to find the doctors who are experts in cardiology much quicker.<br></p>
+<p>Using the <code>filter</code> command, you can set the GUI to display health workers and
+requests whose fields match the <code>keywords`that are specified in the `filter</code>
+command, allowing you to find the doctors who are experts in cardiology much quicker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>filter &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code><br></p>
 </div>
+<div class="sect3">
+<h4 id="strong-filter-health-workers-strong"><a class="link" href="#strong-filter-health-workers-strong">5.5.1. <strong>Filter health workers</strong>:</a></h4>
 <div class="paragraph">
-<p><strong>Filter health workers</strong>: <code>filter healthworker/h/1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+<p>Format: <code>filter healthworker/h/1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </div>
 <div class="paragraph">
 <p>Upon entering the command with valid inputs, searches the entire list of health
@@ -680,8 +698,11 @@ parameters will be accepted</p>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="strong-filter-requests-strong"><a class="link" href="#strong-filter-requests-strong">5.5.2. <strong>Filter requests</strong>:</a></h4>
 <div class="paragraph">
-<p><strong>Filter requests</strong>: <code>filter request/r/2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+<p>Format: <code>filter request/r/2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </div>
 <div class="paragraph">
 <p>After entering the command with valid inputs, searches the entire list of
@@ -748,8 +769,8 @@ specified name substring <strong>and</strong> the specified phone number.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>To view the original health worker/request list, enter the <code>list
-healthworker</code> or <code>list request</code> command respectively.</p>
+<p>To revert the view back to the original health worker/request list, enter the
+<code>list healthworker</code> or <code>list request</code> command respectively.</p>
 </div>
 </td>
 </tr>
@@ -780,6 +801,7 @@ Returns all requests scheduled on 30th Jan 2019, at 10 am sharp.</p>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="deleting-requests-health-workers-code-delete-code"><a class="link" href="#deleting-requests-health-workers-code-delete-code">5.6. Deleting requests/health workers : <code>delete</code></a></h3>
 <div class="paragraph">
@@ -793,15 +815,20 @@ shown using the <code>list</code> command, or the index displayed on the GUI.<br
 <div class="paragraph">
 <p>Format: <code>delete &lt;type&gt; &lt;index&gt;</code><br></p>
 </div>
+<div class="sect3">
+<h4 id="strong-delete-a-health-worker-strong"><a class="link" href="#strong-delete-a-health-worker-strong">5.6.1. <strong>Delete a health worker</strong>:</a></h4>
 <div class="paragraph">
-<p><strong>Delete a health worker</strong>: <code>delete healthworker/h/1 &lt;index&gt;</code></p>
+<p>Format: <code>delete healthworker/h/1 &lt;index&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>Deletes the health worker at the <code>&lt;index&gt;</code> position in shown in the health
 worker list.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="strong-delete-a-request-strong"><a class="link" href="#strong-delete-a-request-strong">5.6.2. <strong>Delete a request</strong>:</a></h4>
 <div class="paragraph">
-<p><strong>Delete a request</strong>: <code>delete request/r/2 &lt;index&gt;</code></p>
+<p>Format: <code>delete request/r/2 &lt;index&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>Deletes the request at the <code>&lt;index&gt;</code> position in shown in the list of requests.</p>
@@ -860,6 +887,7 @@ command immediately after the previous <code>delete</code> command to undo the d
 </td>
 </tr>
 </table>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1223,4 +1251,4 @@ to the <code>\data</code> folder of the app directory.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 03:02:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 05:38:38 UTC</div></div></div></body></html>
