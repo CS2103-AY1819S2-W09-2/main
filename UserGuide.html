@@ -453,11 +453,11 @@ requests for specific health services.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list healthworker/h/1</code> lists all health workers stored in the system,
+<p><code>list healthworker</code> lists all health workers stored in the system,
 their personal particulars, and their skills in the healthcare field.</p>
 </li>
 <li>
-<p><code>list request/r/2</code> lists all requests stored in the system, as well as the
+<p><code>list request</code> lists all requests stored in the system, as well as the
 details of the request such as the patient to tend to, the date and time of
 the request and the type of service requested.</p>
 </li>
@@ -468,7 +468,7 @@ the request and the type of service requested.</p>
 <div class="sect2">
 <h3 id="adding-requests-health-workers-code-add-code"><a class="link" href="#adding-requests-health-workers-code-add-code">5.3. Adding requests/health workers: <code>add</code></a></h3>
 <div class="paragraph">
-<p>Before you can jump right into the core feature of our application and
+<p>Before you can jump right intWo the core feature of our application and
 streamline the process of adding requests from patients and to assign
 requests to experts in the medical field, it is essential to first ensure
 that the respective health staff and patients are registered in the system
@@ -483,32 +483,139 @@ staff, patients and requests.<br></p>
 <p>Format: <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br></p>
 </div>
 <div class="sect3">
-<h4 id="strong-adding-a-health-worker-strong-code-add-healthworker-h-1-n-worker_name-i-nric-n-phone_number-s-specialisation-code"><a class="link" href="#strong-adding-a-health-worker-strong-code-add-healthworker-h-1-n-worker_name-i-nric-n-phone_number-s-specialisation-code">5.3.1. <strong>Adding a health worker</strong>: <code>add healthworker/h/1 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></a></h4>
+<h4 id="strong-adding-a-health-worker-strong"><a class="link" href="#strong-adding-a-health-worker-strong">5.3.1. <strong>Adding a health worker</strong></a></h4>
+<div class="paragraph">
+<p><strong>Format:</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Command that registers a new Health Worker person to the current roster.</p>
+<p><code>add healthworker n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;
+o/&lt;organisation&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Shortcuts:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add h n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;
+o/&lt;organisation&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code><br></p>
 </li>
 <li>
-<p>Health Workers comprises of personnel who are authorized to work in sectors in the
+<p><code>add 1 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; o/&lt;organisation&gt;
+s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Command that registers a new Health Worker person to the current roster.
+Health Workers comprises of personnel who are authorized to work in sectors in the
 healthcare industry in accordance to their <code>specialisation</code>.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>Health Workers authorized for medical practice specific to their
 <code>specialisation</code> include doctors, nurses and community health workers that
-are officially certified by certain medical practices</p>
+are officially certified by certain medical practices.</p>
+</div>
+<div class="paragraph">
+<p>The fields entered by the user following each prefix must adhere to the
+following format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;worker_name&gt;</code>: Name must only contain alphanumeric characters and spaces
+, and cannot be empty. E.g Dog Terr</p>
 </li>
 <li>
-<p>To view all available specialisations in the application, type <code>add help</code>
-in the command line.</p>
+<p><code>&lt;NRIC&gt;</code>: NRIC must start with S, T, G or F capitalized, followed by 7
+numeric characters and a capitalized alphabetical character. E.g S1234567A</p>
+</li>
+<li>
+<p><code>&lt;phone_number&gt;</code>: Phone number must only contain 8 numeric characters, and
+start with a 6, 8 or 9.</p>
+</li>
+<li>
+<p><code>&lt;organisation&gt;</code>: Organisation that the health worker belongs to.
+Organisation name must have at least 2 characters, and only contain
+alphanumeric characters.</p>
+</li>
+<li>
+<p><code>&lt;specialisation&gt;</code>: Specialisation in the medical field that the health
+worker possesses. The list of valid specialisations are as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>GENERAL_PRACTICE</p>
+</li>
+<li>
+<p>CARDIOLOGY</p>
+</li>
+<li>
+<p>ENDOCRINOLOGY</p>
+</li>
+<li>
+<p>NEUROLOGY</p>
+</li>
+<li>
+<p>ORTHOPAEDIC</p>
+</li>
+<li>
+<p>PAEDIATRIC</p>
+</li>
+<li>
+<p>GYNAECOLOGY</p>
+</li>
+<li>
+<p>UROLOGY</p>
+</li>
+<li>
+<p>PATHOLOGY</p>
+</li>
+<li>
+<p>HAEMATOLOGY</p>
+</li>
+<li>
+<p>PHYSIOTHERAPY</p>
+</li>
+<li>
+<p>OCCUPATIONAL_THERAPY</p>
+</li>
+<li>
+<p>ANAESTHESIOLOGY</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="strong-adding-a-request-strong-code-add-request-r-2-n-name-p-phone-i-nric-a-address-dt-date-c-condition-code"><a class="link" href="#strong-adding-a-request-strong-code-add-request-r-2-n-name-p-phone-i-nric-a-address-dt-date-c-condition-code">5.3.2. <strong>Adding a request</strong>: <code>add request/r/2 n/&lt;NAME&gt; p/&lt;PHONE&gt; i/&lt;NRIC&gt; a/&lt;ADDRESS&gt; dt/&lt;DATE&gt; c/&lt;CONDITION&gt;</code></a></h4>
+<h4 id="strong-adding-a-request-strong"><a class="link" href="#strong-adding-a-request-strong">5.3.2. <strong>Adding a request</strong></a></h4>
+<div class="paragraph">
+<p><strong>Format:</strong></p>
+</div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>add request n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Shortcuts:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add r n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+</li>
+<li>
+<p><code>add 2 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+</li>
 <li>
 <p>Registers a new open request from <code>patient</code> of <code>&lt;NAME&gt;</code> into the
 application.</p>
@@ -594,21 +701,65 @@ records or request descriptions in Health Hub.</p>
 status, patient&#8217;s condition or a health worker&#8217;s skills, based on the
 <code>&lt;type&gt;</code> parameter accepted.<br></p>
 </div>
+<div class="paragraph">
+<p>The prefixes and valid values for the <code>edit</code> command for both health worker
+and request modes follow the same format as in the <code>add</code> command.</p>
+</div>
 <div class="sect3">
 <h4 id="strong-editing-a-health-worker-strong"><a class="link" href="#strong-editing-a-health-worker-strong">5.4.1. <strong>Editing a health worker</strong></a></h4>
 <div class="paragraph">
-<p>Format: <code>edit healthworker/h/1 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+<p><strong>Format:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit healthworker &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Shortcuts:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit h &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><code>edit 1 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Edits the details of an existing health worker registered in Health Hub, at
 the <code>&lt;index&gt;</code> specified in the health worker list upon entering the <code>edit
-healthworker/h/1</code> command with valid inputs.</p>
+healthworker</code> command with valid inputs.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="strong-editing-a-request-strong"><a class="link" href="#strong-editing-a-request-strong">5.4.2. <strong>Editing a request</strong></a></h4>
 <div class="paragraph">
-<p>Format: <code>edit request/r/2 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+<p><strong>Format:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit request &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Shortcuts:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit r &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><code>edit 2 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Edits the details of a request registered in Health Hub, at
@@ -662,16 +813,17 @@ for other fields will only cause the last one to be accepted.</p>
 </tr>
 </table>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can remove all the person&#8217;s specialisation by typing <code>s/</code> without
-specifying any parameters after it.</p>
+<p>Each health worker must have at least one specialisation. Entering an empty
+value for <code>s/</code> prefix would result in the original health worker&#8217;s <code>skills</code>
+being kept.</p>
 </div>
 </td>
 </tr>
@@ -714,7 +866,27 @@ command, allowing you to find the doctors who are experts in cardiology much qui
 <div class="sect3">
 <h4 id="strong-filter-health-workers-strong"><a class="link" href="#strong-filter-health-workers-strong">5.5.1. <strong>Filter health workers</strong>:</a></h4>
 <div class="paragraph">
-<p>Format: <code>filter healthworker/h/1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+<p><strong>Format:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter healthworker &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Shortcuts:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter h &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+<li>
+<p><code>filter 1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Upon entering the command with valid inputs, searches the entire list of health
@@ -740,15 +912,33 @@ parameters will be accepted</p>
 <div class="sect3">
 <h4 id="strong-filter-requests-strong"><a class="link" href="#strong-filter-requests-strong">5.5.2. <strong>Filter requests</strong>:</a></h4>
 <div class="paragraph">
-<p>Format: <code>filter request/r/2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+<p><strong>Format:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter request &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>After entering the command with valid inputs, searches the entire list of
+<p><strong>Shortcuts:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter r &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</li>
+<li>
+<p><code>filter 2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code>
+After entering the command with valid inputs, searches the entire list of
 requests in Health Hub, and only displays the requests whose fields matches
  the parameters specified in the
 <code>filter</code> command. To filter requests, the user can specify any of the following filtering criteria:
 <code>dt/DATE</code>, <code>n/NAME</code>, <code>p/PHONE</code>, <code>st/STATUS</code>, <code>i/NRIC</code>, <code>c/CONDITION</code>. Note that you can chain multiple criteria together to get a more specific
 filter result.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>For example, let&#8217;s say you want to filter all the requests made by the patient with <code>NRIC</code> S9123456G that have been <strong>completed</strong>. You
@@ -905,7 +1095,27 @@ shown using the <code>list</code> command, or the index displayed on the GUI.<br
 <div class="sect3">
 <h4 id="strong-delete-a-health-worker-strong"><a class="link" href="#strong-delete-a-health-worker-strong">5.6.1. <strong>Delete a health worker</strong>:</a></h4>
 <div class="paragraph">
-<p>Format: <code>delete healthworker/h/1 &lt;index&gt;</code></p>
+<p><strong>Format:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete healthworker &lt;index&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Shortcuts:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete h &lt;index&gt;</code></p>
+</li>
+<li>
+<p><code>delete 1 &lt;index&gt;</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Deletes the health worker at the <code>&lt;index&gt;</code> position in shown in the health
@@ -915,7 +1125,27 @@ worker list.</p>
 <div class="sect3">
 <h4 id="strong-delete-a-request-strong"><a class="link" href="#strong-delete-a-request-strong">5.6.2. <strong>Delete a request</strong>:</a></h4>
 <div class="paragraph">
-<p>Format: <code>delete request/r/2 &lt;index&gt;</code></p>
+<p><strong>Format:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete request &lt;index&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Shortcuts:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete r &lt;index&gt;</code></p>
+</li>
+<li>
+<p><code>delete 2 &lt;index&gt;</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Deletes the request at the <code>&lt;index&gt;</code> position in shown in the list of requests.</p>
@@ -1453,4 +1683,4 @@ to the <code>\data</code> folder of the app directory.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 15:57:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 16:53:39 UTC</div></div></div></body></html>

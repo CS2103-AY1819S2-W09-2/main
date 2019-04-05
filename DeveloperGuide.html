@@ -600,8 +600,11 @@ repeated in the following <code>EditCommandParser</code> and <code>DeleteCommand
 the following compulsory information, along with regular expressions checking
  for validity of each field:</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-code-healthworker-code"><a class="link" href="#adding-a-code-healthworker-code">3.1.2. Adding a <code>HealthWorker</code></a></h4>
 <div class="paragraph">
-<p><strong><code>HealthWorker</code> fields</strong>:</p>
+<p>Format: <code>add healthworker/h/1 &lt;parameters&gt;&#8230;&#8203;</code><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -705,9 +708,59 @@ field will be the one accepted for all fields except the <code>specialisation</c
 <p>Upon a successful <code>add</code> command, the new <code>HealthWorker</code> or <code>Request</code>
 constructed from the user entered fields will be added to the end of the <code>UniqueHealthWorkerList</code>.</p>
 </div>
+<div class="sect4">
+<h5 id="valid-specialisations"><a class="link" href="#valid-specialisations">Valid Specialisations</a></h5>
+<div class="paragraph">
+<p>The valid <code>Specialisation</code> values that can be entered by the user are as
+mentioned below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GENERAL_PRACTICE</p>
+</li>
+<li>
+<p>CARDIOLOGY</p>
+</li>
+<li>
+<p>ENDOCRINOLOGY</p>
+</li>
+<li>
+<p>NEUROLOGY</p>
+</li>
+<li>
+<p>ORTHOPAEDIC</p>
+</li>
+<li>
+<p>PAEDIATRIC</p>
+</li>
+<li>
+<p>GYNAECOLOGY</p>
+</li>
+<li>
+<p>UROLOGY</p>
+</li>
+<li>
+<p>PATHOLOGY</p>
+</li>
+<li>
+<p>HAEMATOLOGY</p>
+</li>
+<li>
+<p>PHYSIOTHERAPY</p>
+</li>
+<li>
+<p>OCCUPATIONAL_THERAPY</p>
+</li>
+<li>
+<p>ANAESTHESIOLOGY</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="edit-feature"><a class="link" href="#edit-feature">3.1.2. Edit feature</a></h4>
+<h4 id="edit-feature"><a class="link" href="#edit-feature">3.1.3. Edit feature</a></h4>
 <div class="paragraph">
 <p>The <code>edit</code> command allows users to modify details of existing <code>HealthWorker</code>
 or <code>Request</code> objects should the information need to be updated.</p>
@@ -716,17 +769,20 @@ or <code>Request</code> objects should the information need to be updated.</p>
 <p>The format for the <code>edit</code> command is as follows:</p>
 </div>
 <div class="paragraph">
-<p><code>edit &lt;keyword&gt; &lt;parameter&gt; [&lt;parameter&gt;]&#8230;&#8203;</code><br></p>
+<p><code>edit &lt;keyword&gt; &lt;index&gt; &lt;parameter&gt; [&lt;parameter&gt;]&#8230;&#8203;</code><br></p>
 </div>
 <div class="paragraph">
 <p>Similar to the <code>add</code> command, the <code>edit</code> command arguments are first checked
 passed into the <code>EditCommandParser</code> class instance, where it evaluates for a
-valid first keyword and argument prefixes and values.</p>
+valid first keyword and argument prefixes and values. Additionally, the
+<code>&lt;index&gt;</code> field is also checked against the existing list of <code>HealthWorker</code>
+or <code>Request</code> to ensure that the provided <code>&lt;index&gt;</code> is a valid <code>&lt;index&gt;</code> in
+the list.</p>
 </div>
 <div class="paragraph">
 <p>The argument field after the first keyword denoting the specified
 <code>CommandMode</code> must not be empty, and must contain at least one valid prefix
-and a valid value for the respective field to be edited. THe prefixes and
+and a valid value for the respective field to be edited. The prefixes and
 validity follows the same conditions as stated in the <code>add</code> command.</p>
 </div>
 <div class="admonitionblock note">
@@ -750,14 +806,46 @@ enteed by the user.</p>
 </tr>
 </table>
 </div>
+<div class="sect4">
+<h5 id="editing-code-healthworker-code"><a class="link" href="#editing-code-healthworker-code">Editing <code>HealthWorker</code></a></h5>
+<div class="paragraph">
+<p>Upon parsing the argument string into <code>EditCommandParser</code>, it first checks
+that the <code>&lt;index&gt;</code> field provided is non-negative, and not greater than the
+size of the <code>UniqueHealthWorkerList</code>.</p>
+</div>
+<div class="paragraph">
+<p>After checking for a valid <code>CommandMode.HEALTHWORKER</code> keyword after the
+<code>edit</code> command word, <code>EditCommandParser</code> then tokenizes the argument string
+after the keyword into a <code>ArgumentMultiMap</code> object that stores the prefix to
+values mapping for each field specified. If no prefixes, or invalid prefixes
+are specified, or if invalid values for any prefix is input, then
+<code>EditCommandParser</code> throws a <code>ParseException</code>, and displays an error message
+to the terminal.</p>
+</div>
+<div class="paragraph">
+<p>If all values specified are valid and at least one field to specify is
+provided, the <code>EditCommandParser</code> parses the <code>ArgumentMultiMap</code> containing
+the values to be updated and it&#8217;s respective prefixes into an
+<code>EditHealthWorkerDescriptor</code> object. <code>EditCommandParser</code> then passes the
+<code>EditHealthWorkerDescriptor</code> and the <code>HealthWorker</code> object fetched from the
+<code>HealthWorkerBook</code> using the specified valid <code>&lt;index&gt;</code> into a
+<code>EditHealthWorkerCommand</code> object and returned.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>EditHealthWorkerCommand</code>, each <code>HealthWorker</code> related field prefix is
+checked for it&#8217;s value in <code>EditHealthWorkerDescriptor</code>, and if a value
+exists, it replaces the current value of the corresponding field in the
+<code>HealthWorker</code> object. Else, the field in <code>HealthWorker</code> is unchanged.</p>
+</div>
 <div class="paragraph">
 <p>Upon a successful <code>edit</code> command, the <code>HealthWorker</code> or <code>Request</code> object that
  has had it&#8217;s fields edited will immediately reflect the changes in details on
   the GUI.</p>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="delete-feature"><a class="link" href="#delete-feature">3.1.3. Delete feature</a></h4>
+<h4 id="delete-feature"><a class="link" href="#delete-feature">3.1.4. Delete feature</a></h4>
 <div class="paragraph">
 <p>Using the <code>delete</code> command, the user can remove <code>HealthWorker</code> and <code>Request</code>
 objects from the system.</p>
@@ -1147,34 +1235,92 @@ application, and the following details:</p>
 <div class="sect2">
 <h3 id="filter-feature"><a class="link" href="#filter-feature">3.5. Filter Feature</a></h3>
 <div class="paragraph">
-<p>The <code>filter</code> command allows users to filter either the current displayed
-list of <code>HealthWorker</code> and <code>Request</code> objects and replaces the current list
-shown on the UI with the respective filtered lists.</p>
+<p>With the filter command, users can provide specific parameters that act as
+conditions for HealthHub to filter the <code>UniqueHealthWorkerList</code> and
+<code>UniqueRequestList</code> by. Using these parameters, HealthHub displays only the
+<code>HealthWorker</code> or <code>Request</code> whose fields contains the specified parameters.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
 <div class="paragraph">
-<p><strong>Notes</strong>:</p>
+<p>Command Format: <code>filter &lt;keyword&gt; &lt;prefix&gt;/&lt;parameter&gt; [&lt;prefix&gt;/&lt;parameter&gt;]
+&#8230;&#8203;</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
 <p>The <code>&lt;prefix&gt;</code> and <code>&lt;parameters&gt;</code> specified in the command descriptions
 below follow the same valid prefix and parameter formats as the <code>add</code>, <code>edit</code>
  and <code>delete</code> commands</p>
-</li>
-</ul>
 </div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
-<h4 id="filtering-code-healthworker-code-s"><a class="link" href="#filtering-code-healthworker-code-s">3.5.1. Filtering <code>HealthWorker</code> s</a></h4>
+<h4 id="filtering-code-healthworker-code"><a class="link" href="#filtering-code-healthworker-code">3.5.1. Filtering <code>HealthWorker</code></a></h4>
+<div class="paragraph">
+<p>The command format for filtering <code>HealthWorker</code> is:</p>
+</div>
+<div class="paragraph">
+<p><code>filter healthworker/h/1 &lt;prefix&gt;/&lt;parameter&gt; [&lt;prefix&gt;/&lt;parameter&gt;]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>The fields in <code>HealthWorker</code> that the user can filter by are:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
+<p><code>name</code> prepended by <code>n/</code> prefix</p>
+</li>
+<li>
+<p><code>organisation</code> prepended by the <code>o/</code> prefix</p>
+</li>
+<li>
+<p><code>specialisation</code> prepend by the <code>s/</code> prefix</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If multiple <code>specialisation</code> fields are provided, HealthHub will filter the
+<code>UniqueHealthWorkerList</code> by displaying <code>HealthWorker</code> that contains both
+specified `specialisations</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>HealthHub filters the respective list of <code>HealthWorker</code> and <code>Request</code> by
+checking if the corresponding field contains the specified parameter as a
+substring.<br>
+For example entering the command <code>filter h n/John</code> displays a list of
+<code>HealthWorker</code> whose name equals to John, or contains John as a substring(E.g
+ Johnny, Johnson).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="filtering-code-healthworker-code-2"><a class="link" href="#filtering-code-healthworker-code-2">3.5.2. Filtering <code>HealthWorker</code></a></h4>
+<div class="paragraph">
+<p>The <code>filter</code> command allows users to display only <code>HealthWorker</code> or <code>Request</code>
+ whose fields matches the <code>&lt;parameter&gt;</code> specified in the filter command.</p>
+</div>
+<div class="paragraph">
 <p>Format: <code>filter healthworker/h/1 &lt;prefix&gt;/&lt;parameter&gt; [&lt;prefix/&lt;parameter&gt;]
 &#8230;&#8203;</code></p>
-</li>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>The <code>filter</code> command checks for <code>HealthWorker</code> whose field specific to the
 <code>&lt;specific&gt;</code> contains or matches the <code>&lt;parameter&gt;</code> provided.</p>
@@ -1184,6 +1330,103 @@ below follow the same valid prefix and parameter formats as the <code>add</code>
 whose name is John, or contains John (Johnny, Johnson, &#8230;&#8203;)</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Upon entering the <code>filter</code> command, the <code>filter</code> command word is stripped from the
+ input and the argument fields are passed into the <code>FilterCommandParser</code> class.
+The regular expressions for checking the fields for <code>name</code>, <code>organisation</code>
+and <code>skills</code> follows the same format as mentioned in <code>add</code> command. If
+invalid parameters are specified by the user, or if an invalid <code>keyword</code> was
+specified that does not correspond to any <code>CommandMode</code> enum, then
+<code>FilterCommandParser</code> throws a <code>ParseException</code> and displays an error message
+ to the user.</p>
+</div>
+<div class="paragraph">
+<p>If valid inputs are provided, <code>FilterCommandParser</code> tokenizes the argument
+string without the <code>keyword</code> using <code>ArgumentTokenizer</code> object, mapping each
+parameter to it&#8217;s respective prefix in an <code>ArgumentMultiMap</code> object.
+<code>FilterCommandParser</code> then creates a <code>Predicate</code> object using the parameter
+values in <code>ArgumentMultiMap</code> for each filter condition, and composes them
+into a single <code>Predicate</code> using the <code>and</code> function in <code>Predicate</code> in
+conjuction with <code>stream</code> and <code>reduce</code> methods from Java&#8217;s <code>Function</code> library.
+ The <code>Predicate</code> object composed is then passed into
+ <code>FilterHealthWorkerCommand</code>, which sets the predicate for the <code>HealthWorker</code>
+  list in the GUI to display only <code>HealthWorker</code> whose fields matches the
+  <code>Predicate</code> set.</p>
+</div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="paragraph">
+<p>During the implementation of the <code>filter</code> command, we decide between two
+alternative implementations of managing the <code>Predicates</code> created from
+multiple criteria input by the user.</p>
+</div>
+<div class="paragraph">
+<p>The following table states the considerations for performance as well as
+future implementations and enhancements to HealthHub that were taken into
+account:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Design</th>
+<th class="tableblock halign-left valign-top">Using a <code>List</code> of <code>Predicate</code></th>
+<th class="tableblock halign-left valign-top">Composed <code>Predicate</code> using
+ <code>and</code> method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How it works</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each user input condition will be parsed into <code>Predicate</code>,
+which are stored in an <code>List</code>.
+<strong>Pros</strong>: Easier to manage each single <code>Predicate</code> as they are kept separate
+<strong>Cons</strong>: Need to rework existing GUI implementation for <code>filter</code> as it only
+uses a single <code>Predicate</code> Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each user input will be parsed into a <code>Predicate</code> object, and all the
+<code>Predicate</code> formed will be composed into a single <code>Predicate</code> object.
+<strong>Pros</strong>: Ease of existing and future implementations as functionality only
+depends on <code>Predicate</code>
+<strong>Cons</strong>: Unable to specify actions for each <code>Predicate</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implementation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User inputs are first parsed into <code>Predicate</code> equivalents,
+and then added to an <code>ArrayList</code>. <code>FilterCommandParser</code> then takes the
+existing <code>UniqueHealthWorkerList</code>, checks for <code>HealthWorker</code> whose fields
+matches the list of <code>Predicate</code> using <code>allMatch</code> method from the <code>Predicate</code>
+library, and then returns an <code>ObservableList</code> containing those <code>HealthWorker</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User inputs are parsed into <code>Predicate</code> equivalents, which are then composed
+into a single <code>Predicate</code> containing the logic of all the composed
+<code>Predicates</code> using the <code>and</code> method from <code>Predicate</code> library. The composed
+<code>Predicate</code> is then set as the filter condition into the existing
+<code>ObservableList</code> of <code>HealthWorker</code> in the UI component.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Ultimately, the decision was made to implement the <code>filter</code> command by
+composing the <code>Predicate</code> that were formed from the user inputs into a single
+ <code>Predicate</code> using a combination of Java&#8217;s <code>Function</code> library methods
+ <code>stream</code> and <code>reduce</code>, as well as the <code>and</code> method used in Java&#8217;s
+ <code>Predicate</code> library.<br>
+This is because maintain a <code>List</code> of <code>Predicate</code> in HealthHub requires an
+unnecessary rework of many existing components in HealthHub in order to fit
+the new implementation of using a <code>List</code>, such as replacing <code>Predicate</code> in
+methods involved with <code>List&lt;Predicate&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>In addition, by returning a single <code>Predicate</code> object, ease of implementation
+ of methods in <code>filter</code> command, as well as any future or existing
+ enhancements to <code>filter</code> reduces the complexity of code as the function
+ needs only to depend on <code>Predicate</code> and not <code>List</code>, hence observing the Law
+ of Demeter.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1339,7 +1582,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -2468,4 +2711,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 15:57:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 16:53:39 UTC</div></div></div></body></html>
