@@ -26,20 +26,21 @@
 <li><a href="#viewing-help-code-help-code">5.1. Viewing Help : <code>help</code></a></li>
 <li><a href="#showing-all-requests-health-workers-code-list-code">5.2. Showing all requests/health workers : <code>list</code></a></li>
 <li><a href="#adding-requests-health-workers-code-add-code">5.3. Adding requests/health workers: <code>add</code></a></li>
-<li><a href="#editing-requests-health-workers-code-edit-code">Editing requests/health workers : <code>edit</code></a></li>
-<li><a href="#filtering-health-workers-requests-code-filter-code">5.4. Filtering health workers/requests: <code>filter</code></a></li>
-<li><a href="#deleting-requests-health-workers-code-delete-code">5.5. Deleting requests/health workers : <code>delete</code></a></li>
-<li><a href="#assigning-health-workers-to-an-open-request-code-assign-code">5.6. Assigning health workers to an open request : <code>assign</code></a></li>
-<li><a href="#closing-requests-code-complete-code">5.7. Closing Requests : <code>complete</code></a></li>
-<li><a href="#clearing-requests-code-clr-code">5.8. Clearing Requests : <code>clr</code></a></li>
-<li><a href="#undoing-commands-code-undo-code">5.9. Undoing Commands : <code>undo</code></a></li>
-<li><a href="#redoing-undone-commands-code-redo-code">5.10. Redoing undone commands : <code>redo</code></a></li>
-<li><a href="#listing-previous-commands-code-history-code">5.11. Listing previous commands : <code>history</code></a></li>
-<li><a href="#viewing-a-request-code-sr-code">5.12. Viewing a request : <code>sr</code></a></li>
-<li><a href="#setting-reminder-alerts-code-setreminder-code">5.13. Setting Reminder Alerts: <code>setreminder</code></a></li>
-<li><a href="#getting-health-condition-statistics-code-statistics-code">5.14. Getting health condition statistics: <code>statistics</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">5.15. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">5.16. Saving the data</a></li>
+<li><a href="#editing-requests-health-workers-code-edit-code">5.4. Editing requests/health workers : <code>edit</code></a></li>
+<li><a href="#filtering-health-workers-requests-code-filter-code">5.5. Filtering health workers/requests: <code>filter</code></a></li>
+<li><a href="#deleting-requests-health-workers-code-delete-code">5.6. Deleting requests/health workers : <code>delete</code></a></li>
+<li><a href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></li>
+<li><a href="#closing-requests-code-complete-code">5.8. Closing Requests : <code>complete</code></a></li>
+<li><a href="#clearing-requests-code-clr-code">5.9. Clearing Requests : <code>clr</code></a></li>
+<li><a href="#closing-requests-code-complete-code-2">5.10. Closing Requests : <code>complete</code></a></li>
+<li><a href="#undoing-commands-code-undo-code">5.11. Undoing Commands : <code>undo</code></a></li>
+<li><a href="#redoing-undone-commands-code-redo-code">5.12. Redoing undone commands : <code>redo</code></a></li>
+<li><a href="#listing-previous-commands-code-history-code">5.13. Listing previous commands : <code>history</code></a></li>
+<li><a href="#viewing-a-request-code-sr-code">5.14. Viewing a request : <code>sr</code></a></li>
+<li><a href="#setting-reminder-alerts-code-setreminder-code">5.15. Setting Reminder Alerts: <code>setreminder</code></a></li>
+<li><a href="#getting-health-condition-statistics-code-statistics-code">5.16. Getting health condition statistics: <code>statistics</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.17. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">5.18. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">6. FAQ</a></li>
@@ -561,10 +562,24 @@ The order of parameters does not matter - reordering each parameter would also w
 </tr>
 </table>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Note that the application allows the user to create requests with <strong>any</strong> valid Calendar date. Hence, it is the responsibility of the user
+to ensure that the date is correct prior to keying it into the system. To edit a request with date incorrectly entered, use the
+<code>edit request</code> command.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-requests-health-workers-code-edit-code"><a class="link" href="#editing-requests-health-workers-code-edit-code">Editing requests/health workers : <code>edit</code></a></h3>
+<h3 id="editing-requests-health-workers-code-edit-code"><a class="link" href="#editing-requests-health-workers-code-edit-code">5.4. Editing requests/health workers : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Sometimes, information on a request of health staff may be keyed in wrongly
 into the application, or you may need to update existing outdated information.</p>
@@ -580,7 +595,7 @@ status, patient&#8217;s condition or a health worker&#8217;s skills, based on th
 <code>&lt;type&gt;</code> parameter accepted.<br></p>
 </div>
 <div class="sect3">
-<h4 id="strong-editing-a-health-worker-strong"><a class="link" href="#strong-editing-a-health-worker-strong"><strong>Editing a health worker</strong></a></h4>
+<h4 id="strong-editing-a-health-worker-strong"><a class="link" href="#strong-editing-a-health-worker-strong">5.4.1. <strong>Editing a health worker</strong></a></h4>
 <div class="paragraph">
 <p>Format: <code>edit healthworker/h/1 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
 </div>
@@ -591,7 +606,7 @@ healthworker/h/1</code> command with valid inputs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="strong-editing-a-request-strong"><a class="link" href="#strong-editing-a-request-strong"><strong>Editing a request</strong></a></h4>
+<h4 id="strong-editing-a-request-strong"><a class="link" href="#strong-editing-a-request-strong">5.4.2. <strong>Editing a request</strong></a></h4>
 <div class="paragraph">
 <p>Format: <code>edit request/r/2 &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
 </div>
@@ -682,7 +697,7 @@ Crower</code>.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="filtering-health-workers-requests-code-filter-code"><a class="link" href="#filtering-health-workers-requests-code-filter-code">5.4. Filtering health workers/requests: <code>filter</code></a></h3>
+<h3 id="filtering-health-workers-requests-code-filter-code"><a class="link" href="#filtering-health-workers-requests-code-filter-code">5.5. Filtering health workers/requests: <code>filter</code></a></h3>
 <div class="paragraph">
 <p>When identifying health workers to assign to an open request, or
 to look for a particular patient details in certain requests, it may be useful
@@ -697,7 +712,7 @@ command, allowing you to find the doctors who are experts in cardiology much qui
 <p>Format: <code>filter &lt;type&gt; &lt;keyword&gt; [&lt;more_keywords&gt;]&#8230;&#8203;</code><br></p>
 </div>
 <div class="sect3">
-<h4 id="strong-filter-health-workers-strong"><a class="link" href="#strong-filter-health-workers-strong">5.4.1. <strong>Filter health workers</strong>:</a></h4>
+<h4 id="strong-filter-health-workers-strong"><a class="link" href="#strong-filter-health-workers-strong">5.5.1. <strong>Filter health workers</strong>:</a></h4>
 <div class="paragraph">
 <p>Format: <code>filter healthworker/h/1 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </div>
@@ -723,7 +738,7 @@ parameters will be accepted</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="strong-filter-requests-strong"><a class="link" href="#strong-filter-requests-strong">5.4.2. <strong>Filter requests</strong>:</a></h4>
+<h4 id="strong-filter-requests-strong"><a class="link" href="#strong-filter-requests-strong">5.5.2. <strong>Filter requests</strong>:</a></h4>
 <div class="paragraph">
 <p>Format: <code>filter request/r/2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </div>
@@ -875,7 +890,7 @@ Returns all requests scheduled on 30th Jan 2019, at 10 am sharp.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-requests-health-workers-code-delete-code"><a class="link" href="#deleting-requests-health-workers-code-delete-code">5.5. Deleting requests/health workers : <code>delete</code></a></h3>
+<h3 id="deleting-requests-health-workers-code-delete-code"><a class="link" href="#deleting-requests-health-workers-code-delete-code">5.6. Deleting requests/health workers : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Should there be any invalid or expired request, health worker or patient in
 the application, you may also remove them to prevent cluttering of
@@ -888,7 +903,7 @@ shown using the <code>list</code> command, or the index displayed on the GUI.<br
 <p>Format: <code>delete &lt;type&gt; &lt;index&gt;</code><br></p>
 </div>
 <div class="sect3">
-<h4 id="strong-delete-a-health-worker-strong"><a class="link" href="#strong-delete-a-health-worker-strong">5.5.1. <strong>Delete a health worker</strong>:</a></h4>
+<h4 id="strong-delete-a-health-worker-strong"><a class="link" href="#strong-delete-a-health-worker-strong">5.6.1. <strong>Delete a health worker</strong>:</a></h4>
 <div class="paragraph">
 <p>Format: <code>delete healthworker/h/1 &lt;index&gt;</code></p>
 </div>
@@ -898,7 +913,7 @@ worker list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="strong-delete-a-request-strong"><a class="link" href="#strong-delete-a-request-strong">5.5.2. <strong>Delete a request</strong>:</a></h4>
+<h4 id="strong-delete-a-request-strong"><a class="link" href="#strong-delete-a-request-strong">5.6.2. <strong>Delete a request</strong>:</a></h4>
 <div class="paragraph">
 <p>Format: <code>delete request/r/2 &lt;index&gt;</code></p>
 </div>
@@ -963,7 +978,7 @@ command immediately after the previous <code>delete</code> command to undo the d
 </div>
 </div>
 <div class="sect2">
-<h3 id="assigning-health-workers-to-an-open-request-code-assign-code"><a class="link" href="#assigning-health-workers-to-an-open-request-code-assign-code">5.6. Assigning health workers to an open request : <code>assign</code></a></h3>
+<h3 id="assigning-health-workers-to-an-open-request-code-assign-code"><a class="link" href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></h3>
 <div class="paragraph">
 <p>After registering a new request using the <code>add request/r/2</code> command, you may
 proceed to assign an existing health worker in the system to handle the request,
@@ -1000,11 +1015,28 @@ than the number of requests/health workers in the current list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>assign 1 2</code><br>
+<p><code>assign r/1 hw/2</code><br>
+Assigns the health worker at the second index to the first request in the
+request list.</p>
+</li>
+<li>
+<p><code>assign hw/2 r/1</code><br>
 Assigns the health worker at the second index to the first request in the
 request list.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The order in which the <code>r/</code> and <code>hw/</code> can be used interchangably, as long as they appear after the <code>assign</code> word.
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1014,7 +1046,7 @@ request list.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You cannot assign a healthworker to a completed request. To assign a healthworker to a request that is already completed,
+<p>A healthworker cannot be assigned to a completed request. To assign a healthworker to a request that is already completed,
 use <code>edit</code> to change the status of the request to pending first.</p>
 </div>
 </td>
@@ -1023,7 +1055,7 @@ use <code>edit</code> to change the status of the request to pending first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="closing-requests-code-complete-code"><a class="link" href="#closing-requests-code-complete-code">5.7. Closing Requests : <code>complete</code></a></h3>
+<h3 id="closing-requests-code-complete-code"><a class="link" href="#closing-requests-code-complete-code">5.8. Closing Requests : <code>complete</code></a></h3>
 <div class="paragraph">
 <p>After an assigned task has been completed by the assigned health staff, who
 has administered the necessary medical treatment, you can mark the request as
@@ -1061,11 +1093,10 @@ Marks the first request in the list as completed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-requests-code-clr-code"><a class="link" href="#clearing-requests-code-clr-code">5.8. Clearing Requests : <code>clr</code></a></h3>
+<h3 id="clearing-requests-code-clr-code"><a class="link" href="#clearing-requests-code-clr-code">5.9. Clearing Requests : <code>clr</code></a></h3>
 <div class="paragraph">
-<p>After completing all existing requests, you also have the option of clearing all
- requests from the request list, upon
-  entering the <code>clr</code> command. Note that the clear command can only be issued if every request in the request list is completed.</p>
+<p>Let&#8217;s say you want to quickly remove all the requests quickly. You can do so by simply
+  entering the <code>clr</code> command. Note that the clear command can only be issued if there are no ongoing requests in the request list.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>clr</code></p>
@@ -1092,7 +1123,7 @@ Marks the first request in the list as completed.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Clearing requests would delete all records of completed requests.</p>
+<p>Clearing requests would delete all records of requests.</p>
 </div>
 <div class="paragraph">
 <p>If you would like to delete just one particular request, consider using the
@@ -1102,9 +1133,47 @@ Marks the first request in the list as completed.</p>
 </tr>
 </table>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you want to clear the requests but there are ongoing requests, complete the ongoing requests using the <code>complete</code> command first.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">5.9. Undoing Commands : <code>undo</code></a></h3>
+<h3 id="closing-requests-code-complete-code-2"><a class="link" href="#closing-requests-code-complete-code-2">5.10. Closing Requests : <code>complete</code></a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>request_index</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203; and not greater
+than the number of requests in the current list.</p>
+</li>
+<li>
+<p>Only <strong>Ongoing</strong> requests can be completed. To complete a pending request, edit it&#8217;s status first, using the <code>edit request</code>
+command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>complete 1</code><br>
+completes the first request on the request list panel. Note that this request has to have Ongoing status prior to executing this command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">5.11. Undoing Commands : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>If you wanted to delete a single request but used the <code>clr</code> command by mistake, you can restore the lists to the
 state before the command was called using the <code>undo</code> command.</p>
@@ -1135,7 +1204,7 @@ state before the command was called using the <code>undo</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-undone-commands-code-redo-code"><a class="link" href="#redoing-undone-commands-code-redo-code">5.10. Redoing undone commands : <code>redo</code></a></h3>
+<h3 id="redoing-undone-commands-code-redo-code"><a class="link" href="#redoing-undone-commands-code-redo-code">5.12. Redoing undone commands : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>If you wish to redo a command that you have previously undone, you can use the <code>redo</code> command.</p>
 </div>
@@ -1144,7 +1213,7 @@ state before the command was called using the <code>undo</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-previous-commands-code-history-code"><a class="link" href="#listing-previous-commands-code-history-code">5.11. Listing previous commands : <code>history</code></a></h3>
+<h3 id="listing-previous-commands-code-history-code"><a class="link" href="#listing-previous-commands-code-history-code">5.13. Listing previous commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>In the case where you have been using the application for a while now, and
 wish to track and see the past commands that you have entered into the
@@ -1182,7 +1251,7 @@ the application in chronological order, allowing you to identify the order in
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-a-request-code-sr-code"><a class="link" href="#viewing-a-request-code-sr-code">5.12. Viewing a request : <code>sr</code></a></h3>
+<h3 id="viewing-a-request-code-sr-code"><a class="link" href="#viewing-a-request-code-sr-code">5.14. Viewing a request : <code>sr</code></a></h3>
 <div class="paragraph">
 <p>With the flexibility in managing and adding, editing and deleting requests,
 existing functionality for the user to view the details of requests in
@@ -1214,7 +1283,7 @@ request.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-reminder-alerts-code-setreminder-code"><a class="link" href="#setting-reminder-alerts-code-setreminder-code">5.13. Setting Reminder Alerts: <code>setreminder</code></a></h3>
+<h3 id="setting-reminder-alerts-code-setreminder-code"><a class="link" href="#setting-reminder-alerts-code-setreminder-code">5.15. Setting Reminder Alerts: <code>setreminder</code></a></h3>
 <div class="paragraph">
 <p>Sometimes, it can be difficult to keep track of multiple tasks and specific
 details for different requests. In addition to the already expressive
@@ -1241,7 +1310,7 @@ the customised message to "to call patient John Doe for his appointment".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="getting-health-condition-statistics-code-statistics-code"><a class="link" href="#getting-health-condition-statistics-code-statistics-code">5.14. Getting health condition statistics: <code>statistics</code></a></h3>
+<h3 id="getting-health-condition-statistics-code-statistics-code"><a class="link" href="#getting-health-condition-statistics-code-statistics-code">5.16. Getting health condition statistics: <code>statistics</code></a></h3>
 <div class="paragraph">
 <p>It is imperative for you to know which health conditions have been seeing an increasing trend, as well as take note of
 those which have been experiencing a decline. The <code>statistics</code> command allows you to view all health conditions that
@@ -1268,7 +1337,7 @@ professionals.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.15. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.17. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Once you are done using the application, you can exit the application by
 entering the <code>exit</code> command, hereby saving any information at the current
@@ -1279,7 +1348,7 @@ point in time before shutting down.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.16. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.18. Saving the data</a></h3>
 <div class="paragraph">
 <p>All application data are saved in the hard disk automatically after exiting
 the application, removing the need to save manually.<br></p>
@@ -1384,4 +1453,4 @@ to the <code>\data</code> folder of the app directory.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 08:59:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 15:57:01 UTC</div></div></div></body></html>
