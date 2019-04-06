@@ -30,17 +30,14 @@
 <li><a href="#filtering-health-workers-requests-code-filter-code">5.5. Filtering health workers/requests: <code>filter</code></a></li>
 <li><a href="#deleting-requests-health-workers-code-delete-code">5.6. Deleting requests/health workers : <code>delete</code></a></li>
 <li><a href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></li>
-<li><a href="#closing-requests-code-complete-code">5.8. Closing Requests : <code>complete</code></a></li>
-<li><a href="#clearing-requests-code-clr-code">5.9. Clearing Requests : <code>clr</code></a></li>
-<li><a href="#closing-requests-code-complete-code-2">5.10. Closing Requests : <code>complete</code></a></li>
-<li><a href="#undoing-commands-code-undo-code">5.11. Undoing Commands : <code>undo</code></a></li>
-<li><a href="#redoing-undone-commands-code-redo-code">5.12. Redoing undone commands : <code>redo</code></a></li>
-<li><a href="#listing-previous-commands-code-history-code">5.13. Listing previous commands : <code>history</code></a></li>
-<li><a href="#viewing-a-request-code-sr-code">5.14. Viewing a request : <code>sr</code></a></li>
-<li><a href="#setting-reminder-alerts-code-setreminder-code">5.15. Setting Reminder Alerts: <code>setreminder</code></a></li>
-<li><a href="#getting-health-condition-statistics-code-statistics-code">5.16. Getting health condition statistics: <code>statistics</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">5.17. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">5.18. Saving the data</a></li>
+<li><a href="#clearing-requests-code-clr-code">5.8. Clearing Requests : <code>clr</code></a></li>
+<li><a href="#closing-requests-code-complete-code">5.9. Closing Requests : <code>complete</code></a></li>
+<li><a href="#listing-previous-commands-code-history-code">5.10. Listing previous commands : <code>history</code></a></li>
+<li><a href="#viewing-a-request-code-sr-code">5.11. Viewing a request : <code>sr</code></a></li>
+<li><a href="#setting-reminder-alerts-code-setreminder-code">5.12. Setting Reminder Alerts: <code>setreminder</code></a></li>
+<li><a href="#getting-health-condition-statistics-code-statistics-code">5.13. Getting health condition statistics: <code>statistics</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.14. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">5.15. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">6. FAQ</a></li>
@@ -521,8 +518,8 @@ healthcare industry in accordance to their <code>specialisation</code>.</p>
 are officially certified by certain medical practices.</p>
 </div>
 <div class="paragraph">
-<p>The fields entered by the user following each prefix must adhere to the
-following format:</p>
+<p>Each of the following fields entered by the user following
+each prefix are compulsory, and must adhere to the following format:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -617,7 +614,7 @@ worker possesses. The list of valid specialisations are as follows:</p>
 <p><code>add 2 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
 </li>
 <li>
-<p>Registers a new open request from <code>patient</code> of <code>&lt;NAME&gt;</code> into the
+<p>Registers a new open request from <code>patient</code> of <code>&lt;patient_name&gt;</code> into the
 application.</p>
 </li>
 <li>
@@ -627,25 +624,12 @@ stated by the <code>patient</code> and assign the appropriate health worker to h
 these requests in the <code>assign</code> command.</p>
 </li>
 <li>
-<p>Format for the date is <code>dd-MM-yyyy HH:mm:ss</code>.</p>
+<p>Format for the time is <code>HH:mm:ss</code>.</p>
 </li>
 <li>
-<p>Does not allow duplicate requests to be added.</p>
+<p>Format for the date is <code>dd-MM-yyyy</code>.</p>
 </li>
 </ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Duplicate requests are requests that have the same <code>Name</code>, <code>RequestDate</code>, <code>Condition</code> <strong>and</strong> <code>Address</code>.
-For example, 2 requests with differing conditions (but all other fields similar) would be considered unique.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -653,35 +637,13 @@ For example, 2 requests with differing conditions (but all other fields similar)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add request n/Pay Shun a/Sengkang Ave 1 c/Heart Attack i/S9123456A p/91234567 dt/05-05-2019 14:00:00</code></p>
+<p><code>add 1 n/Dog Terr p/92837710 i/S98817471Z o/NUH s/GENERAL_PRACTICE
+s/ORTHOPAEDIC</code></p>
+</li>
+<li>
+<p><code>add request n/Pay Shun c/Heart Attack t/14:00:00 d/05:05:2019</code></p>
 </li>
 </ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The order of parameters does not matter - reordering each parameter would also work!
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Note that the application allows the user to create requests with <strong>any</strong> valid Calendar date. Hence, it is the responsibility of the user
-to ensure that the date is correct prior to keying it into the system. To edit a request with date incorrectly entered, use the
-<code>edit request</code> command.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -889,9 +851,11 @@ command, allowing you to find the doctors who are experts in cardiology much qui
 </ul>
 </div>
 <div class="paragraph">
-<p>Upon entering the command with valid inputs, searches the entire list of health
-workers in Health Hub, and only displays the health workers whose fields matches the parameters specified in the
-<code>filter</code> command.</p>
+<p>Upon entering the command with valid inputs, HealthHub searches the entire list
+ of health
+workers in Health Hub, and only displays the health workers whose fields
+contains the parameters specified in the
+<code>filter</code> command as a substring.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -901,8 +865,10 @@ workers in Health Hub, and only displays the health workers whose fields matches
 </td>
 <td class="content">
 <div class="paragraph">
-<p>For specialisation fields, parameters are case sensitive, and only valid
-parameters will be accepted</p>
+<p>For specialisation fields, parameter values need not follow the exact format as
+the valid specialisation values provided under the <code>add</code> command section.
+Valid parameters may include case insensitive substrings (E.g 'physio' will
+match to 'PHYSIOTHERAPY'.</p>
 </div>
 </td>
 </tr>
@@ -934,53 +900,9 @@ parameters will be accepted</p>
 After entering the command with valid inputs, searches the entire list of
 requests in Health Hub, and only displays the requests whose fields matches
  the parameters specified in the
-<code>filter</code> command. To filter requests, the user can specify any of the following filtering criteria:
-<code>dt/DATE</code>, <code>n/NAME</code>, <code>p/PHONE</code>, <code>st/STATUS</code>, <code>i/NRIC</code>, <code>c/CONDITION</code>. Note that you can chain multiple criteria together to get a more specific
-filter result.</p>
+<code>filter</code> command.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>For example, let&#8217;s say you want to filter all the requests made by the patient with <code>NRIC</code> S9123456G that have been <strong>completed</strong>. You
-can simply enter the command: <code>filter request i/S9123456A st/COMPLETED</code>, and the request list panel to the left of the screen would update to
-show you all the requests you are looking for.</p>
-</div>
-<div class="paragraph">
-<p>Before:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/Healthhub.png" alt="Healthhub" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Figure 5.5.2.1 shows the application prior to executing the <code>filter request</code> command</p>
-</div>
-<div class="paragraph">
-<p>After:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/filterResult.png" alt="filterResult" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Figure 5.5.2.2 shows the application after executing <code>filter request i/S9123456A st/COMPLETED</code></p>
-</div>
-<div class="paragraph">
-<p>The request list panel on the left would filter to show just the requests queried by the user.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If there are no such requests that match the user&#8217;s query, an empty list would be show on the left panel.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>&#160;</p>
@@ -996,19 +918,14 @@ identify requests or personnel, using the same prefixes as in <code>add</code>, 
 <div class="ulist">
 <ul>
 <li>
-<p>The search is <strong>case insensitive</strong> for all fields apart from specialisation(e.g
+<p>The search is <strong>case insensitive</strong> for all fields (e.g
 <code>hans</code> will match <code>Hans</code>), and the <strong>order of the keywords</strong> does not matter(e.g
 <code>Hans Bo</code> will match <code>Bo Hans</code>).</p>
 </li>
 <li>
 <p>Search using partial words will return all results with fields containing
-that subword. (e.g <code>filter 1 n/Tan</code> may return people with the surnames Tan or
+that substring. (e.g <code>filter 1 n/Tan</code> may return people with the surnames Tan or
 Tang)</p>
-</li>
-<li>
-<p>Note that you can query all requests between a specific range, by specifying the the date range
-which you want to query. For example, to filter all requests between 1st Jan 2019 and 1st June 2019 (exclusive), you can run the following command:
-<code>filter request dt/01-01-2019 00:00:00 dt/02-06-2019 00:00:00</code></p>
 </li>
 </ul>
 </div>
@@ -1024,7 +941,9 @@ which you want to query. For example, to filter all requests between 1st Jan 201
 <td class="content">
 <div class="paragraph">
 <p>Multiple conditions for filtering health workers and requests can be added
-simultaneously for more expressive search.</p>
+simultaneously for more expressive search. Note that if multiple parameters
+are specified, HealthHub displays healthworkers or requests that match <strong>all</strong>
+the criteria mentioned.</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -1061,7 +980,7 @@ specified name substring <strong>and</strong> the specified phone number.</p>
 <li>
 <p><code>filter h s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
 Returns all health workers whose field of expertise include general practice
-or gynaecology.</p>
+<strong>and</strong> gynaecology.</p>
 </li>
 <li>
 <p><code>filter request n/alice</code><br>
@@ -1245,28 +1164,11 @@ than the number of requests/health workers in the current list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>assign r/1 hw/2</code><br>
-Assigns the health worker at the second index to the first request in the
-request list.</p>
-</li>
-<li>
-<p><code>assign hw/2 r/1</code><br>
+<p><code>assign 1 2</code><br>
 Assigns the health worker at the second index to the first request in the
 request list.</p>
 </li>
 </ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The order in which the <code>r/</code> and <code>hw/</code> can be used interchangably, as long as they appear after the <code>assign</code> word.
-</td>
-</tr>
-</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1276,7 +1178,7 @@ The order in which the <code>r/</code> and <code>hw/</code> can be used intercha
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A healthworker cannot be assigned to a completed request. To assign a healthworker to a request that is already completed,
+<p>You cannot assign a healthworker to a completed request. To assign a healthworker to a request that is already completed,
 use <code>edit</code> to change the status of the request to pending first.</p>
 </div>
 </td>
@@ -1285,7 +1187,36 @@ use <code>edit</code> to change the status of the request to pending first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="closing-requests-code-complete-code"><a class="link" href="#closing-requests-code-complete-code">5.8. Closing Requests : <code>complete</code></a></h3>
+<h3 id="clearing-requests-code-clr-code"><a class="link" href="#clearing-requests-code-clr-code">5.8. Clearing Requests : <code>clr</code></a></h3>
+<div class="paragraph">
+<p>After closing all existing requests, you also have the option of clearing all
+ requests from the request list, regardless of the state of the request, upon
+  entering the <code>clr</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clr</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Clearing requests would delete all records of completed requests.</p>
+</div>
+<div class="paragraph">
+<p>If you would like to delete just one particular request, consider using the
+<code>delete</code> command instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="closing-requests-code-complete-code"><a class="link" href="#closing-requests-code-complete-code">5.9. Closing Requests : <code>complete</code></a></h3>
 <div class="paragraph">
 <p>After an assigned task has been completed by the assigned health staff, who
 has administered the necessary medical treatment, you can mark the request as
@@ -1323,127 +1254,7 @@ Marks the first request in the list as completed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-requests-code-clr-code"><a class="link" href="#clearing-requests-code-clr-code">5.9. Clearing Requests : <code>clr</code></a></h3>
-<div class="paragraph">
-<p>Let&#8217;s say you want to quickly remove all the requests quickly. You can do so by simply
-  entering the <code>clr</code> command. Note that the clear command can only be issued if there are no ongoing requests in the request list.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>clr</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><code>clr</code> command only works if there are no ongoing requests</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Clearing requests would delete all records of requests.</p>
-</div>
-<div class="paragraph">
-<p>If you would like to delete just one particular request, consider using the
-<code>delete</code> command instead.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-If you want to clear the requests but there are ongoing requests, complete the ongoing requests using the <code>complete</code> command first.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="closing-requests-code-complete-code-2"><a class="link" href="#closing-requests-code-complete-code-2">5.10. Closing Requests : <code>complete</code></a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>request_index</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203; and not greater
-than the number of requests in the current list.</p>
-</li>
-<li>
-<p>Only <strong>Ongoing</strong> requests can be completed. To complete a pending request, edit it&#8217;s status first, using the <code>edit request</code>
-command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Examples</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>complete 1</code><br>
-completes the first request on the request list panel. Note that this request has to have Ongoing status prior to executing this command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">5.11. Undoing Commands : <code>undo</code></a></h3>
-<div class="paragraph">
-<p>If you wanted to delete a single request but used the <code>clr</code> command by mistake, you can restore the lists to the
-state before the command was called using the <code>undo</code> command.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>undo</code> command can only be used to undo commands that modify the lists such as <code>add</code>, <code>delete</code> and <code>edit</code>.</p>
-</li>
-<li>
-<p>For commands that affects the display such as <code>filter</code>, you can use <code>list</code> command revert back the original list.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-undone-commands-code-redo-code"><a class="link" href="#redoing-undone-commands-code-redo-code">5.12. Redoing undone commands : <code>redo</code></a></h3>
-<div class="paragraph">
-<p>If you wish to redo a command that you have previously undone, you can use the <code>redo</code> command.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>redo</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-previous-commands-code-history-code"><a class="link" href="#listing-previous-commands-code-history-code">5.13. Listing previous commands : <code>history</code></a></h3>
+<h3 id="listing-previous-commands-code-history-code"><a class="link" href="#listing-previous-commands-code-history-code">5.10. Listing previous commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>In the case where you have been using the application for a while now, and
 wish to track and see the past commands that you have entered into the
@@ -1465,15 +1276,8 @@ the application in chronological order, allowing you to identify the order in
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="ulist">
-<ul>
-<li>
+<div class="paragraph">
 <p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
-</li>
-<li>
-<p>All commands entered will be added to the history, whether valid or invalid</p>
-</li>
-</ul>
 </div>
 </td>
 </tr>
@@ -1481,7 +1285,7 @@ the application in chronological order, allowing you to identify the order in
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-a-request-code-sr-code"><a class="link" href="#viewing-a-request-code-sr-code">5.14. Viewing a request : <code>sr</code></a></h3>
+<h3 id="viewing-a-request-code-sr-code"><a class="link" href="#viewing-a-request-code-sr-code">5.11. Viewing a request : <code>sr</code></a></h3>
 <div class="paragraph">
 <p>With the flexibility in managing and adding, editing and deleting requests,
 existing functionality for the user to view the details of requests in
@@ -1513,7 +1317,7 @@ request.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-reminder-alerts-code-setreminder-code"><a class="link" href="#setting-reminder-alerts-code-setreminder-code">5.15. Setting Reminder Alerts: <code>setreminder</code></a></h3>
+<h3 id="setting-reminder-alerts-code-setreminder-code"><a class="link" href="#setting-reminder-alerts-code-setreminder-code">5.12. Setting Reminder Alerts: <code>setreminder</code></a></h3>
 <div class="paragraph">
 <p>Sometimes, it can be difficult to keep track of multiple tasks and specific
 details for different requests. In addition to the already expressive
@@ -1540,7 +1344,7 @@ the customised message to "to call patient John Doe for his appointment".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="getting-health-condition-statistics-code-statistics-code"><a class="link" href="#getting-health-condition-statistics-code-statistics-code">5.16. Getting health condition statistics: <code>statistics</code></a></h3>
+<h3 id="getting-health-condition-statistics-code-statistics-code"><a class="link" href="#getting-health-condition-statistics-code-statistics-code">5.13. Getting health condition statistics: <code>statistics</code></a></h3>
 <div class="paragraph">
 <p>It is imperative for you to know which health conditions have been seeing an increasing trend, as well as take note of
 those which have been experiencing a decline. The <code>statistics</code> command allows you to view all health conditions that
@@ -1567,7 +1371,7 @@ professionals.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.17. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.14. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Once you are done using the application, you can exit the application by
 entering the <code>exit</code> command, hereby saving any information at the current
@@ -1578,7 +1382,7 @@ point in time before shutting down.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.18. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.15. Saving the data</a></h3>
 <div class="paragraph">
 <p>All application data are saved in the hard disk automatically after exiting
 the application, removing the need to save manually.<br></p>
@@ -1678,9 +1482,9 @@ to the <code>\data</code> folder of the app directory.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">redos the previous undone action</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redos everything</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 16:53:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-06 03:20:03 UTC</div></div></div></body></html>
