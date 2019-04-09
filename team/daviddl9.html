@@ -41,7 +41,23 @@ We chose to morph it to a home-care patient management system, because of our pa
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: Created <code>add</code>, <code>edit</code>, <code>delete</code>, <code>list</code>, <code>clear</code> commands.</p>
+<p><strong>Major enhancement</strong>: Created the <code>Request</code> class to encapsulate a request.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it odes: Encapsulates the necessary information to be stored in a patient request.</p>
+</li>
+<li>
+<p>Justification: Laid the foundation to the entire project. All components of our project (UI, Storage, Logic and Model) required the creation of a <code>Request</code> class for further development of core functionality.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affecting all existing classes, requiring some overhaul of the existing code base and thorough interaction of the differing components.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: Created <code>add</code>, <code>edit</code>, <code>delete</code>, <code>list</code> and <code>clear</code> commands for the <code>Request</code> class.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -160,11 +176,12 @@ as knowledge of how information is cached in the application&#8217;s memory was 
 2. <code>filter 2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </div>
 <div class="paragraph">
-<p>After entering the command with valid inputs, searches the entire list of
-requests in Health Hub, and only displays the requests whose fields matches
- the parameters specified in the
-<code>filter</code> command. To filter requests, the user can specify any of the following filtering criteria:
-<code>dt/DATE</code>, <code>n/NAME</code>, <code>p/PHONE</code>, <code>st/STATUS</code>, <code>i/NRIC</code>, <code>c/CONDITION</code>. Note that you can chain multiple criteria together to get a more specific
+<p>where <code>[&lt;more_keywords]</code> refer to the fields you would like to search for.</p>
+</div>
+<div class="paragraph">
+<p>After entering the command with valid inputs, you will the entire list of requests whose fields match
+ the parameters specified in the command. To filter requests, you can specify any of the following filtering criteria:
+<code>dt/DATE</code>, <code>n/NAME</code>, <code>p/PHONE</code>, <code>st/STATUS</code>, <code>i/NRIC</code>, <code>c/CONDITION</code>. Note that you can also chain multiple criteria together to get a more specific
 filter result.</p>
 </div>
 <div class="paragraph">
@@ -211,11 +228,6 @@ If there are no such requests that match the user&#8217;s query, an empty list w
 </div>
 <div class="paragraph">
 <p>&#160;</p>
-</div>
-<div class="paragraph">
-<p>where <code>&lt;more_keywords&gt;</code> represents the fields and parameters that can be used to
-identify requests or personnel, using the same prefixes as in <code>add</code>, <code>edit</code> and
-<code>delete</code> commands. Some examples of keywords are shown below.</p>
 </div>
 <div class="paragraph">
 <p><strong>Notes</strong>:</p>
@@ -581,4 +593,4 @@ ensuring that there are no invalid request statuses entered.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 14:30:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 14:46:52 UTC</div></div></div></body></html>
