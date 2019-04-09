@@ -694,8 +694,58 @@ and request modes follow the same format as in the <code>add</code> command.</p>
 </div>
 <div class="paragraph">
 <p>Edits the details of an existing health worker registered in Health Hub, at
-the <code>&lt;index&gt;</code> specified in the health worker list upon entering the <code>edit
-healthworker</code> command with valid inputs.</p>
+the <code>&lt;index&gt;</code> specified in the health worker list upon entering the <code>edit healthworker/h/1</code> command with valid inputs.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>When editing specialisations for health workers, the existing specialisations
+of the person will be removed i.e adding of specialisation is not cumulative.<br></p>
+</li>
+<li>
+<p>Each health worker must have at least one specialisation. Entering an empty
+value for <code>s/</code> prefix would result in the original health worker&#8217;s <code>skills</code>
+being kept.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can remove all the person&#8217;s specialisation by typing <code>s/</code> without
+specifying any parameters after it.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit healthworker 1 p/91234567 n/John Doe</code><br>
+Edits the phone number and name of the 1st health worker shown in the health
+worker list to be <code>91234567</code> and <code>John Doe</code> respectively.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>healthworker` command with valid inputs.</p>
 </div>
 </div>
 <div class="sect3">
@@ -726,7 +776,7 @@ healthworker</code> command with valid inputs.</p>
 <div class="paragraph">
 <p>Edits the details of a request registered in Health Hub, at
 the <code>&lt;index&gt;</code> specified in the request list upon entering the <code>edit
-request/r/2</code> command with valid inputs.</p>
+request</code> command with valid inputs.</p>
 </div>
 <div class="paragraph">
 <p>Upon entering the <code>edit</code> command with all the necessary and valid paramters,
@@ -758,38 +808,11 @@ and not greater than the number of requests/health workers/patients in the curre
 patients, each field can only have a single value and multiple edit values
 for other fields will only cause the last one to be accepted.</p>
 </li>
+<li>
+<p>Note that the healthworker cannot be edited using this command. To unassign an existing healthworker, <code>edit</code> the status to <code>PENDING</code>.
+To change the healthworker assigned, use the <code>assign</code> command instead.</p>
+</li>
 </ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>When editing specialisations for health workers, the existing specialisations
- of the person will be removed i.e adding of specialisation is not cumulative.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Each health worker must have at least one specialisation. Entering an empty
-value for <code>s/</code> prefix would result in the original health worker&#8217;s <code>skills</code>
-being kept.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -797,13 +820,14 @@ being kept.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit healthworker 1 p/91234567 n/John Doe</code><br>
-Edits the phone number and name of the 1st health worker shown in the health
-worker list to be <code>91234567</code> and <code>John Doe</code> respectively.<br></p>
+<p><code>edit request 2 n/Betsy Crower</code><br></p>
 </li>
 <li>
-<p><code>edit request 2 n/Betsy Crower</code><br>
-Edits the patient name of the 2nd request in the request list to be <code>Betsy
+<p><code>edit r 2 n/Betsy Crower</code><br></p>
+</li>
+<li>
+<p><code>edit 2 2 n/Betsy Crower</code><br>
+All the 3 commands above edits the patient name of the 2nd request in the request list to be <code>Betsy
 Crower</code>.<br></p>
 </li>
 </ul>
@@ -1129,7 +1153,7 @@ command immediately after the previous <code>delete</code> command to undo the d
 <div class="sect2">
 <h3 id="assigning-health-workers-to-an-open-request-code-assign-code"><a class="link" href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></h3>
 <div class="paragraph">
-<p>After registering a new request using the <code>add request/r/2</code> command, you may
+<p>After registering a new request using the <code>add request</code> command, you may
 proceed to assign an existing health worker in the system to handle the request,
  allocating medical resources to it and closing the request using the simple
  <code>assign</code> command<br></p>
@@ -1164,7 +1188,7 @@ than the number of requests/health workers in the current list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>assign 1 2</code><br>
+<p><code>assign r/1 hw/2</code><br>
 Assigns the health worker at the second index to the first request in the
 request list.</p>
 </li>
@@ -1177,9 +1201,17 @@ request list.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>You cannot assign a healthworker to a completed request. To assign a healthworker to a request that is already completed,
-use <code>edit</code> to change the status of the request to pending first.</p>
+use <code>edit</code> to change the status of the request to pending first.<br></p>
+</li>
+<li>
+<p>You can reorder the parameters of the request and the healthworker. For example, executing <code>assign r/1 hw/2</code> has the same as
+executing <code>assign hw/2 r/1</code></p>
+</li>
+</ul>
 </div>
 </td>
 </tr>
@@ -1487,4 +1519,4 @@ to the <code>\data</code> folder of the app directory.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-08 11:39:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 04:08:28 UTC</div></div></div></body></html>
