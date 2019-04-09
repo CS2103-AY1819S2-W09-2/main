@@ -15,7 +15,7 @@
 <h3 id="about-the-project"><a class="link" href="#about-the-project">About the project</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Healthhub.png" alt="Healthhub" width="800">
+<img src="../images/HealthHub.png" alt="HealthHub" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -152,7 +152,12 @@ as knowledge of how information is cached in the application&#8217;s memory was 
 <div class="sect3">
 <h4 id="strong-filter-requests-strong"><a class="link" href="#strong-filter-requests-strong"><strong>Filter requests</strong>:</a></h4>
 <div class="paragraph">
-<p>Format: <code>filter request/r/2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+<p>Format: <code>filter request &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
+</div>
+<div class="paragraph">
+<p>Shortcut(s):<br>
+1. <code>filter r &lt;keyword&gt; [&lt;more_keywords&gt;]</code><br>
+2. <code>filter 2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </div>
 <div class="paragraph">
 <p>After entering the command with valid inputs, searches the entire list of
@@ -172,22 +177,22 @@ show you all the requests you are looking for.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Healthhub.png" alt="Healthhub" width="800">
+<img src="../images/assignrequestbefore.png" alt="assignrequestbefore" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Figure 5.5.2.1 shows the application prior to executing the <code>filter request</code> command</p>
+<p>Figure 5.5.2.1 shows the request list prior to executing the <code>filter request</code> command</p>
 </div>
 <div class="paragraph">
 <p>After:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/filterResult.png" alt="filterResult" width="800">
+<img src="../images/assignrequestafter.png" alt="assignrequestafter" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Figure 5.5.2.2 shows the application after executing <code>filter request i/S9123456A st/COMPLETED</code></p>
+<p>Figure 5.5.2.2 shows the request list after executing <code>filter request i/S9123456A st/COMPLETED</code></p>
 </div>
 <div class="paragraph">
 <p>The request list panel on the left would filter to show just the requests queried by the user.</p>
@@ -224,13 +229,8 @@ identify requests or personnel, using the same prefixes as in <code>add</code>, 
 </li>
 <li>
 <p>Search using partial words will return all results with fields containing
-that subword. (e.g <code>filter 1 n/Tan</code> may return people with the surnames Tan or
+that subword. (e.g <code>filter request n/Tan</code> may return people with the surnames Tan or
 Tang)</p>
-</li>
-<li>
-<p>Note that you can query all requests between a specific range, by specifying the the date range
-which you want to query. For example, to filter all requests between 1st Jan 2019 and 1st June 2019 (exclusive), you can run the following command:
-<code>filter request dt/01-01-2019 00:00:00 dt/02-06-2019 00:00:00</code></p>
 </li>
 </ul>
 </div>
@@ -245,7 +245,7 @@ which you want to query. For example, to filter all requests between 1st Jan 201
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Multiple conditions for filtering health workers and requests can be added
+<p>Multiple conditions for filtering requests can be added
 simultaneously for more expressive search.</p>
 </div>
 <div class="paragraph">
@@ -268,8 +268,7 @@ specified name substring <strong>and</strong> the specified phone number.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>To revert the view back to the original health worker/request list, enter the
-<code>list healthworker</code> or <code>list request</code> command respectively.</p>
+<p>To revert the view back to the original request list, enter the <code>list request</code> command.</p>
 </div>
 </td>
 </tr>
@@ -281,11 +280,6 @@ specified name substring <strong>and</strong> the specified phone number.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>filter h s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
-Returns all health workers whose field of expertise include general practice
-or gynaecology.</p>
-</li>
-<li>
 <p><code>filter request n/alice</code><br>
 Returns all patients whose name contains "alice".</p>
 </li>
@@ -296,6 +290,30 @@ Returns all requests with contacts numbers that have "9177" in it&#8217;s field.
 <li>
 <p><code>filter 2 dt/30-01-2019 10:00:00</code><br>
 Returns all requests scheduled on 30th Jan 2019, at 10 am sharp.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="filtering-requests-within-a-specific-date-range"><a class="link" href="#filtering-requests-within-a-specific-date-range">Filtering requests within a specific date range</a></h3>
+<div class="paragraph">
+<p>Let&#8217;s say you&#8217;ve grown to have an overwhelming number of requests, because you&#8217;ve been doing so successfully! Suppose you now would like to
+look back and take a look at the requests that you had over a specific date range. You can do so using the following command:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>filter request dt/start dt/end</code><br>
+Shortcut(s):<br>
+1. <code>filter r dt/start dt/end</code><br>
+2. <code>filter 2 dt/start dt/end</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter r dt/01-01-2019 00:00:00 dt/01-06-2019</code> 00:00:00<br>
+filters the requests between 1st Jan 2019 (inclusive) and 1st June 2019 (exclusive).</p>
 </li>
 </ul>
 </div>
@@ -327,7 +345,7 @@ Returns all requests scheduled on 30th Jan 2019, at 10 am sharp.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/assignreq.png" alt="assignreq" width="800">
+<img src="../images/assignreq1.png" alt="assignreq1" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -335,7 +353,7 @@ Returns all requests scheduled on 30th Jan 2019, at 10 am sharp.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/assignreq1.png" alt="assignreq1" width="800">
+<img src="../images/assignreq2.png" alt="assignreq2" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -563,4 +581,4 @@ ensuring that there are no invalid request statuses entered.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 11:05:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 14:17:16 UTC</div></div></div></body></html>

@@ -28,16 +28,17 @@
 <li><a href="#adding-requests-health-workers-code-add-code">5.3. Adding requests/health workers: <code>add</code></a></li>
 <li><a href="#editing-requests-health-workers-code-edit-code">5.4. Editing requests/health workers : <code>edit</code></a></li>
 <li><a href="#filtering-health-workers-requests-code-filter-code">5.5. Filtering health workers/requests: <code>filter</code></a></li>
-<li><a href="#deleting-requests-health-workers-code-delete-code">5.6. Deleting requests/health workers : <code>delete</code></a></li>
-<li><a href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></li>
-<li><a href="#clearing-requests-code-clr-code">5.8. Clearing Requests : <code>clr</code></a></li>
-<li><a href="#closing-requests-code-complete-code">5.9. Closing Requests : <code>complete</code></a></li>
-<li><a href="#listing-previous-commands-code-history-code">5.10. Listing previous commands : <code>history</code></a></li>
-<li><a href="#viewing-a-request-code-sr-code">5.11. Viewing a request : <code>sr</code></a></li>
-<li><a href="#setting-reminder-alerts-code-setreminder-code">5.12. Setting Reminder Alerts: <code>setreminder</code></a></li>
-<li><a href="#getting-health-condition-statistics-code-statistics-code">5.13. Getting health condition statistics: <code>statistics</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">5.14. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">5.15. Saving the data</a></li>
+<li><a href="#filtering-requests-within-a-specific-date-range">5.6. Filtering requests within a specific date range</a></li>
+<li><a href="#deleting-requests-health-workers-code-delete-code">5.7. Deleting requests/health workers : <code>delete</code></a></li>
+<li><a href="#assigning-health-workers-to-an-open-request-code-assign-code">5.8. Assigning health workers to an open request : <code>assign</code></a></li>
+<li><a href="#clearing-requests-code-clr-code">5.9. Clearing Requests : <code>clr</code></a></li>
+<li><a href="#closing-requests-code-complete-code">5.10. Closing Requests : <code>complete</code></a></li>
+<li><a href="#listing-previous-commands-code-history-code">5.11. Listing previous commands : <code>history</code></a></li>
+<li><a href="#viewing-a-request-code-sr-code">5.12. Viewing a request : <code>sr</code></a></li>
+<li><a href="#setting-reminder-alerts-code-setreminder-code">5.13. Setting Reminder Alerts: <code>setreminder</code></a></li>
+<li><a href="#getting-health-condition-statistics-code-statistics-code">5.14. Getting health condition statistics: <code>statistics</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.15. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">5.16. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">6. FAQ</a></li>
@@ -881,6 +882,43 @@ workers in Health Hub, and only displays the health workers whose fields
 contains the parameters specified in the
 <code>filter</code> command as a substring.</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Multiple conditions for filtering health workers can be added
+simultaneously for more expressive search. Note that if multiple parameters
+are specified, HealthHub displays healthworkers that match <strong>all</strong>
+the criteria mentioned.<br></p>
+</li>
+<li>
+<p>To revert the view back to the original health worker list, enter the
+<code>list healthworker</code> command.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter h s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
+Returns all health workers whose field of expertise include general practice
+<strong>and</strong> gynaecology.</p>
+</li>
+</ul>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -902,31 +940,62 @@ match to 'PHYSIOTHERAPY'.</p>
 <div class="sect3">
 <h4 id="strong-filter-requests-strong"><a class="link" href="#strong-filter-requests-strong">5.5.2. <strong>Filter requests</strong>:</a></h4>
 <div class="paragraph">
-<p><strong>Format:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter request &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
-</li>
-</ul>
+<p>Format: <code>filter request &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Shortcuts:</strong></p>
+<p>Shortcut(s):<br>
+1. <code>filter r &lt;keyword&gt; [&lt;more_keywords&gt;]</code><br>
+2. <code>filter 2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter r &lt;keyword&gt; [&lt;more_keywords&gt;]</code></p>
-</li>
-<li>
-<p><code>filter 2 &lt;keyword&gt; [&lt;more_keywords&gt;]</code>
-After entering the command with valid inputs, searches the entire list of
+<div class="paragraph">
+<p>After entering the command with valid inputs, searches the entire list of
 requests in Health Hub, and only displays the requests whose fields matches
  the parameters specified in the
-<code>filter</code> command.</p>
-</li>
-</ul>
+<code>filter</code> command. To filter requests, the user can specify any of the following filtering criteria:
+<code>dt/DATE</code>, <code>n/NAME</code>, <code>p/PHONE</code>, <code>st/STATUS</code>, <code>i/NRIC</code>, <code>c/CONDITION</code>. Note that you can chain multiple criteria together to get a more specific
+filter result.</p>
+</div>
+<div class="paragraph">
+<p>For example, let&#8217;s say you want to filter all the requests made by the patient with <code>NRIC</code> S9123456G that have been <strong>completed</strong>. You
+can simply enter the command: <code>filter request i/S9123456A st/COMPLETED</code>, and the request list panel to the left of the screen would update to
+show you all the requests you are looking for.</p>
+</div>
+<div class="paragraph">
+<p>Before:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/assignrequestbefore.png" alt="assignrequestbefore" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 5.5.2.1 shows the request list prior to executing the <code>filter request</code> command</p>
+</div>
+<div class="paragraph">
+<p>After:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/assignrequestafter.png" alt="assignrequestafter" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 5.5.2.2 shows the request list after executing <code>filter request i/S9123456A st/COMPLETED</code></p>
+</div>
+<div class="paragraph">
+<p>The request list panel on the left would filter to show just the requests queried by the user.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If there are no such requests that match the user&#8217;s query, an empty list would be show on the left panel.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>&#160;</p>
@@ -942,13 +1011,13 @@ identify requests or personnel, using the same prefixes as in <code>add</code>, 
 <div class="ulist">
 <ul>
 <li>
-<p>The search is <strong>case insensitive</strong> for all fields (e.g
+<p>The search is <strong>case insensitive</strong> for all fields apart from specialisation(e.g
 <code>hans</code> will match <code>Hans</code>), and the <strong>order of the keywords</strong> does not matter(e.g
 <code>Hans Bo</code> will match <code>Bo Hans</code>).</p>
 </li>
 <li>
 <p>Search using partial words will return all results with fields containing
-that substring. (e.g <code>filter 1 n/Tan</code> may return people with the surnames Tan or
+that subword. (e.g <code>filter request n/Tan</code> may return people with the surnames Tan or
 Tang)</p>
 </li>
 </ul>
@@ -964,10 +1033,8 @@ Tang)</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Multiple conditions for filtering health workers and requests can be added
-simultaneously for more expressive search. Note that if multiple parameters
-are specified, HealthHub displays healthworkers or requests that match <strong>all</strong>
-the criteria mentioned.</p>
+<p>Multiple conditions for filtering requests can be added
+simultaneously for more expressive search.</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -989,8 +1056,7 @@ specified name substring <strong>and</strong> the specified phone number.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>To revert the view back to the original health worker/request list, enter the
-<code>list healthworker</code> or <code>list request</code> command respectively.</p>
+<p>To revert the view back to the original request list, enter the <code>list request</code> command.</p>
 </div>
 </td>
 </tr>
@@ -1001,11 +1067,6 @@ specified name substring <strong>and</strong> the specified phone number.</p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><code>filter h s/GENERAL_PRACTICE s/GYNAECOLOGY</code><br>
-Returns all health workers whose field of expertise include general practice
-<strong>and</strong> gynaecology.</p>
-</li>
 <li>
 <p><code>filter request n/alice</code><br>
 Returns all patients whose name contains "alice".</p>
@@ -1023,7 +1084,31 @@ Returns all requests scheduled on 30th Jan 2019, at 10 am sharp.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-requests-health-workers-code-delete-code"><a class="link" href="#deleting-requests-health-workers-code-delete-code">5.6. Deleting requests/health workers : <code>delete</code></a></h3>
+<h3 id="filtering-requests-within-a-specific-date-range"><a class="link" href="#filtering-requests-within-a-specific-date-range">5.6. Filtering requests within a specific date range</a></h3>
+<div class="paragraph">
+<p>Let&#8217;s say you&#8217;ve grown to have an overwhelming number of requests, because you&#8217;ve been doing so successfully! Suppose you now would like to
+look back and take a look at the requests that you had over a specific date range. You can do so using the following command:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>filter request dt/start dt/end</code><br>
+Shortcut(s):<br>
+1. <code>filter r dt/start dt/end</code><br>
+2. <code>filter 2 dt/start dt/end</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter r dt/01-01-2019 00:00:00 dt/01-06-2019</code> 00:00:00<br>
+filters the requests between 1st Jan 2019 (inclusive) and 1st June 2019 (exclusive).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-requests-health-workers-code-delete-code"><a class="link" href="#deleting-requests-health-workers-code-delete-code">5.7. Deleting requests/health workers : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Should there be any invalid or expired request, health worker or patient in
 the application, you may also remove them to prevent cluttering of
@@ -1036,7 +1121,7 @@ shown using the <code>list</code> command, or the index displayed on the GUI.<br
 <p>Format: <code>delete &lt;type&gt; &lt;index&gt;</code><br></p>
 </div>
 <div class="sect3">
-<h4 id="strong-delete-a-health-worker-strong"><a class="link" href="#strong-delete-a-health-worker-strong">5.6.1. <strong>Delete a health worker</strong>:</a></h4>
+<h4 id="strong-delete-a-health-worker-strong"><a class="link" href="#strong-delete-a-health-worker-strong">5.7.1. <strong>Delete a health worker</strong>:</a></h4>
 <div class="paragraph">
 <p><strong>Format:</strong></p>
 </div>
@@ -1066,7 +1151,7 @@ worker list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="strong-delete-a-request-strong"><a class="link" href="#strong-delete-a-request-strong">5.6.2. <strong>Delete a request</strong>:</a></h4>
+<h4 id="strong-delete-a-request-strong"><a class="link" href="#strong-delete-a-request-strong">5.7.2. <strong>Delete a request</strong>:</a></h4>
 <div class="paragraph">
 <p><strong>Format:</strong></p>
 </div>
@@ -1151,7 +1236,7 @@ command immediately after the previous <code>delete</code> command to undo the d
 </div>
 </div>
 <div class="sect2">
-<h3 id="assigning-health-workers-to-an-open-request-code-assign-code"><a class="link" href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></h3>
+<h3 id="assigning-health-workers-to-an-open-request-code-assign-code"><a class="link" href="#assigning-health-workers-to-an-open-request-code-assign-code">5.8. Assigning health workers to an open request : <code>assign</code></a></h3>
 <div class="paragraph">
 <p>After registering a new request using the <code>add request</code> command, you may
 proceed to assign an existing health worker in the system to handle the request,
@@ -1219,7 +1304,7 @@ executing <code>assign hw/2 r/1</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-requests-code-clr-code"><a class="link" href="#clearing-requests-code-clr-code">5.8. Clearing Requests : <code>clr</code></a></h3>
+<h3 id="clearing-requests-code-clr-code"><a class="link" href="#clearing-requests-code-clr-code">5.9. Clearing Requests : <code>clr</code></a></h3>
 <div class="paragraph">
 <p>After closing all existing requests, you also have the option of clearing all
  requests from the request list, regardless of the state of the request, upon
@@ -1248,7 +1333,7 @@ executing <code>assign hw/2 r/1</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="closing-requests-code-complete-code"><a class="link" href="#closing-requests-code-complete-code">5.9. Closing Requests : <code>complete</code></a></h3>
+<h3 id="closing-requests-code-complete-code"><a class="link" href="#closing-requests-code-complete-code">5.10. Closing Requests : <code>complete</code></a></h3>
 <div class="paragraph">
 <p>After an assigned task has been completed by the assigned health staff, who
 has administered the necessary medical treatment, you can mark the request as
@@ -1286,7 +1371,7 @@ Marks the first request in the list as completed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-previous-commands-code-history-code"><a class="link" href="#listing-previous-commands-code-history-code">5.10. Listing previous commands : <code>history</code></a></h3>
+<h3 id="listing-previous-commands-code-history-code"><a class="link" href="#listing-previous-commands-code-history-code">5.11. Listing previous commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>In the case where you have been using the application for a while now, and
 wish to track and see the past commands that you have entered into the
@@ -1317,7 +1402,7 @@ the application in chronological order, allowing you to identify the order in
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-a-request-code-sr-code"><a class="link" href="#viewing-a-request-code-sr-code">5.11. Viewing a request : <code>sr</code></a></h3>
+<h3 id="viewing-a-request-code-sr-code"><a class="link" href="#viewing-a-request-code-sr-code">5.12. Viewing a request : <code>sr</code></a></h3>
 <div class="paragraph">
 <p>With the flexibility in managing and adding, editing and deleting requests,
 existing functionality for the user to view the details of requests in
@@ -1349,7 +1434,7 @@ request.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-reminder-alerts-code-setreminder-code"><a class="link" href="#setting-reminder-alerts-code-setreminder-code">5.12. Setting Reminder Alerts: <code>setreminder</code></a></h3>
+<h3 id="setting-reminder-alerts-code-setreminder-code"><a class="link" href="#setting-reminder-alerts-code-setreminder-code">5.13. Setting Reminder Alerts: <code>setreminder</code></a></h3>
 <div class="paragraph">
 <p>Sometimes, it can be difficult to keep track of multiple tasks and specific
 details for different requests. In addition to the already expressive
@@ -1376,7 +1461,7 @@ the customised message to "to call patient John Doe for his appointment".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="getting-health-condition-statistics-code-statistics-code"><a class="link" href="#getting-health-condition-statistics-code-statistics-code">5.13. Getting health condition statistics: <code>statistics</code></a></h3>
+<h3 id="getting-health-condition-statistics-code-statistics-code"><a class="link" href="#getting-health-condition-statistics-code-statistics-code">5.14. Getting health condition statistics: <code>statistics</code></a></h3>
 <div class="paragraph">
 <p>It is imperative for you to know which health conditions have been seeing an increasing trend, as well as take note of
 those which have been experiencing a decline. The <code>statistics</code> command allows you to view all health conditions that
@@ -1403,7 +1488,7 @@ professionals.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.14. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.15. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Once you are done using the application, you can exit the application by
 entering the <code>exit</code> command, hereby saving any information at the current
@@ -1414,7 +1499,7 @@ point in time before shutting down.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.15. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.16. Saving the data</a></h3>
 <div class="paragraph">
 <p>All application data are saved in the hard disk automatically after exiting
 the application, removing the need to save manually.<br></p>
@@ -1519,4 +1604,4 @@ to the <code>\data</code> folder of the app directory.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 11:05:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 14:17:16 UTC</div></div></div></body></html>
