@@ -285,10 +285,9 @@ sections both at the start and at the summary.</p>
 snippets</p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Contributed to discussions on github pull requests by other team members,
+providing suggestions that were eventually adopted in our existing
+development releases.</p>
 </li>
 </ul>
 </div>
@@ -449,6 +448,23 @@ worker possesses. The list of valid specialisations are as follows:</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The NRIC field provided uniquely identifies the health worker. When entering
+the commands to add or edit a health worker, if the NRIC field matches an
+already existing health worker with the same NRIC field, an error message
+denoting a duplicate worker will be displayed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -552,6 +568,25 @@ match to 'PHYSIOTHERAPY'.</p>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>For example, to display only health workers who specialise in physiotherapy,
+the <code>filter h s/physio</code> command can entered, using the shortcut <code>h</code> for
+health worker mode and the substring <code>physio</code> instead for brevity, as shown
+in the image below, in the Before section:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/filter_healthworker_UG.png" alt="filter healthworker UG">
+</div>
+</div>
+<div class="paragraph">
+<p>When the command is keyed into the application, HealthHub will display the
+state shown by the After section on the right side on the image above. The
+command terminal displays a message denoting how many health workers are
+found that has <code>PHYSIOTHERAPY</code> as a specialisation, and the health worker
+list on the right side of the GUI displays only health workers who has
+expertise in physiotherapy.</p>
+</div>
 </div>
 </div>
 </div>
@@ -559,6 +594,204 @@ match to 'PHYSIOTHERAPY'.</p>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>To ensure that future developers contributing to HealthHub, as well as users
+who wish to improve the implementation and functionality of the
+application, my team and I have also published detailed documentation of each
+ of the features we have implemented, so that potential contributors can
+ easily understand the structure and logic of the features that we have put
+ in place.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-11 02:23:48 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>The following sections details my contribution to the Developer Guide for
+HealthHub up til version release v1.4:</p>
+</div>
+<div class="sect3">
+<h4 id="filtering-code-healthworker-code"><a class="link" href="#filtering-code-healthworker-code">Filtering <code>HealthWorker</code></a></h4>
+<div class="paragraph">
+<p>The <code>filter</code> command allows users to display only <code>HealthWorker</code> or <code>Request</code>
+ whose fields matches the <code>&lt;parameter&gt;</code> specified in the filter command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>filter healthworker/h/1 &lt;prefix&gt;/&lt;parameter&gt; [&lt;prefix/&lt;parameter&gt;]
+&#8230;&#8203;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>filter</code> command checks for <code>HealthWorker</code> whose field specific to the
+<code>&lt;specific&gt;</code> contains or matches the <code>&lt;parameter&gt;</code> provided.</p>
+</li>
+<li>
+<p>Example: <code>filter h n/John</code> changes the UI to display only <code>HealthWorker</code>
+whose name is John, or contains John (Johnny, Johnson, &#8230;&#8203;)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Upon entering the <code>filter</code> command, the <code>filter</code> command word is stripped from the
+ input and the argument fields are passed into the <code>FilterCommandParser</code> class.
+The regular expressions for checking the fields for <code>name</code>, <code>organisation</code>
+and <code>skills</code> follows the same format as mentioned in <code>add</code> command. If
+invalid parameters are specified by the user, or if an invalid <code>keyword</code> was
+specified that does not correspond to any <code>CommandMode</code> enum, then
+<code>FilterCommandParser</code> throws a <code>ParseException</code> and displays an error message
+ to the user.</p>
+</div>
+<div class="paragraph">
+<p>If valid inputs are provided, <code>FilterCommandParser</code> tokenizes the argument
+string without the <code>keyword</code> using <code>ArgumentTokenizer</code> object, mapping each
+parameter to it&#8217;s respective prefix in an <code>ArgumentMultiMap</code> object.
+<code>FilterCommandParser</code> then creates a <code>Predicate</code> object using the parameter
+values in <code>ArgumentMultiMap</code> for each filter condition, and composes them
+into a single <code>Predicate</code> using the <code>and</code> function in <code>Predicate</code> in
+conjuction with <code>stream</code> and <code>reduce</code> methods from Java&#8217;s <code>Function</code> library.
+ The <code>Predicate</code> object composed is then passed into
+ <code>FilterHealthWorkerCommand</code>, which sets the predicate for the <code>HealthWorker</code>
+  list in the GUI to display only <code>HealthWorker</code> whose fields matches the
+  <code>Predicate</code> set.</p>
+</div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="paragraph">
+<p>During the implementation of the <code>filter</code> command, we decide between two
+alternative implementations of managing the <code>Predicates</code> created from
+multiple criteria input by the user.</p>
+</div>
+<div class="paragraph">
+<p>The following table states the considerations for performance as well as
+future implementations and enhancements to HealthHub that were taken into
+account:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Design</th>
+<th class="tableblock halign-left valign-top">Using a <code>List</code> of <code>Predicate</code></th>
+<th class="tableblock halign-left valign-top">Composed <code>Predicate</code> using
+ <code>and</code> method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How it works</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each user input condition will be parsed into <code>Predicate</code>,
+which are stored in an <code>List</code>.
+<strong>Pros</strong>: Easier to manage each single <code>Predicate</code> as they are kept separate
+<strong>Cons</strong>: Need to rework existing GUI implementation for <code>filter</code> as it only
+uses a single <code>Predicate</code> Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each user input will be parsed into a <code>Predicate</code> object, and all the
+<code>Predicate</code> formed will be composed into a single <code>Predicate</code> object.
+<strong>Pros</strong>: Ease of existing and future implementations as functionality only
+depends on <code>Predicate</code>
+<strong>Cons</strong>: Unable to specify actions for each <code>Predicate</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implementation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User inputs are first parsed into <code>Predicate</code> equivalents,
+and then added to an <code>ArrayList</code>. <code>FilterCommandParser</code> then takes the
+existing <code>UniqueHealthWorkerList</code>, checks for <code>HealthWorker</code> whose fields
+matches the list of <code>Predicate</code> using <code>allMatch</code> method from the <code>Predicate</code>
+library, and then returns an <code>ObservableList</code> containing those <code>HealthWorker</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User inputs are parsed into <code>Predicate</code> equivalents, which are then composed
+into a single <code>Predicate</code> containing the logic of all the composed
+<code>Predicates</code> using the <code>and</code> method from <code>Predicate</code> library. The composed
+<code>Predicate</code> is then set as the filter condition into the existing
+<code>ObservableList</code> of <code>HealthWorker</code> in the UI component.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Ultimately, the decision was made to implement the <code>filter</code> command by
+composing the <code>Predicate</code> that were formed from the user inputs into a single
+ <code>Predicate</code> using a combination of Java&#8217;s <code>Function</code> library methods
+ <code>stream</code> and <code>reduce</code>, as well as the <code>and</code> method used in Java&#8217;s
+ <code>Predicate</code> library.<br>
+This is because maintain a <code>List</code> of <code>Predicate</code> in HealthHub requires an
+unnecessary rework of many existing components in HealthHub in order to fit
+the new implementation of using a <code>List</code>, such as replacing <code>Predicate</code> in
+methods involved with <code>List&lt;Predicate&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>In addition, by returning a single <code>Predicate</code> object, ease of implementation
+ of methods in <code>filter</code> command, as well as any future or existing
+ enhancements to <code>filter</code> reduces the complexity of code as the function
+ needs only to depend on <code>Predicate</code> and not <code>List</code>, hence observing the Law
+ of Demeter.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The following sequence diagram shows the flow of events when the <code>filter h
+s/physio</code> command is entered by the user to display only <code>HealthWorker</code>
+objects that possess expertise in physiotherapy:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FilterHealthWorkerSD.png" alt="FilterHealthWorkerSD" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 3.6.1.1: Sequence diagram illustrating the interactions between the
+<code>Logic</code> and <code>Model</code> components when <code>filter</code> command is called.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When the user inputs the full command <code>filter h s/physio</code>, the
+<code>LogicManager</code> object takes in the command string, and passes it into
+<code>HealthHubParser</code> using the <code>parseCommand</code> method.</p>
+</li>
+<li>
+<p><code>HealthHubParser</code> identifies the command word in the input string, which is
+<code>filter</code>, and identifies the appropriate <code>CommandParser</code> object to parse the
+ user command.</p>
+</li>
+<li>
+<p><code>HealthHubParser</code> strips the <code>filter</code> command word off the user input, and
+passes the remaining argument string in to a new <code>FilterCommandParser</code> object
+ as corresponding to the <code>filter</code> command word.</p>
+</li>
+<li>
+<p><code>FilterCommandParser</code> then checks for a valid <code>CommandMode</code> that
+corresponds to the first keyword in the argument string. In this case, the
+keyword <code>h</code> corresponds to the <code>CommandMode.HEALTHWORKER</code> value.
+<code>FilterCommandParser</code> then creates a <code>FilterHealthWorkerCommand</code> with the
+<code>Predicate</code> constructed from the fields remaining in the argument string. For
+ full detail on the implementation of the <code>FilterCommandParser</code> logic, see
+ the sequence diagram in figure 3.6.1.2 below.</p>
+</li>
+<li>
+<p><code>FilterCommandParser</code> returns the <code>FilterHealthWorkerCommand</code> object to
+<code>HealthHubParser</code>, which calls the <code>execute</code> method of
+<code>FilterHealthWorkerCommand</code>.</p>
+</li>
+<li>
+<p><code>FilterHealthWorkerCommand</code> uses Java 8&#8217;s <code>Predicate</code> and <code>Function</code>
+libraries to condense all the supplied <code>List&lt;Predicate&gt;</code> into a single
+<code>Predicate</code> using the <code>and</code>, <code>reduce</code> and <code>stream</code> method calls. After which,
+ it calls the <code>updateFilteredHealthWorker</code> method in <code>Model</code> to set the
+ condensed <code>Predicate</code> on the <code>UniqueHealthWorkerBook</code> in <code>Model</code>, displaying
+  only the <code>HealthWorker</code> that evaluates the set <code>Predicate</code> to true on the GUI.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FilterCommandParserLogicSD.png" alt="FilterCommandParserLogicSD" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 3.6.1.2 Sequence Diagram that details the interaction that happens
+within the <code>FilterCommandParser</code> class when it&#8217;s <code>parse()</code> method is called.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:53:16 UTC</div></div></div></body></html>

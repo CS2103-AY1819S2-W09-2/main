@@ -589,6 +589,23 @@ worker possesses. The list of valid specialisations are as follows:</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The NRIC field provided uniquely identifies the health worker. When entering
+the commands to add or edit a health worker, if the NRIC field matches an
+already existing health worker with the same NRIC field, an error message
+denoting a duplicate worker will be displayed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="strong-adding-a-request-strong"><a class="link" href="#strong-adding-a-request-strong">5.3.2. <strong>Adding a request</strong></a></h4>
@@ -934,6 +951,25 @@ match to 'PHYSIOTHERAPY'.</p>
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>For example, to display only health workers who specialise in physiotherapy,
+the <code>filter h s/physio</code> command can entered, using the shortcut <code>h</code> for
+health worker mode and the substring <code>physio</code> instead for brevity, as shown
+in the image below, in the Before section:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/filter_healthworker_UG.png" alt="filter healthworker UG">
+</div>
+</div>
+<div class="paragraph">
+<p>When the command is keyed into the application, HealthHub will display the
+state shown by the After section on the right side on the image above. The
+command terminal displays a message denoting how many health workers are
+found that has <code>PHYSIOTHERAPY</code> as a specialisation, and the health worker
+list on the right side of the GUI displays only health workers who has
+expertise in physiotherapy.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1575,4 +1611,4 @@ to the <code>\data</code> folder of the app directory.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-11 02:23:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:53:15 UTC</div></div></div></body></html>
