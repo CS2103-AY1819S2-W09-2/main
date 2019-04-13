@@ -29,7 +29,7 @@
 <li><a href="#editing-requests-health-workers-code-edit-code">5.4. Editing requests/health workers : <code>edit</code></a></li>
 <li><a href="#filtering-health-workers-requests-code-filter-code">5.5. Filtering health workers/requests: <code>filter</code></a></li>
 <li><a href="#deleting-requests-health-workers-code-delete-code">5.6. Deleting requests/health workers : <code>delete</code></a></li>
-<li><a href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></li>
+<li><a href="#assigning-requests-to-a-health-worker-code-assign-code">5.7. Assigning requests to a health worker : <code>assign</code></a></li>
 <li><a href="#clearing-requests-code-clr-code">5.8. Clearing Requests : <code>clr</code></a></li>
 <li><a href="#closing-requests-code-complete-code">5.9. Closing Requests : <code>complete</code></a></li>
 <li><a href="#listing-previous-commands-code-history-code">5.10. Listing previous commands : <code>history</code></a></li>
@@ -1243,7 +1243,7 @@ command immediately after the previous <code>delete</code> command to undo the d
 </div>
 </div>
 <div class="sect2">
-<h3 id="assigning-health-workers-to-an-open-request-code-assign-code"><a class="link" href="#assigning-health-workers-to-an-open-request-code-assign-code">5.7. Assigning health workers to an open request : <code>assign</code></a></h3>
+<h3 id="assigning-requests-to-a-health-worker-code-assign-code"><a class="link" href="#assigning-requests-to-a-health-worker-code-assign-code">5.7. Assigning requests to a health worker : <code>assign</code></a></h3>
 <div class="paragraph">
 <p>After registering a new request using the <code>add request</code> command, you may
 proceed to assign an existing health worker in the system to handle the request,
@@ -1282,7 +1282,11 @@ than the number of requests/health workers in the current list.</p>
 <li>
 <p><code>assign r/1 hw/2</code><br>
 Assigns the health worker at the second index to the first request in the
-request list.</p>
+request list.<br></p>
+</li>
+<li>
+<p><code>assign r/1 r/2 hw/2</code><br>
+Assigns the requests at the first and second request on the request list to the 2nd health worker in the healthworker list.</p>
 </li>
 </ul>
 </div>
@@ -1296,12 +1300,15 @@ request list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You cannot assign a healthworker to a completed request. To assign a healthworker to a request that is already completed,
+<p>Healthworkers cannot be assigned to a completed request. To assign a healthworker to a request that is already completed,
 use <code>edit</code> to change the status of the request to pending first.<br></p>
 </li>
 <li>
 <p>You can reorder the parameters of the request and the healthworker. For example, executing <code>assign r/1 hw/2</code> has the same as
-executing <code>assign hw/2 r/1</code></p>
+executing <code>assign hw/2 r/1</code><br></p>
+</li>
+<li>
+<p>Requests have to be at least 2 hours apart. i.e Healthworkers cannot be assigned to 2 requests that are less than 2 hours apart.</p>
 </li>
 </ul>
 </div>
@@ -1362,6 +1369,9 @@ request closed.</p>
 <li>
 <p>The <code>request_index</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203; and not greater
 than the number of requests in the current list.</p>
+</li>
+<li>
+<p>The <code>complete</code> command can only be used on <strong>ongoing</strong> requests. To complete a pending request, use the <code>edit</code> command to change the status of the request.</p>
 </li>
 </ul>
 </div>
@@ -1611,4 +1621,4 @@ to the <code>\data</code> folder of the app directory.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 22:57:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 05:05:29 UTC</div></div></div></body></html>
