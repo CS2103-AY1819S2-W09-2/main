@@ -3,7 +3,13 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Choong Wey Yeh - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-health-hub"><a class="link" href="#project-health-hub">Project: Health Hub</a></h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Greetings! I am a Year 2 undergraduate in NUS majoring in Computer Science
+with a passion for solving real world problems using my technical expertise
+in software development and technological knowledge. This portfolio details
+the contributions that I have made to HealthHub, the considerations and also
+the decisions made in my implementation of various functions in HealthHub.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -120,6 +126,12 @@ and <code>Request</code>, I had to rework the existing implementation of <code>C
  use the new revised <code>CommandParser</code> class for the development of their features
   as well.</p>
 </li>
+<li>
+<p>Adjusted the implementation for <code>FilterCommandParser</code>, <code>ListCommandParser</code>
+and <code>DeleteCommandParser</code> implemented by my teammates use <code>CommandMode</code> to
+for a more seamless integration of the <code>filter</code>, <code>list</code> and <code>delete</code> commands
+ into HealthHub.</p>
+</li>
 </ul>
 </div>
 </li>
@@ -142,64 +154,29 @@ based on filter conditions they input.</p>
 </li>
 <li>
 <p>A significant difficulty that was faced when implementing this feature, is
-the ability to combine multiple conditions of user inputs. The following
-considerations and possible solutions for this problem are as follows:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 45.4545%;">
-<col style="width: 45.4546%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Design</th>
-<th class="tableblock halign-left valign-top">Using a <code>List</code> of <code>Predicate</code></th>
-<th class="tableblock halign-left valign-top">Composed <code>Predicate</code> using <code>and</code> method</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">How it works</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Each user input condition will be parsed into <code>Predicate</code>,
-which are stored in an <code>List</code>.
-<strong>Pros</strong>: Easier to manage each single <code>Predicate</code> as they are kept separate
-<strong>Cons</strong>: Need to rework existing GUI implementation for <code>filter</code> as it only
-uses a single <code>Predicate</code> Object</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Each user input will be parsed into a <code>Predicate</code> object, and all the
-<code>Predicate</code> formed will be composed into a single <code>Predicate</code> object.
-<strong>Pros</strong>: Ease of existing and future implementations as functionality only
-depends on <code>Predicate</code>
-<strong>Cons</strong>: Unable to specify actions for each <code>Predicate</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Implementation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User inputs are first parsed into <code>Predicate</code> equivalents,
-and then added to an <code>ArrayList</code>. <code>FilterCommandParser</code> then takes the
-existing <code>UniqueHealthWorkerList</code>, checks for <code>HealthWorker</code> whose fields
-matches the list of <code>Predicate</code> using <code>allMatch</code> method from the <code>Predicate</code>
-library, and then returns an <code>ObservableList</code> containing those <code>HealthWorker</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User inputs are parsed into <code>Predicate</code> equivalents, which are then composed
-into a single <code>Predicate</code> containing the logic of all the composed
-<code>Predicates</code> using the <code>and</code> method from <code>Predicate</code> library. The composed
-<code>Predicate</code> is then set as the filter condition into the existing
-<code>ObservableList</code> of <code>HealthWorker</code> in the UI component.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
+the ability to combine multiple conditions of user inputs. The two main
+solutions that were considered were firstly, storing all the filter
+conditions into a <code>List&lt;Predicate</code>, while the second solution involved
+condensing all the filter conditions into a single <code>Predicate</code> using Java&#8217;s
+<code>Predicate</code> and <code>Function</code> library methods.</p>
+<div class="ulist">
+<ul>
+<li>
 <p>Weighing both the pros and cons of both design considerations, I decided to
- go with composing multiple <code>Predicates</code> into a single <code>Predicate</code> by using
- the functional programming paradigm through Java&#8217;s <code>Predicate</code> and
- <code>Function</code> libraries. This is because doing so increases the ease of
- implementation for future enhancements to HealthHub with the increased
- flexibility, and also future implementations are less tightly coupled as
- they only need to depend on <code>Predicate</code> and not <code>List</code>.</p>
+go with composing multiple <code>Predicates</code> into a single <code>Predicate</code> by using
+the functional programming paradigm through Java&#8217;s <code>Predicate</code> and
+<code>Function</code> libraries. This is because doing so increases the ease of
+implementation for future enhancements to HealthHub with the increased
+flexibility, and also future implementations are less tightly coupled as
+they only need to depend on <code>Predicate</code> and not <code>List</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>&#160;</p>
@@ -213,9 +190,9 @@ into a single <code>Predicate</code> containing the logic of all the composed
 <div class="ulist">
 <ul>
 <li>
-<p>Adjusted the implementation for <code>FilterCommandParser</code>, <code>ListCommandParser</code>
-and <code>DeleteCommandParser</code> implemented by my teammates to for a more seamless
- integration of the <code>filter</code>, <code>list</code> and <code>delete</code> commands into HealthHub.</p>
+<p>Added the ability for users to perform Create, Read, Update and Delete
+(CRUD) operations for health workers in HealthHub by implementing the <code>add
+healthworker</code>, <code>edit healthworker</code> and <code>delete healthworker</code> commands.</p>
 </li>
 <li>
 <p>Wrote incremental integration tests for existing features in HealthHub, as
@@ -256,10 +233,6 @@ contributions to HealthHub.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Created the base skeleton and layout for the HealthHub User Guide
-documentation.</p>
-</li>
-<li>
 <p>Contributed to the descriptions of each feature by reviewing the
 explanation of features in the User Guide, and overhauling it to be more
 informative and audience-focused.</p>
@@ -267,10 +240,6 @@ informative and audience-focused.</p>
 <li>
 <p>Provided the notation and structure for my team to follow when documenting
 our changes and contributions made to HealthHub in the User Guide.</p>
-</li>
-<li>
-<p>Provided easy navigation through the User Guide by adding links to various
-sections both at the start and at the summary.</p>
 </li>
 </ul>
 </div>
@@ -312,7 +281,7 @@ repository.</p>
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As my team and I morphed the original implementation of AddressBook4 to
+<p>As my team and I transformed the original implementation of AddressBook4 to
 HealthHub, we have also extensively updated the User Guide to allow for users
  to better understand what HealthHub aims to achieve, and how it does so.</p>
 </div>
@@ -792,4 +761,4 @@ within the <code>FilterCommandParser</code> class when it&#8217;s <code>parse()<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:44:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:23:42 UTC</div></div></div></body></html>
