@@ -179,8 +179,8 @@ for health care professionals to tend to these people. Yet, the current messy sy
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedBook</code>.
-There are two implementations of it. One extending <code>HealthWorkerBook</code> and the other extending <code>RequestBook</code>.
-Both contain an undo/redo history, stored internally as an <code>healthWorkerBookStateList</code>/<code>requestBookStateList</code>
+There are two extensions of it. <code>VersionedHealthWorkerBook</code> extends <code>HealthWorkerBook</code> and <code>VersionedRequestBook</code> extends <code>RequestBook</code>.
+Both contain an undo/redo history, stored internally as an <code>healthWorkerBookStateList</code> or <code>requestBookStateList</code>
  and <code>currentStatePointer</code>.
 Additionally, it implements the following operations:</p>
 </div>
@@ -198,11 +198,11 @@ Additionally, it implements the following operations:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code>
-and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commit()</code>, <code>Model#undo()</code>
+and <code>Model#redo()</code> respectively.</p>
 </div>
 <div class="paragraph">
-<p>The feature also makes use <code>ModifyCommandManager</code> to keep track of the commands that modified the books. It contains
+<p>The feature also makes use <code>ModifyCommandHistory</code> to keep track of the commands that modified the books. It contains
 <code>currentStatePointer</code> and a list of <code>CommandType</code> enums to differenciate the type of command to undo or redo.
 Similar to <code>CommandMode</code>, the various <code>CommandType</code> enums are:</p>
 </div>
@@ -217,31 +217,51 @@ Similar to <code>CommandMode</code>, the various <code>CommandType</code> enums 
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-{to be updated}</p>
+<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedRequestBook</code> and <code>VersionedHealthWorkerBook</code> will be initialized with the initial state,
+ and the <code>currentStatePointer</code> for each <code>VersionedBook</code> pointing to that single book state.
+Since no modify command has been called, the initial list of commands in <code>ModifyCommandHistory</code> is empty and the initial <code>currentStatePointer</code> of <code>ModifyCommandHistory</code> is initialized to -1.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
+<img src="../images/initrb.png" alt="initrb" width="800">
 </div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
+<img src="../images/inithb.png" alt="inithb" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 2. The user executes <code>delete r 5</code> command to delete the 5th request in request book. The <code>delete r</code> command calls <code>Model#commit(REQUEST_COMMAND)</code>, causing the modified state of the request book after the <code>delete r 5</code> command executes to be saved in the <code>requestBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted request book state.
+Since the request book is modified, the enum <code>REQUEST_COMMAND</code> is added to the <code>modifyCommandHistory</code> list within the <code>ModifyCommandHistory</code> class and the <code>currentStatePointer</code> is now pointing at the most recent command.
+The <code>VersionedHealthWorkerBook</code> is unaffected.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
+<img src="../images/rbafterdelete.png" alt="rbafterdelete" width="800">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/mchafterdelete.png" alt="mchafterdelete" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 3. The user executes <code>add h n/David &#8230;&#8203;</code> to add a new healthworker. The <code>add h</code> command also calls <code>Model#commit(HEALTHWORKER_COMMAND)</code>, causing a modified health worker book state to be saved into the <code>healthWorkerBookStateList</code> and the <code>currentStatePointer</code> is shifted to the new health worker book state.
+The enum <code>HEALTHWORKER_COMMAND</code> is added into the <code>modifyCommandHistory</code> list of the <code>ModifyCommandHistory</code> class.
+The <code>VersionedRequestBook</code> is unaffected.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/hbafteradd.png" alt="hbafteradd" width="800">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/mchafteradd.png" alt="mchafteradd" width="800">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -251,17 +271,24 @@ Similar to <code>CommandMode</code>, the various <code>CommandType</code> enums 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will not call <code>Model#commit()</code>, so the book state will not be saved into the <code>healthWorkerBookStateList</code> or <code>requestBookStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the health worker was a mistake, and decides to undo that action by executing the <code>undo</code> command.
+The <code>undo</code> command will call <code>Model#undo()</code>, which will first obtain the type of command that needs to be undone by caling  <code>ModifyCommandHistory#getUndoCommand()</code>. In this case <code>HEALTHWORKER_COMMAND</code> is returned, and hence will call undo on <code>VersionedHealthWorkerBook</code>. It will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous health worker book state, and restores the health worker book to that state.
+The <code>currentStatePointer</code> of the <code>ModifyCommandHistory</code> also gets shifted once to the left, pointing it to the previous command.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
+<img src="../images/hbafterundo.png" alt="hbafterundo" width="800">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/mchafterundo.png" alt="mchafterundo" width="800">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -271,7 +298,7 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>currentStatePointer</code> of both <code>VersionedHealthWorkerBook</code> and <code>VersionedRequestBook</code> is at index 0, pointing to the initial book state for both books, then there are no previous states to restore. The <code>undo</code> command uses <code>Model#canUndo()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -285,7 +312,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redo()</code>, which first obtains the command type by calling <code>ModifyCommandHistory#getRedoCommand()</code> and based on the returned command type it shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the respective book to that state.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -294,25 +321,32 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>currentStatePointer</code> of both <code>VersionedBook</code> s are pointing to the latest state, then there are no undone book states to restore. The <code>redo</code> command uses <code>Model#canRedo()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>list r</code>. Commands that do not modify the books, such as <code>list r</code>,
+will not call <code>Model#commit()</code>, <code>Model#undo()</code> or <code>Model#redo()</code>. Thus, the <code>VersionedBook</code> s and <code>ModyfiCommandHistory</code> do not change.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
+<img src="../images/rbafterlist.png" alt="rbafterlist" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>delete h 1</code>, which calls <code>Model#commit(HEALTHWORKER_COMMAND)</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>healthWorkerBookStateList</code>, all health worker book states after the <code>currentStatePointer</code> will be purged.
+We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
+<img src="../images/hbafterdel.png" alt="hbafterdel" width="800">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/mchafteroverride.png" alt="mchafteroverride" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -328,69 +362,96 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Implementation</th>
+<th class="tableblock halign-left valign-top">Saves the entire book (Current implementation)</th>
+<th class="tableblock halign-left valign-top">Individual command knows how to undo/redo by itself.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Less prone to bugs since the we are switching between different versions of the books.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">May have performance issues in terms of memory usage especially for
+large numbers of health workers and requests.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Every command will have their own implementation of undo and some of them are slow hence it causes performance issues.
+(e.g. for <code>clr</code>, all requests that were deleted have to be added back into the list, which will be quite slow if
+there is a large number of requests).</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Implementation</th>
+<th class="tableblock halign-left valign-top">Use a list to store the history of book states.(Current implementation)</th>
+<th class="tableblock halign-left valign-top">Use <code>HistoryManager</code> for undo/redo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo and redo commands runs faster since it only involves the switching of the state pointer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supports multiple books with the <code>HistoryManager</code> alone since we are undoing from the command history.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Need multiple <code>VersionedBook</code> s. One or each type of book.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HistoryManager</code> keeps a record of all commands, even if they are invalid or commands that does not call <code>Model#commit()</code>.
+Traversing these irrelevant commands to find the next undoable command will take a long time especially if size of history is large.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-handle-multiple-code-versionedbooks-code"><a class="link" href="#aspect-data-structure-to-handle-multiple-code-versionedbooks-code">Aspect: Data structure to handle multiple <code>VersionedBooks</code></a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Implementation</th>
+<th class="tableblock halign-left valign-top">Use a command history to keep track
+of the type of book that was modified It is represented as a list of <code>CommandType</code>.(Current implementation)</th>
+<th class="tableblock halign-left valign-top">Use a list of pairs. Each state is represented as a pair which stores the <code>currentStatePointer</code> of each book.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easily scalable to include more than two books. As the developer can simply add an extra <code>CommandType</code>
+and extra cases for switch statements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supports commands that change multiple books at once since it keeps track of all states.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unable to handle commands that change multiple books at once. We assume that only one <code>currentStatePointer</code> can change per undo/redo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keeping a multiple integers takes up more memory as compared to keeping a single enum.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -410,4 +471,4 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:05:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:08:30 UTC</div></div></div></body></html>
