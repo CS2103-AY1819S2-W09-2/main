@@ -158,7 +158,56 @@ the ability to combine multiple conditions of user inputs. The two main
 solutions that were considered were firstly, storing all the filter
 conditions into a <code>List&lt;Predicate</code>, while the second solution involved
 condensing all the filter conditions into a single <code>Predicate</code> using Java&#8217;s
-<code>Predicate</code> and <code>Function</code> library methods.</p>
+<code>Predicate</code> and <code>Function</code> library methods. The considerations for each
+solution are as follows:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Design</th>
+<th class="tableblock halign-left valign-top">Using a <code>List</code> of <code>Predicate</code></th>
+<th class="tableblock halign-left valign-top">Composed <code>Predicate</code> using <code>and</code> method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How it works</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each user input condition will be parsed into <code>Predicate</code>,
+which are stored in an <code>List</code>.
+<strong>Pros</strong>: Easier to manage each single <code>Predicate</code> as they are kept separate
+<strong>Cons</strong>: Need to rework existing GUI implementation for <code>filter</code> as it only
+uses a single <code>Predicate</code> Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each user input will be parsed into a <code>Predicate</code> object, and all the
+<code>Predicate</code> formed will be composed into a single <code>Predicate</code> object.
+<strong>Pros</strong>: Ease of existing and future implementations as functionality only
+depends on <code>Predicate</code>
+<strong>Cons</strong>: Unable to specify actions for each <code>Predicate</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implementation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User inputs are first parsed into <code>Predicate</code> equivalents,
+and then added to an <code>ArrayList</code>. <code>FilterCommandParser</code> then takes the
+existing <code>UniqueHealthWorkerList</code>, checks for <code>HealthWorker</code> whose fields
+matches the list of <code>Predicate</code> using <code>allMatch</code> method from the <code>Predicate</code>
+library, and then returns an <code>ObservableList</code> containing those <code>HealthWorker</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User inputs are parsed into <code>Predicate</code> equivalents, which are then composed
+into a single <code>Predicate</code> containing the logic of all the composed
+<code>Predicates</code> using the <code>and</code> method from <code>Predicate</code> library. The composed
+<code>Predicate</code> is then set as the filter condition into the existing
+<code>ObservableList</code> of <code>HealthWorker</code> in the UI component.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <ul>
 <li>
@@ -169,12 +218,6 @@ the functional programming paradigm through Java&#8217;s <code>Predicate</code> 
 implementation for future enhancements to HealthHub with the increased
 flexibility, and also future implementations are less tightly coupled as
 they only need to depend on <code>Predicate</code> and not <code>List</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
 </li>
 </ul>
 </div>
@@ -288,152 +331,6 @@ HealthHub, we have also extensively updated the User Guide to allow for users
 <div class="paragraph">
 <p>The following sections details my contribution to the User Guide up til
 HealthHub version release v1.4.</p>
-</div>
-<div class="sect2">
-<h3 id="adding-requests-health-workers-code-add-code"><a class="link" href="#adding-requests-health-workers-code-add-code">Adding requests/health workers: <code>add</code></a></h3>
-<div class="paragraph">
-<p>Before you can jump right intWo the core feature of our application and
-streamline the process of adding requests from patients and to assign
-requests to experts in the medical field, it is essential to first ensure
-that the respective health staff and patients are registered in the system
-with all the key information.</p>
-</div>
-<div class="paragraph">
-<p>Add a request, health worker or patient to the application based on the
-<code>&lt;type&gt;</code> parameter accepted, using the <code>add</code> command, to register new health
-staff, patients and requests.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>add &lt;type&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br></p>
-</div>
-<div class="sect3">
-<h4 id="strong-adding-a-health-worker-strong"><a class="link" href="#strong-adding-a-health-worker-strong"><strong>Adding a health worker</strong></a></h4>
-<div class="paragraph">
-<p><strong>Format:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add healthworker n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;
-o/&lt;organisation&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Shortcuts:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add h n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt;
-o/&lt;organisation&gt; s/&lt;specialisation&gt;&#8230;&#8203;</code><br></p>
-</li>
-<li>
-<p><code>add 1 n/&lt;worker_name&gt; i/&lt;NRIC&gt; n/&lt;phone_number&gt; o/&lt;organisation&gt;
-s/&lt;specialisation&gt;&#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Command that registers a new Health Worker person to the current roster.
-Health Workers comprises of personnel who are authorized to work in sectors in the
-healthcare industry in accordance to their <code>specialisation</code>.</p>
-</div>
-<div class="paragraph">
-<p>Health Workers authorized for medical practice specific to their
-<code>specialisation</code> include doctors, nurses and community health workers that
-are officially certified by certain medical practices.</p>
-</div>
-<div class="paragraph">
-<p>Each of the following fields entered by the user following
-each prefix are compulsory, and must adhere to the following format:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>&lt;worker_name&gt;</code>: Name must only contain alphanumeric characters and spaces
-, and cannot be empty. E.g Dog Terr</p>
-</li>
-<li>
-<p><code>&lt;NRIC&gt;</code>: NRIC must start with S, T, G or F capitalized, followed by 7
-numeric characters and a capitalized alphabetical character. E.g S1234567A</p>
-</li>
-<li>
-<p><code>&lt;phone_number&gt;</code>: Phone number must only contain 8 numeric characters, and
-start with a 6, 8 or 9.</p>
-</li>
-<li>
-<p><code>&lt;organisation&gt;</code>: Organisation that the health worker belongs to.
-Organisation name must have at least 2 characters, and only contain
-alphanumeric characters.</p>
-</li>
-<li>
-<p><code>&lt;specialisation&gt;</code>: Specialisation in the medical field that the health
-worker possesses. The list of valid specialisations are as follows:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>GENERAL_PRACTICE</p>
-</li>
-<li>
-<p>CARDIOLOGY</p>
-</li>
-<li>
-<p>ENDOCRINOLOGY</p>
-</li>
-<li>
-<p>NEUROLOGY</p>
-</li>
-<li>
-<p>ORTHOPAEDIC</p>
-</li>
-<li>
-<p>PAEDIATRIC</p>
-</li>
-<li>
-<p>GYNAECOLOGY</p>
-</li>
-<li>
-<p>UROLOGY</p>
-</li>
-<li>
-<p>PATHOLOGY</p>
-</li>
-<li>
-<p>HAEMATOLOGY</p>
-</li>
-<li>
-<p>PHYSIOTHERAPY</p>
-</li>
-<li>
-<p>OCCUPATIONAL_THERAPY</p>
-</li>
-<li>
-<p>ANAESTHESIOLOGY</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The NRIC field provided uniquely identifies the health worker. When entering
-the commands to add or edit a health worker, if the NRIC field matches an
-already existing health worker with the same NRIC field, an error message
-denoting a duplicate worker will be displayed.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="filtering-health-workers-requests-code-filter-code"><a class="link" href="#filtering-health-workers-requests-code-filter-code">Filtering health workers/requests: <code>filter</code></a></h3>
@@ -761,4 +658,4 @@ within the <code>FilterCommandParser</code> class when it&#8217;s <code>parse()<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:23:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:29:54 UTC</div></div></div></body></html>
