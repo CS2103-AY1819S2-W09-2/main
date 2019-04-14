@@ -64,6 +64,24 @@ It is complicated to implement due to the various design considerations (See bel
 </div>
 </li>
 <li>
+<p><strong>Enhancement 2</strong>: Reimplemented storage component</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What is does: Stores all requests and health workers data into <code>json</code> text files whenever any of the data is edited or when app is closed.</p>
+</li>
+<li>
+<p>Justification: Storage is a necessary key feature in our app, having a storage system containing information of health workers and requests saves
+a lot of time when the user wants to view the information of a specific request or health worker. He can simply filter for the conditions he want using the app
+instead of searching the documents manually.</p>
+</li>
+<li>
+<p>Credits: <a href="https://se-education.org/addressbook-level4/">AddressBook</a> for the original implementation of the storage component.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103-AY1819S2-W09-2/main/blob/master/src/main/java/seedu/address/model/ModelManager.java">ModelManager</a>]
 [<a href="https://github.com/CS2103-AY1819S2-W09-2/main/blob/master/src/main/java/seedu/address/model/ModifyCommandHistory.java">ModifyCommandHistory</a>]
 [<a href="https://github.com/CS2103-AY1819S2-W09-2/main/blob/master/src/main/java/seedu/address/storage/JsonHealthWorkerBookStorage.java">HealthWorkerBookStorage</a>]
@@ -80,7 +98,7 @@ It is complicated to implement due to the various design considerations (See bel
 <div class="ulist">
 <ul>
 <li>
-<p>Modified <code>Complete</code> command to support undo/redo features</p>
+<p>Modified <code>Complete</code> command and <code>EditHealthWorker</code> command to support undo/redo features</p>
 </li>
 </ul>
 </div>
@@ -124,6 +142,25 @@ It is complicated to implement due to the various design considerations (See bel
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="v1-4-release-notes"><a class="link" href="#v1-4-release-notes">v1.4 Release Notes</a></h3>
+<div class="paragraph">
+<p>With the release of version 1.4, we decided to improve our current features by making them more dynamic and automated to reduce the manual work of changing the data.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The health worker field inside requests now shows the NRIC of the health worker instead of the name in previous versions.</p>
+</li>
+<li>
+<p>Editing the NRIC of a health worker will dynamically change the health staff field  of all requests assigned to the health worker.</p>
+</li>
+<li>
+<p>Users can assign multiple requests to a health worker only if the requests are at least 2 hours apart.</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="sect2">
 <h3 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">Undoing Commands : <code>undo</code></a></h3>
 <div class="paragraph">
@@ -245,6 +282,9 @@ Similar to <code>CommandMode</code>, the various <code>CommandType</code> enums 
 <li>
 <p><code>CommandType.REQUEST_COMMAND</code></p>
 </li>
+<li>
+<p><code>CommandType.HEALTHWORKER_AND_REQUEST_COMMAND</code></p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -339,7 +379,7 @@ If the <code>currentStatePointer</code> of both <code>VersionedHealthWorkerBook<
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
+<img src="../images/UndoRedoSeqDiagram.png" alt="UndoRedoSeqDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -385,7 +425,7 @@ We designed it this way because it no longer makes sense to redo the <code>add n
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+<img src="../images/UndoRedoActDiagram.png" alt="UndoRedoActDiagram" width="650">
 </div>
 </div>
 </div>
@@ -478,8 +518,8 @@ and extra cases for switch statements.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unable to handle commands that change multiple books at once. We assume that only one <code>currentStatePointer</code> can change per undo/redo.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Keeping a multiple integers takes up more memory as compared to keeping a single enum.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unable to scale as well if there are many commands that modifies multiple books at once.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keeping multiple integers takes up more memory as compared to keeping a single enum.</p></td>
 </tr>
 </tbody>
 </table>
@@ -487,4 +527,4 @@ and extra cases for switch statements.</p></td>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:29:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 17:49:39 UTC</div></div></div></body></html>
