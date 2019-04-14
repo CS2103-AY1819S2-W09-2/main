@@ -84,6 +84,8 @@
 <li><a href="#editing-a-code-healthworker-code">F.3. Editing a <code>HealthWorker</code></a></li>
 <li><a href="#deleting-a-code-healthworker-code">F.4. Deleting a <code>HealthWorker</code></a></li>
 <li><a href="#saving-data">F.5. Saving data</a></li>
+<li><a href="#undoing-a-command">F.6. Undoing a command</a></li>
+<li><a href="#redoing-a-command">F.7. Redoing a command</a></li>
 </ul>
 </li>
 </ul>
@@ -2794,9 +2796,6 @@ proximity to the patient address will be assigned to the request.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -3022,7 +3021,61 @@ message. Status bar remains the same.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>If data file is missing, the app will retrieve a list of sample data internally. It will be saved upon exit.</p>
+</li>
+<li>
+<p>If any of the data is corrupted, the app will start with empty books, adding a health worker
+or request will overwrite the corrupted file.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undoing-a-command"><a class="link" href="#undoing-a-command">F.6. Undoing a command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Undo a command that has been executed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: A command that modifies the data has been executed already, for example <code>delete r 1</code>.</p>
+</li>
+<li>
+<p>Test case: <code>undo</code><br>
+Expected: The request has been deleted will appear back inside the list in its original position.</p>
+</li>
+<li>
+<p>Test case: <code>undo</code> without any prerequisites<br>
+Expected: The application will show an error message: No more commands to undo!</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="redoing-a-command"><a class="link" href="#redoing-a-command">F.7. Redoing a command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Redo an undone command</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: A successful undo command have to be executed already.</p>
+</li>
+<li>
+<p>Test case: <code>redo</code><br>
+Expected: The application will redo the undone command.</p>
+</li>
+<li>
+<p>Test case: <code>redo</code> without prerequisites+
+Expected: The application will show an error message: No more commands to redo!</p>
 </li>
 </ol>
 </div>
@@ -3031,4 +3084,4 @@ message. Status bar remains the same.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 17:49:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 17:56:34 UTC</div></div></div></body></html>
