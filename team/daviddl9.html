@@ -23,9 +23,6 @@
 We chose to morph it to a home-care patient management system, because of our passion in the health care industry. This enhanced application allows Hospital Administrators and senior management to create, assign and organise patient records seamlessly. HealhHub also organises staff information and manages statistics to assist in the Hospital&#8217;s planning and allocation of resources.</p>
 </div>
 <div class="paragraph">
-<p>My role was to design and implement the <code class="blue">Request</code> related commands and features. This included designing the relevant encapsulation within a <code class="blue">Request</code> created by the user and creating the following commands from scratch: <code>add</code>, <code>edit</code>, <code>list</code>, <code>delete</code>, <code>clear</code>, <code>assign</code>, <code>complete</code> and <code>filter</code>. The following sections illustrate these enhancements in more detail, as well as the relevant sections that I have added to the user and developer guides in relation to these enhancements.</p>
-</div>
-<div class="paragraph">
 <p>Note the following symbols and formatting used in this document:</p>
 </div>
 <div class="paragraph">
@@ -41,11 +38,11 @@ We chose to morph it to a home-care patient management system, because of our pa
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: Created the <code>Request</code> class to encapsulate a request.</p>
+<p><strong>Major enhancement</strong>: Created the <code>Request</code> class to encapsulate a request, and it&#8217;s relevant CRUD commands.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it odes: Encapsulates the necessary information to be stored in a patient request.</p>
+<p>What it does: Encapsulates the necessary information to be stored in a patient request.</p>
 </li>
 <li>
 <p>Justification: Laid the foundation to the entire project. All components of our project (UI, Storage, Logic and Model) required the creation of a <code>Request</code> class for further development of core functionality.</p>
@@ -56,25 +53,10 @@ We chose to morph it to a home-care patient management system, because of our pa
 </ul>
 </div>
 </li>
-<li>
-<p><strong>Major enhancement</strong>: Created <code>add</code>, <code>edit</code>, <code>delete</code>, <code>list</code> and <code>clear</code> commands for the <code>Request</code> class.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>What it does: Lays the foundation to any <code>Request</code> based functionality. Allows the user to organise the requests made by the patients seamlessly.</p>
-</li>
-<li>
-<p>Justification: These enhancements provide necessary features to the admin so that the admin can create, edit or delete requests at any point of time.</p>
-</li>
-<li>
-<p>Highlights: This enhancement affects the existing existing classes, like the <code class="blue">Healthworker</code> class. It required an in-depth analysis of design alternatives. The implementation was also challenging as it required changes to existing commands and classes, during the integration-testing phase.</p>
-</li>
-<li>
-<p>Credits: Utilised the JACKSon library that serializes a <code class="blue">Request</code> object into JSON format for storage. This allows the user&#8217;s state to be saved at all times.</p>
-</li>
 </ul>
 </div>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Major enhancement</strong>: Created <code>assign</code> and <code>complete</code> request commands.</p>
 <div class="ulist">
@@ -171,7 +153,7 @@ show you all the requests you are looking for.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/filterrequestbefore.png" alt="filterrequestbefore" width="250">
+<img src="../images/filterrequestbefore.png" alt="filterrequestbefore" width="200">
 </div>
 </div>
 <div class="paragraph">
@@ -182,7 +164,7 @@ show you all the requests you are looking for.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/filterrequestafter.png" alt="filterrequestafter" width="250">
+<img src="../images/filterrequestafter.png" alt="filterrequestafter" width="200">
 </div>
 </div>
 <div class="paragraph">
@@ -458,42 +440,6 @@ Cons: Slow - in the worst case, if all the requests get assigned at once, this o
 </ul>
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-relationship-between-code-class-blue-request-code-and-code-class-blue-healthworker-code"><a class="link" href="#aspect-relationship-between-code-class-blue-request-code-and-code-class-blue-healthworker-code">Aspect: Relationship between <code class="blue">Request</code> and <code class="blue">Healthworker</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Alternative 1 (current choice): The <code class="blue">Request</code> holds a unique identifier of the <code class="blue">HealthWorker</code> (i.e the <code>NRIC</code>) assigned to it.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Simplification of implementation.</p>
-</li>
-<li>
-<p>Pros: Cleaner implementation, low level of dependencies on other modules. This also makes it easier to test, and easier to maintain.</p>
-</li>
-<li>
-<p>Cons: Makes it difficult to obtain all details of the <code>healthWorker</code> assigned from a <code class="blue">Request</code> object. The healthworker with the unique NRIC will have the be queried from the <code>healthWorkerList</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Alternative 2: The <code>Request</code> holds a <code>HealthWorker</code> object and the <code>HealthWorker</code> keeps track of a list of `Request`s.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Can quickly access details of a <code>HealthWorker</code> from a <code>Request</code>, and can quickly access the <code>Requests</code> assigned to a <code>HealthWorker</code> from the <code>Request</code>.</p>
-</li>
-<li>
-<p>Cons: Increases complexity of code base, adding additional dependencies to the code. This makes the code base more verbose and more difficult to maintain.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -546,7 +492,7 @@ add request n/NAME p/PHONE i/NRIC a/ADDRESS dt/DATETIME c/CONDITION.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design Consideration</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-for-the-list-of-requests"><a class="link" href="#aspect-data-structure-for-the-list-of-requests">Aspect: Data Structure for the list of Requests</a></h5>
 <div class="ulist">
@@ -637,10 +583,6 @@ The <code>RequestStatus</code> class within the <code>Request</code> object util
 
      public RequestStatus(String status) {
          this.requestState = Status.valueOf(status);
-     }
-
-     public RequestStatus() {
-         this(Status.PENDING.name());
      }</code></pre>
 </div>
 </div>
@@ -652,4 +594,4 @@ ensuring that there are no invalid request statuses entered.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:25:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:40:27 UTC</div></div></div></body></html>
