@@ -4,15 +4,18 @@
 <h2 id="project-health-hub"><a class="link" href="#project-health-hub">Project: Health Hub</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>My team and I were tasked with enhancing a basic command line interface addressbook application for one of our modules CS2103
-- Software Engineering. We have decided to morph it into an application that handles request-patient tasks such as the registering
-of new requests, patients and health workers. The primary purpose of this app is for the hospital administrative staff to register
-new requests on the system, and assign suitable health workers to the patients under the requests. As such, details such as the
-patient&#8217;s conditions are also recorded within the system, and vice versa for the skillset of the qualified health workers.</p>
+<p>My team and I were tasked with enhancing a basic command line interface addressbook application for one of our modules CS2103T
+- Software Engineering. We have decided to morph it into an application that handles patient-request tasks such as the registering
+of new requests from patients and health workers.</p>
+</div>
+<div class="paragraph">
+<p>The primary purpose of this application is for the hospital administrative staff to register
+new requests onto the system, and assign suitable health workers to the patients. As such, qualitative data such as the
+patient&#8217;s conditions are also recorded within the system, and vice versa for the skillset of the health workers.</p>
 </div>
 <div class="paragraph">
 <p>My role in the team was to handle the User Interface (UI) programming and render the desired display to the user who will be using the
-app. My role involves a little bit of User Experience (UX) when writing code to structure the design of the different UI components
+application. It involves a little bit of User Experience (UX) when writing code to structure the design of the different UI components
 that are interacting with one another. Other than writing code, I also wrote tests in the form of component, integration and
 system tests that will test for different user behaviors when they are using the app. In addition, I extended the text input from the app
 to introduce an autocomplete feature for the users to easily select from the list of suggested commands, as well the <code>setreminder</code>
@@ -127,16 +130,6 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 </div>
 </li>
 <li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Community:</p>
 <div class="ulist">
 <ul>
@@ -144,7 +137,8 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 <p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/785">1</a>, <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/221">2</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/221">1</a>,
+<a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/355">2</a>)</p>
 </li>
 </ul>
 </div>
@@ -165,7 +159,7 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The sections below demonstrate how I used an emphathetic approach to educate the users of Health Hub on its features and future releases.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -243,6 +237,17 @@ the customised message to "to call patient Tan Ah Hock for his appointment later
 <div class="paragraph">
 <p>Figure 5.14.2 shows the result of the reminder alert in the GUI after it is time for the app to notify the user.</p>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The table below demonstrates the importance of formatting key information for my users,
+so that they can easily find the summary of the commands.</em></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -393,7 +398,7 @@ the customised message to "to call patient Tan Ah Hock for his appointment later
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The sections below showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -442,12 +447,15 @@ The reminder is in the form of an <code>AlertDialog</code> and is scheduled to d
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The following sequence diagram shows the sequence flow from when the <code>SetReminderCommandParser</code> receives the command and
-parses it to a <code>SetReminderCommand</code>.</p>
+parses it into a <code>SetReminderCommand</code> object.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/SetReminderSequenceDiagram.png" alt="SetReminderSequenceDiagram" width="800">
 </div>
+</div>
+<div class="paragraph">
+<p>Figure 3.8.1 shows the sequence diagram for the different method invocation calls between the classes.</p>
 </div>
 </div>
 </div>
@@ -461,24 +469,46 @@ with an <code>AutoCompleteTextField</code> class that extends from the parent cl
 <p>In the <code>AutoCompleteTextField</code> class, it adds an additional listener to the <code>textProperty()</code> of <code>TextField</code> class, to register for when
 a text input is being sensed and generates the suggestion box in the form of a <code>ContextMenu</code> to the user.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutoCompleteTextFieldSMD.png" alt="AutoCompleteTextFieldSMD">
+</div>
+</div>
 <div class="paragraph">
-<p>The searching of which commands to display to the user as suggestions is by iterating the <code>suggestions</code> data structure, which is a <code>TreeSet</code>, then checking
+<p>Figure 3.10.1 shows the state machine diagram for the <code>AutoCompleteTextField</code> behaviour when it listens for a user input.</p>
+</div>
+<div class="paragraph">
+<p>The searching of which commands to display to the user as suggestions is done by iterating the <code>suggestions</code> data structure, which is a <code>TreeSet</code>, then checking
 against the user&#8217;s input if any of the suggestions starts with the user&#8217;s text.</p>
 </div>
 <div class="sect3">
 <h4 id="aspect-data-structure-to-store-the-list-of-commands"><a class="link" href="#aspect-data-structure-to-store-the-list-of-commands">Aspect: Data structure to store the list of commands</a></h4>
-<div class="paragraph">
-<p>&lt;insert text&gt;</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="aspect-algorithm-to-search-for-commands-that-fit-user-s-input"><a class="link" href="#aspect-algorithm-to-search-for-commands-that-fit-user-s-input">Aspect: Algorithm to search for commands that fit user&#8217;s input</a></h4>
-<div class="paragraph">
-<p>&lt;insert text&gt;</p>
-</div>
-<div class="paragraph">
-<p>A detailed interaction diagram for the autocomplete behaviour is created previously under &lt;insert section&gt;.</p>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Implementation</th>
+<th class="tableblock halign-left valign-top">Use a <code>TreeSet</code> datastructure</th>
+<th class="tableblock halign-left valign-top">Use a <code>SuffixTree</code> datastructure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implements the <code>NavigatableSet</code> interface and guarantees that elements are stored in sorted order, also allows for <em>O(log n)</em> time complexity for dynamic searching of elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Made for features like autocompletion, allows particularly fast implementation of <code>String</code> operations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none at the moment</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">difficult to comprehend and implement</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -488,4 +518,4 @@ against the user&#8217;s input if any of the suggestions starts with the user&#8
 <div class="sectionbody">
 <hr>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:22:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 13:18:53 UTC</div></div></div></body></html>
