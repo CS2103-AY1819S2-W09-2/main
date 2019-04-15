@@ -103,11 +103,13 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
+<p>Project Management:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Assigned the relevant issues to my teammates and suggested solutions for them to resolve it (Issues <a href="https://github.com/CS2103-AY1819S2-W09-2/main/issues/188">#188</a>,
+<a href="https://github.com/CS2103-AY1819S2-W09-2/main/issues/190">#190</a>,
+<a href="https://github.com/CS2103-AY1819S2-W09-2/main/issues/195">#195</a>)</p>
 </li>
 </ul>
 </div>
@@ -117,10 +119,9 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote the system tests that integrate newly implemented features to increase coverage from 82% to 90% (Pull requests <a href="https://github.com/CS2103-AY1819S2-W09-2/main/pull/209">#209</a>,
+<a href="https://github.com/CS2103-AY1819S2-W09-2/main/pull/217">#217</a>,
+<a href="https://github.com/CS2103-AY1819S2-W09-2/main/pull/219">#219</a>)</p>
 </li>
 </ul>
 </div>
@@ -143,26 +144,7 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 <p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/785">1</a>, <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/221">2</a>)</p>
 </li>
 </ul>
 </div>
@@ -171,9 +153,6 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -323,7 +302,8 @@ the customised message to "to call patient John Doe for his appointment".</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter request/r/2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">any of the tags above belonging to request (i.e. filter by <code>n/</code> or <code>dt/</code> or <code>c/</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">any of the tags above belonging to request (i.e. filter by <code>n/</code> or <code>dt/</code> or <code>c/</code>).<br></p>
+<p class="tableblock">new filterable tag after request is added - <code>st/ (request status)</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">filters through the list of requests by a criteria</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
 </tr>
@@ -335,8 +315,8 @@ the customised message to "to call patient John Doe for his appointment".</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>assign</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hw/&lt;index&gt;</code> - <code>INDEX</code> of the health worker to be assigned<br></p>
-<p class="tableblock"><code>r/&lt;index&gt;</code> - <code>INDEX</code> of the request</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hw/&lt;index&gt;</code> - <code>INDEX</code> of the health worker to be assigned, required<br></p>
+<p class="tableblock"><code>r/&lt;index&gt;</code> - <code>INDEX</code> of the request, required</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">assigns a health worker to an open request</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">should a health worker be assigned to requests on the same date and time, it should be at least 2 hours apart.</p></td>
 </tr>
@@ -484,11 +464,8 @@ against the user&#8217;s input if any of the suggestions starts with the user&#8
 </div>
 </div>
 <div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">Project: PowerPointLabs</a></h2>
+<h2 id="project-payme"><a class="link" href="#project-payme">Project: PayMe</a></h2>
 <div class="sectionbody">
 <hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 23:34:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 00:20:22 UTC</div></div></div></body></html>
