@@ -4,22 +4,22 @@
 <h2 id="project-health-hub"><a class="link" href="#project-health-hub">Project: Health Hub</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>My team and I were tasked with enhancing a basic command line interface addressbook application for one of our modules CS2103T
-- Software Engineering. We have decided to morph it into an application that handles patient-request tasks such as the registering
-of new requests from patients and health workers.</p>
+<p>Hello there! Welcome to my project portfolio! This portfolio contains a list of contributions towards my CS2103T - Software Engineering module project,
+which requires me to work in a team to morph an existing functional product to something else that solves a real-world problem.</p>
 </div>
 <div class="paragraph">
-<p>The primary purpose of this application is for the hospital administrative staff to register
-new requests onto the system, and assign suitable health workers to the patients. As such, qualitative data such as the
-patient&#8217;s conditions are also recorded within the system, and vice versa for the skillset of the health workers.</p>
+<p>Health Hub is a desktop application that aims to get rid of the messy system of palliative care requests for health administrative staff.
+Admin staff who are in-charge of assigning requests from patients to qualified health staff are often overwhelmed by the enormous filings and binders that take up so much of their time.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui_home_orange.png" alt="Ui home orange">
+</div>
 </div>
 <div class="paragraph">
-<p>My role in the team was to handle the User Interface (UI) programming and render the desired display to the user who will be using the
-application. It involves a little bit of User Experience (UX) when writing code to structure the design of the different UI components
-that are interacting with one another. Other than writing code, I also wrote tests in the form of component, integration and
-system tests that will test for different user behaviors when they are using the app. In addition, I extended the text input from the app
-to introduce an autocomplete feature for the users to easily select from the list of suggested commands, as well the <code>setreminder</code>
-feature that will also relieve some of the work that the user has to do (such as remembering to contact the patients).</p>
+<p>My role in the team is to handle all the User Interface (UI) coding to render model data to display it to our users, who are hospital administrative staff.
+Thinking that this is not enough to ensure a pleasant experience for our users, I extended some of the original functionalities from AddressBook4 and added a new command.
+Tests in the form of component, integration and system tests are also added to ensure quality control.</p>
 </div>
 </div>
 </div>
@@ -35,7 +35,7 @@ feature that will also relieve some of the work that the user has to do (such as
 <p>Wrote code to render the model data into the different UI components</p>
 </li>
 <li>
-<p>Wrote my own version of stylesheet to use for the app</p>
+<p>Wrote my own version of stylesheet to use for the application</p>
 </li>
 <li>
 <p>Handle logic for displaying a request&#8217;s details in the <code>InfoPanel</code>, which is the center panel of the app.</p>
@@ -56,21 +56,22 @@ feature that will also relieve some of the work that the user has to do (such as
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major Enhancement 1</strong>: restructured the original AB4 UI code into different code that will suit the context of our app (Health Hub) .</p>
+<p><strong>Major Enhancement 1</strong>: restructured the original AB4 UI code into different code that will suit the context of our application.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Shows the lists of requests and health workers in two different panels. The app has a center panel to render the selection display of a request.</p>
+<p>What it does: Shows the lists of requests and health workers in two different panels. The UI has a center panel that displays a request&#8217;s additional details that are not visible within the list,
+such as the health staff assigned, and a static map overview of the patient&#8217;s address.</p>
 </li>
 <li>
 <p>Justification: This is important as it is the interface that the user will be interacting with. Important details such as a patient&#8217;s name and NRIC are displayed differently
-compared to the other details such as address. Special noteworthy details such as the conditions of a patient or the skills of a health worker are also displayed differently.</p>
+compared to the other details such as phone or address. Special noteworthy details such as the conditions of a patient or the skills of a health worker are also displayed differently.</p>
 </li>
 <li>
-<p>Highlights: In addition to rendering the model data, the details of a request is displayed in the center panel of the app, accompanied with a map that will show the location of the patient&#8217;s home.</p>
+<p>Highlights: Coding the UI requires a deep understanding of how different UI components interact with each other and how the model data is rendered to the UI layer (via <code>ObservableValue&lt;Object&gt;</code>).</p>
 </li>
 <li>
-<p>Credits: Myself, but integrated a UI library called <code>font-awesome</code> in the app itself to render the display of icons related to request details. The static map is from <code>gothere.sg</code>.</p>
+<p>Credits: Myself, but integrated a UI library called <code>font-awesome</code> in the application itself to render the display of icons related to request details. The static map is provided by <code>gothere.sg</code>.</p>
 </li>
 </ul>
 </div>
@@ -80,14 +81,14 @@ compared to the other details such as address. Special noteworthy details such a
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Shows a list of suggestions based on the character that the user has typed in the text input.</p>
+<p>What it does: Shows a list of suggested commands based on the character that the user has typed in the text field.</p>
 </li>
 <li>
-<p>Justification: This is important as new users might be lost as to what type of commands they can use. By having an autocomplete feature, they spend shorter time
-rewriting the same commands (e.g. adding 10 requests).</p>
+<p>Justification: This is important as new users might be lost as to what kind of commands they can use. By having an autocomplete feature, they spend shorter time rewriting the same commands (e.g. adding 10 requests).</p>
 </li>
 <li>
-<p>Highlights: The autocomplete feature, although useful, has caused some non-deterministic type behavior for the user. E.g. sometimes the text box does not register a key <code>DOWN</code> event.</p>
+<p>Highlights: Since the <code>CommandBox</code> which contains the <code>AutoCompleteTextField</code>, is always used in the test cases, this new implementation affects the behaviour of existing test cases, especially the UI component and
+systemtests and requires a thorough rework to resolve them.</p>
 </li>
 <li>
 <p>Credits: Myself, but had read some tutorials online on how to do it.</p>
@@ -99,7 +100,7 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 <p><strong>Minor Enhancement</strong>: added a <code>setreminder</code> command to further enhance the app&#8217;s capability, by reminding the user of a task he or she needs to do within the day.</p>
 </li>
 <li>
-<p><strong>Code Contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code Contributed</strong>: [<a href="https://github.com/huichun66/main/tree/master/src/test/java/systemtests">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other Contributions</strong>:</p>
@@ -134,7 +135,7 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>Reviewed my teammate&#8217;s PRs every week</p>
 </li>
 <li>
 <p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/221">1</a>,
@@ -455,7 +456,7 @@ parses it into a <code>SetReminderCommand</code> object.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Figure 3.8.1 shows the sequence diagram for the different method invocation calls between the classes.</p>
+<p>Figure 3.9.1 shows the sequence diagram for the different method invocation calls between the classes</p>
 </div>
 </div>
 </div>
@@ -475,7 +476,7 @@ a text input is being sensed and generates the suggestion box in the form of a <
 </div>
 </div>
 <div class="paragraph">
-<p>Figure 3.10.1 shows the state machine diagram for the <code>AutoCompleteTextField</code> behaviour when it listens for a user input.</p>
+<p>Figure 3.11.1 shows the state machine diagram for the <code>AutoCompleteTextField</code> behaviour when it listens for a user input.</p>
 </div>
 <div class="paragraph">
 <p>The searching of which commands to display to the user as suggestions is done by iterating the <code>suggestions</code> data structure, which is a <code>TreeSet</code>, then checking
@@ -509,13 +510,8 @@ against the user&#8217;s input if any of the suggestions starts with the user&#8
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-payme"><a class="link" href="#project-payme">Project: PayMe</a></h2>
-<div class="sectionbody">
 <hr>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 13:18:53 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:30:35 UTC</div></div></div></body></html>
