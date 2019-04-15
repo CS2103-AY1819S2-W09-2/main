@@ -30,18 +30,19 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#add-feature">3.1. Add feature</a></li>
-<li><a href="#edit-feature">3.2. Edit feature</a></li>
-<li><a href="#delete-feature">3.3. Delete feature</a></li>
-<li><a href="#assign-request-feature">3.4. Assign Request feature</a></li>
-<li><a href="#list-feature">3.5. List Feature</a></li>
-<li><a href="#filter-feature">3.6. Filter Feature</a></li>
-<li><a href="#undo-redo-feature">3.7. Undo/Redo feature</a></li>
-<li><a href="#set-reminder-feature">3.8. Set Reminder Feature</a></li>
-<li><a href="#statistics-feature">3.9. Statistics Feature</a></li>
-<li><a href="#autocomplete-feature-for-commandbox">3.10. Autocomplete Feature for CommandBox</a></li>
-<li><a href="#proposed-data-encryption">3.11. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.12. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.13. Configuration</a></li>
+<li><a href="#add-request-feature">3.2. Add Request feature</a></li>
+<li><a href="#edit-feature">3.3. Edit feature</a></li>
+<li><a href="#delete-feature">3.4. Delete feature</a></li>
+<li><a href="#assign-request-feature">3.5. Assign Request feature</a></li>
+<li><a href="#list-feature">3.6. List Feature</a></li>
+<li><a href="#filter-feature">3.7. Filter Feature</a></li>
+<li><a href="#undo-redo-feature">3.8. Undo/Redo feature</a></li>
+<li><a href="#set-reminder-feature">3.9. Set Reminder Feature</a></li>
+<li><a href="#statistics-feature">3.10. Statistics Feature</a></li>
+<li><a href="#autocomplete-feature-for-commandbox">3.11. Autocomplete Feature for CommandBox</a></li>
+<li><a href="#proposed-data-encryption">3.12. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.13. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.14. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -831,12 +832,11 @@ class is as follows in the implementation of <code>Specialisation</code>:</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="adding-a-request"><a class="link" href="#adding-a-request">3.1.2. Adding a Request</a></h4>
-
 </div>
+<div class="sect2">
+<h3 id="add-request-feature"><a class="link" href="#add-request-feature">3.2. Add Request feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.3. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>add request</code> command allows the <code>LogicManager</code> to create a new request and add it to the list of requests. Adding a new request requires the
 patient&#8217;s name, patient&#8217;s phone number, patient&#8217;s address, patient&#8217;s NRIC number and the patient&#8217;s conditions. The format of the add request command is
@@ -851,7 +851,7 @@ add request n/NAME p/PHONE i/NRIC a/ADDRESS dt/DATETIME c/CONDITION.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Figure 3.1.3.1 Sequence Diagram for <code>add request</code> command</p>
+<p>Figure 3.2.1.1 Sequence Diagram for <code>add request</code> command</p>
 </div>
 <div class="paragraph">
 <p>From the diagram above:</p>
@@ -883,7 +883,7 @@ add request n/NAME p/PHONE i/NRIC a/ADDRESS dt/DATETIME c/CONDITION.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">3.1.4. Design Consideration</a></h4>
+<h4 id="design-consideration"><a class="link" href="#design-consideration">3.2.2. Design Consideration</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-for-the-list-of-requests"><a class="link" href="#aspect-data-structure-for-the-list-of-requests">Aspect: Data Structure for the list of Requests</a></h5>
 <div class="ulist">
@@ -989,7 +989,7 @@ ensuring that there are no invalid request statuses entered.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-feature"><a class="link" href="#edit-feature">3.2. Edit feature</a></h3>
+<h3 id="edit-feature"><a class="link" href="#edit-feature">3.3. Edit feature</a></h3>
 <div class="paragraph">
 <p>The <code>edit</code> command allows users to modify details of existing <code>HealthWorker</code>
 or <code>Request</code> objects should the information need to be updated.</p>
@@ -1036,7 +1036,7 @@ enteed by the user.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="editing-code-healthworker-code"><a class="link" href="#editing-code-healthworker-code">3.2.1. Editing <code>HealthWorker</code></a></h4>
+<h4 id="editing-code-healthworker-code"><a class="link" href="#editing-code-healthworker-code">3.3.1. Editing <code>HealthWorker</code></a></h4>
 <div class="paragraph">
 <p>Upon parsing the argument string into <code>EditCommandParser</code>, it first checks
 that the <code>&lt;index&gt;</code> field provided is non-negative, and not greater than the
@@ -1074,7 +1074,7 @@ exists, it replaces the current value of the corresponding field in the
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-feature"><a class="link" href="#delete-feature">3.3. Delete feature</a></h3>
+<h3 id="delete-feature"><a class="link" href="#delete-feature">3.4. Delete feature</a></h3>
 <div class="paragraph">
 <p>Using the <code>delete</code> command, the user can remove <code>HealthWorker</code> and <code>Request</code>
 objects from the system.</p>
@@ -1111,18 +1111,18 @@ entity will be immediately reflected on the GUI, and be removed from view.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="assign-request-feature"><a class="link" href="#assign-request-feature">3.4. Assign Request feature</a></h3>
+<h3 id="assign-request-feature"><a class="link" href="#assign-request-feature">3.5. Assign Request feature</a></h3>
 <div class="paragraph">
 <p>The assign request feature allows an administrator to assign a request to a particular healthworker.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The following sequence diagram shows the sequence flow from the <code>LogicManager</code> to the <code>ModelManager</code> when a user enters a <code>assign request</code> command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/assignreq.png" alt="assignreq" width="800">
+<img src="images/assignreq.png" alt="assignreq">
 </div>
 </div>
 <div class="paragraph">
@@ -1130,19 +1130,35 @@ entity will be immediately reflected on the GUI, and be removed from view.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/assignreq1.png" alt="assignreq1" width="800">
+<img src="images/assignReqToHw.png" alt="assignReqToHw">
 </div>
 </div>
 <div class="paragraph">
 <p>Figure 3.3.1.2 Sequence diagram to illustrate <code>Logic</code> and <code>Model</code> component interactions for <code class="blue">AssignRequestCommand</code>.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addHwRequestDates.png" alt="addHwRequestDates">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 3.3.1.3 Sequence diagram illustrates addition of the relevant <code>Date</code> objects into the <code>TreeSet&lt;Date&gt;</code> of the <code>healthWorker</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/checkConflictingRequests.png" alt="checkConflictingRequests">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 3.3.1.4 Sequence diagram illustrates interaction between <code>AssignRequestCommand</code> and <code>healthWorkerAppointments</code></p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>When <code>LogicManager</code> receives the <code>execute</code> command, it calls the <code>parseCommand</code> method in <code>HealthHubParser</code>.</p>
+<p>When <code>LogicManager</code> receives the <code>execute</code> command, it calls the <code>parseCommand</code> method in <code>RequestBookParser</code>.</p>
 </li>
 <li>
-<p><code>HealthHubParser</code> will receive <code>assign</code> as the command and instantiate <code>AssignRequestCommandParser</code> to further parse the command.</p>
+<p><code>RequestBookParser</code> will receive <code>assign</code> as the command and instantiate <code>AssignRequestCommandParser</code> to further parse the command.</p>
 </li>
 <li>
 <p>If the arguments specified in the <code>assign</code> command are invalid, a <code>AssignCommand</code> will be created and returned back to the <code>LogicManager</code>.</p>
@@ -1157,57 +1173,81 @@ entity will be immediately reflected on the GUI, and be removed from view.</p>
 <p>Iterate through the <code>requestIds</code>, if valid, add the <code>request</code> corresponding to that <code>index</code> to the set of <code>Request</code>.</p>
 </li>
 <li>
-<p>Writes the updated request to the <code>RequestBook</code> in <code>ModelManager</code></p>
+<p>Iterates through all the requests already assigned to that <code>healthWorker</code>. If there is a conflict of schedule (i.e Requests assigned
+to that healthWorker are less than 2 hours apart), a <code>CommandException</code> is thrown.</p>
+</li>
+<li>
+<p>Writes the updated request to the <code>RequestBook</code> in <code>ModelManager</code>, if all the request timings are valid.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">3.4.2. Design Consideration</a></h4>
+<h4 id="design-consideration-2"><a class="link" href="#design-consideration-2">3.5.2. Design Consideration</a></h4>
 <div class="sect4">
-<h5 id="aspect-implementation-of-the-code-assignrequestcommand-code-feature"><a class="link" href="#aspect-implementation-of-the-code-assignrequestcommand-code-feature">Aspect: Implementation of the <code>AssignRequestCommand</code> feature</a></h5>
+<h5 id="aspect-algorithm-in-ensuring-no-clashing-requests-assigned-to-healthworkers-data-structure-and-implementation"><a class="link" href="#aspect-algorithm-in-ensuring-no-clashing-requests-assigned-to-healthworkers-data-structure-and-implementation">Aspect: Algorithm in ensuring no clashing requests assigned to healthworkers - Data Structure and implementation</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1 (current choice): Index-based assigning, where the user assigns a request based on the index number of that list item they see in the UI.</p>
+<p>Alternative 1 (current choice): Using a Balanced Binary Search Tree (java <code>TreeSet</code>) to keep track of the <code class="blue">RequestDate</code> of each request attended to by a particular <code>healthWorker</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Effecient - since the storage of <code>HealthWorker</code> and <code>Request</code> are in lists, index-based assigning optimises effeciency, by reducing runtime to O(1) time.</p>
-</li>
-<li>
-<p>Pros: Simple to implement, <code>Request</code> and <code>HealthWorker</code> details can easily be retrieved from the <code>filteredRequestList</code> and <code>filteredHealthWorkerList</code> in <code>ModelManager</code>.</p>
-</li>
-<li>
-<p>Cons: May not be very user friendly as index-based assigning may not be intuitive. (This has been circumvented by using 1-based indexing, instead of the traditional 0-based indexing).</p>
+<p>Reasoning: Since the allowed time interval between 2 consecutive requests should be at least 2 hours, we can take advantage
+of of this by only keeping track of the start time of requests. Hence we can utilise the <code>ceiling()</code>, <code>contains()</code> and <code>floor()</code> methods of the <code>TreeSet</code>, which runs effeciently in O(log N) time (where N is the number of requests). Here is the code snippet that implements this:</p>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p>Alternative 2: Assign by making a query using another unique identifier, like the name or NRIC of the patient and healthworker.</p>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>    // Note: healthWorkerAppointments is the TreeSet that stores the appointment dates
+    Date date = request.getRequestDate().getDate();
+    calendar.setTime(date);
+    calendar.add(Calendar.HOUR_OF_DAY, -MIN_REQUEST_DURATION); // MIN_REQUEST_DURATION = 2 hours
+    Date lowerLimit = calendar.getTime();
+    calendar.add(Calendar.HOUR_OF_DAY, 2 * MIN_REQUEST_DURATION);
+    Date upperLimit = calendar.getTime();
+
+    if (healthWorkerAppointments.contains(date) || (healthWorkerAppointments.lower(date) != null
+          &amp;&amp; healthWorkerAppointments.lower(date).after(lowerLimit))
+          || (healthWorkerAppointments.higher(date) != null
+          &amp;&amp; healthWorkerAppointments.ceiling(date).before(upperLimit))) {
+              throw new CommandException(Messages.MESSAGE_HEALTHWORKER_OCCUPIED_CANNOT_ASSIGN);
+    }
+
+    healthWorkerAppointments.add(date);</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/assignRegionCheck.png" alt="assignRegionCheck">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 3.3.1.5 Shows visualisation of time ranges that are valid.</p>
+</div>
+<div class="paragraph">
+<p>The above mentioned code snippet checks that there are not clashing requests that fall within the red region, as depicted in Figure 3.3.1.5.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Perhaps more user friendly, as the commands are more straightforward to pick up.</p>
-</li>
-<li>
-<p>Cons: Not effecient, as each query would run in O(n + m) time, where n is the number of requests and m is the number of healthworkers.
-Although this can be further optimised by using other data structures like a Balanced Binary Search Tree (Java <code>TreeSet</code>)
- (to add while maintaining some ordering), the cost of eventually filtering it to display to the user would still run in O(n + m) time.</p>
-</li>
-</ul>
-</div>
+<p>Alternative 2: For each request to be assigned, manually iterate through the Request list to ensure that there are not clashing dates.
+Pros: Easy to implement
+Cons: Slow - in the worst case, if all the requests get assigned at once, this operation will run in O(n^2) time.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-relationship-between-code-request-code-and-code-healthworker-code"><a class="link" href="#aspect-relationship-between-code-request-code-and-code-healthworker-code">Aspect: Relationship between <code>Request</code> and <code>Healthworker</code></a></h5>
+<h5 id="aspect-relationship-between-code-class-blue-request-code-and-code-class-blue-healthworker-code"><a class="link" href="#aspect-relationship-between-code-class-blue-request-code-and-code-class-blue-healthworker-code">Aspect: Relationship between <code class="blue">Request</code> and <code class="blue">Healthworker</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Alternative 1 (current choice): The <code>Request</code> holds only some of the details of the healthworker (e.g name) assigned to it.</p>
+<p>Alternative 1 (current choice): The <code class="blue">Request</code> holds a unique identifier of the <code class="blue">HealthWorker</code> (i.e the <code>NRIC</code>) assigned to it.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1217,7 +1257,7 @@ Although this can be further optimised by using other data structures like a Bal
 <p>Pros: Cleaner implementation, low level of dependencies on other modules. This also makes it easier to test, and easier to maintain.</p>
 </li>
 <li>
-<p>Cons: Makes it difficult to obtain all details of a <code>HealthWorker</code> from a <code>Request</code> object.</p>
+<p>Cons: Makes it difficult to obtain all details of the <code>healthWorker</code> assigned from a <code class="blue">Request</code> object. The healthworker with the unique NRIC will have the be queried from the <code>healthWorkerList</code></p>
 </li>
 </ul>
 </div>
@@ -1230,7 +1270,7 @@ Although this can be further optimised by using other data structures like a Bal
 <p>Pros: Can quickly access details of a <code>HealthWorker</code> from a <code>Request</code>, and can quickly access the <code>Requests</code> assigned to a <code>HealthWorker</code> from the <code>Request</code>.</p>
 </li>
 <li>
-<p>Cons: Increases coupling by adding additional dependencies to the code. This makes the code base more difficult to maintain.</p>
+<p>Cons: Increases complexity of code base, adding additional dependencies to the code. This makes the code base more verbose and more difficult to maintain.</p>
 </li>
 </ul>
 </div>
@@ -1241,13 +1281,13 @@ Although this can be further optimised by using other data structures like a Bal
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-feature"><a class="link" href="#list-feature">3.5. List Feature</a></h3>
+<h3 id="list-feature"><a class="link" href="#list-feature">3.6. List Feature</a></h3>
 <div class="paragraph">
 <p>The <code>list</code> command allows the user to be able to display all <code>HealthWorker</code>
 or <code>Request</code> objects stored in the current application.</p>
 </div>
 <div class="sect3">
-<h4 id="listing-code-healthworker-code-objects"><a class="link" href="#listing-code-healthworker-code-objects">3.5.1. Listing <code>HealthWorker</code> objects</a></h4>
+<h4 id="listing-code-healthworker-code-objects"><a class="link" href="#listing-code-healthworker-code-objects">3.6.1. Listing <code>HealthWorker</code> objects</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1278,7 +1318,7 @@ possesses</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-code-request-code-objects"><a class="link" href="#listing-code-request-code-objects">3.5.2. Listing <code>Request</code> objects</a></h4>
+<h4 id="listing-code-request-code-objects"><a class="link" href="#listing-code-request-code-objects">3.6.2. Listing <code>Request</code> objects</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1306,7 +1346,7 @@ application, and the following details:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="filter-feature"><a class="link" href="#filter-feature">3.6. Filter Feature</a></h3>
+<h3 id="filter-feature"><a class="link" href="#filter-feature">3.7. Filter Feature</a></h3>
 <div class="paragraph">
 <p>With the filter command, users can provide specific parameters that act as
 conditions for HealthHub to filter the <code>UniqueHealthWorkerList</code> and
@@ -1334,7 +1374,7 @@ below follow the same valid prefix and parameter formats as the <code>add</code>
 </table>
 </div>
 <div class="sect3">
-<h4 id="filtering-code-healthworker-code"><a class="link" href="#filtering-code-healthworker-code">3.6.1. Filtering <code>HealthWorker</code></a></h4>
+<h4 id="filtering-code-healthworker-code"><a class="link" href="#filtering-code-healthworker-code">3.7.1. Filtering <code>HealthWorker</code></a></h4>
 <div class="paragraph">
 <p>The command format for filtering <code>HealthWorker</code> is:</p>
 </div>
@@ -1383,7 +1423,7 @@ For example entering the command <code>filter h n/John</code> displays a list of
 </div>
 </div>
 <div class="sect3">
-<h4 id="filtering-code-healthworker-code-2"><a class="link" href="#filtering-code-healthworker-code-2">3.6.2. Filtering <code>HealthWorker</code></a></h4>
+<h4 id="filtering-code-healthworker-code-2"><a class="link" href="#filtering-code-healthworker-code-2">3.7.2. Filtering <code>HealthWorker</code></a></h4>
 <div class="paragraph">
 <p>The <code>filter</code> command allows users to display only <code>HealthWorker</code> or <code>Request</code>
  whose fields matches the <code>&lt;parameter&gt;</code> specified in the filter command.</p>
@@ -1570,9 +1610,9 @@ within the <code>FilterCommandParser</code> class when it&#8217;s <code>parse()<
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.7. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.8. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedBook</code>.
 There are two extensions of it. <code>VersionedHealthWorkerBook</code> extends <code>HealthWorkerBook</code> and <code>VersionedRequestBook</code> extends <code>RequestBook</code>.
@@ -1758,7 +1798,7 @@ We designed it this way because it no longer makes sense to redo the <code>add n
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.8.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <table class="tableblock frame-all grid-all spread">
@@ -1855,7 +1895,7 @@ and extra cases for switch statements.</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-reminder-feature"><a class="link" href="#set-reminder-feature">3.8. Set Reminder Feature</a></h3>
+<h3 id="set-reminder-feature"><a class="link" href="#set-reminder-feature">3.9. Set Reminder Feature</a></h3>
 <div class="paragraph">
 <p>The <code>setreminder</code> command gives the user an option to set a reminder with a customised message.
 The reminder is in the form of an <code>AlertDialog</code> and is scheduled to show on the UI by a <code>TimerTask</code> at time
@@ -1866,7 +1906,7 @@ The reminder is in the form of an <code>AlertDialog</code> and is scheduled to s
 </div>
 </div>
 <div class="sect2">
-<h3 id="statistics-feature"><a class="link" href="#statistics-feature">3.9. Statistics Feature</a></h3>
+<h3 id="statistics-feature"><a class="link" href="#statistics-feature">3.10. Statistics Feature</a></h3>
 <div class="paragraph">
 <p>The statistics mechanism is facilitated by Statistics class, which is a public Java class containing a private static
 TreeMap data structure and a private static LinkedHashMap data structure. The TreeMap contains key-value pairs, with the
@@ -1955,7 +1995,7 @@ and are used to update statistics and sortedMap.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.9.1. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.10.1. Design Considerations</a></h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 9.0909%;">
@@ -2045,7 +2085,7 @@ statistics and sortedMap are initialized with latest data from the RequestBook d
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-feature-for-commandbox"><a class="link" href="#autocomplete-feature-for-commandbox">3.10. Autocomplete Feature for CommandBox</a></h3>
+<h3 id="autocomplete-feature-for-commandbox"><a class="link" href="#autocomplete-feature-for-commandbox">3.11. Autocomplete Feature for CommandBox</a></h3>
 <div class="paragraph">
 <p>The UI component, <code>CommandBox</code>, comes with a <code>TextField</code> component in AB4. For Health Hub, the <code>TextField</code> is replaced
 with an <code>AutoCompleteTextField</code> class that extends from the parent class, <code>TextField</code>.</p>
@@ -2059,13 +2099,13 @@ a text input is being sensed and generates the suggestion box in the form of a <
 against the user&#8217;s input if any of the suggestions starts with the user&#8217;s text.</p>
 </div>
 <div class="sect3">
-<h4 id="aspect-data-structure-to-store-the-list-of-commands"><a class="link" href="#aspect-data-structure-to-store-the-list-of-commands">3.10.1. Aspect: Data structure to store the list of commands</a></h4>
+<h4 id="aspect-data-structure-to-store-the-list-of-commands"><a class="link" href="#aspect-data-structure-to-store-the-list-of-commands">3.11.1. Aspect: Data structure to store the list of commands</a></h4>
 <div class="paragraph">
 <p>&lt;insert text&gt;</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="aspect-algorithm-to-search-for-commands-that-fit-user-s-input"><a class="link" href="#aspect-algorithm-to-search-for-commands-that-fit-user-s-input">3.10.2. Aspect: Algorithm to search for commands that fit user&#8217;s input</a></h4>
+<h4 id="aspect-algorithm-to-search-for-commands-that-fit-user-s-input"><a class="link" href="#aspect-algorithm-to-search-for-commands-that-fit-user-s-input">3.11.2. Aspect: Algorithm to search for commands that fit user&#8217;s input</a></h4>
 <div class="paragraph">
 <p>&lt;insert text&gt;</p>
 </div>
@@ -2075,20 +2115,20 @@ against the user&#8217;s input if any of the suggestions starts with the user&#8
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.11. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.12. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.12. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.13. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.13, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.14, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -2119,7 +2159,7 @@ against the user&#8217;s input if any of the suggestions starts with the user&#8
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.13. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.14. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3238,4 +3278,4 @@ Expected: The application will show an error message: No more commands to redo!<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 04:01:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:06:40 UTC</div></div></div></body></html>
