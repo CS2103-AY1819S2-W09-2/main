@@ -7,6 +7,9 @@
 <p>My name is Jin Jing and I am currently a second-year Computer Science student from the National University of Singapore.
 I enjoy doing math and I like to solve logic problems in my spare time.</p>
 </div>
+<div class="paragraph">
+<p><a href="https://github.com/jing1324">This is my Github</a></p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -89,6 +92,13 @@ instead of searching the documents manually.</p>
 [<a href="https://github.com/CS2103-AY1819S2-W09-2/main/blob/master/src/main/java/seedu/address/storage/JsonSerializableRequestBook.java">SerializableRequestBook</a>]
 [<a href="https://github.com/CS2103-AY1819S2-W09-2/main/blob/master/src/main/java/seedu/address/storage/JsonRequestBookStorage.java">RequestBookStorage</a>]</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=jing1324&amp;sort=displayName&amp;since=2019-02-10&amp;until=2019-04-12&amp;timeframe=day&amp;reverse=false&amp;repoSort=true">Click here to see all my code contributions</a></p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
@@ -143,25 +153,6 @@ instead of searching the documents manually.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="v1-4-release-notes"><a class="link" href="#v1-4-release-notes">v1.4 Release Notes</a></h3>
-<div class="paragraph">
-<p>With the release of version 1.4, we decided to improve our current features by making them more dynamic and automated to reduce the manual work of changing the data.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The health worker field inside requests now shows the NRIC of the health worker instead of the name in previous versions.</p>
-</li>
-<li>
-<p>Editing the NRIC of a health worker will dynamically change the health staff field  of all requests assigned to the health worker.</p>
-</li>
-<li>
-<p>Users can assign multiple requests to a health worker only if the requests are at least 2 hours apart.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
 <h3 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">Undoing Commands : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>If you wish to undo a mistake that you had made while entering commands,
@@ -202,7 +193,7 @@ you can restore the lists to the state before the command was called using the <
 </div>
 </div>
 <div class="sect2">
-<h3 id="v1-4-release-notes-2"><a class="link" href="#v1-4-release-notes-2">v1.4 Release Notes</a></h3>
+<h3 id="v1-4-release-notes"><a class="link" href="#v1-4-release-notes">v1.4 Release Notes</a></h3>
 <div class="paragraph">
 <p>With the release of version 1.4, we decided to improve our current features by making them more dynamic and automated to reduce the manual work of changing the data.</p>
 </div>
@@ -236,12 +227,44 @@ you can restore the lists to the state before the command was called using the <
 </tbody>
 </table>
 <div class="sect2">
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">Logic component</a></h3>
+<div id="fig-LogicClassDiagram" class="imageblock">
+<div class="content">
+<img src="../images/logicclassdiag.png" alt="logicclassdiag" width="800">
+</div>
+<div class="title">Figure 1. Structure of the Logic Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> :
+<a href="{repoURL}/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Logic</code> uses the <code>HealthHubParser</code> class to parse the user command.</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a request) or sometimes only affecting the display (eg. listing all requests).</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as printing out the result message in the command line.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="../images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 1. Structure of the Storage Component</div>
+<div class="title">Figure 2. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -259,9 +282,21 @@ you can restore the lists to the state before the command was called using the <
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The storage class converts the object data of <code>Request</code> and <code>HealthWorker</code> by converting the objects
+into a json object of strings which will be stored in the <code>.json</code> file. When reading the file, the json library passes the respective strings into
+their java object constructors to recreate the objects.
+=== Undo/Redo feature
+</td>
+</tr>
+</table>
 </div>
-<div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
@@ -393,12 +428,33 @@ If the <code>currentStatePointer</code> of both <code>VersionedHealthWorkerBook<
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As of version 1.4, the only command that has modifies both the health worker book and the request book is <code>EditHealthWorkerCommand</code>.
+It is the only command that has <code>CommandType.HEALTHWORKER_AND_REQUEST_COMMAND</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The user first enters the <code>undo</code> command in the command line interface. The logic manager processes the command as a string
+and checks using the <code>AddressBookParser</code> is the string is a valid command. In this case, the parser sees that the command string
+matches the <code>undo</code> command string and hence returns an <code>undo</code> command to the <code>LogicManager</code> which then calls <code>execute()</code> to execute the command.
+The <code>execute()</code> method calls <code>Model#undo()</code> in which the model checks the <code>ModifyCommandHistory</code> for the correct <code>VersionedBook</code> that needs to be undone
+and then calls <code>VersionedBook#undo()</code>. Upon a successful undo, the <code>UndoCommand</code> will return a successful result to the <code>LogicManager</code>
+which will then the "Undo Success!" message will be displayed on the command line interface.</p>
+</div>
 <div class="paragraph">
 <p>The following sequence diagram shows how the undo operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoSeqDiagram.png" alt="UndoRedoSeqDiagram" width="800">
+<img src="../images/UndoRedoseqDiagram.png" alt="UndoRedoseqDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -545,5 +601,55 @@ and extra cases for switch statements.</p></td>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="undoing-a-command"><a class="link" href="#undoing-a-command">Undoing a command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Undo a command that has been executed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: A command that modifies the data has been executed already, for example <code>delete r 1</code>.</p>
+</li>
+<li>
+<p>Test case: <code>undo</code><br>
+Expected: The request has been deleted will appear back inside the list in its original position.</p>
+</li>
+<li>
+<p>Test case: <code>undo</code> without any prerequisites<br>
+Expected: The application will show an error message: No more commands to undo!</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:40:27 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="redoing-a-command"><a class="link" href="#redoing-a-command">Redoing a command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Redo an undone command</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: A successful undo command have to be executed already.</p>
+</li>
+<li>
+<p>Test case: <code>redo</code><br>
+Expected: The application will redo the undone command.</p>
+</li>
+<li>
+<p>Test case: <code>redo</code> without prerequisites<br>
+Expected: The application will show an error message: No more commands to redo!</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:04:15 UTC</div></div></div></body></html>
