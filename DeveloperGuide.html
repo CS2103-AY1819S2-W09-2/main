@@ -1934,6 +1934,28 @@ parses it into a <code>SetReminderCommand</code> object.</p>
 <div class="paragraph">
 <p>Figure 3.9.1 shows the sequence diagram for the different method invocation calls between the classes</p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When <code>SetReminderCommandParser</code> receives the <code>parse</code> command, it calls the static method <code>ArgumentTokenizer.tokenize</code> to extract the arguments from the user input string.</p>
+</li>
+<li>
+<p>The <code>extractArguments</code> constructs and returns an <code>ArgumentMultimap</code> based on the arguments passed in.</p>
+</li>
+<li>
+<p><code>SetReminderCommandParser</code> checks if there are arguments specified under prefixes <code>PREFIX_TIME</code> and <code>PREFIX_MESSAGE</code>.</p>
+</li>
+<li>
+<p>If it cannot find those arguments, it throws a <code>ParseException</code> to the calling program.</p>
+</li>
+<li>
+<p>If arguments are available, it calls the <code>getValue</code> method of <code>ArgumentMultimap</code> to return the values</p>
+</li>
+<li>
+<p>After getting the values, the <code>SetReminderCommandParser</code> checks for the validity of the values and if true, calls the constructor of <code>SetReminderCommand</code></p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2148,20 +2170,21 @@ against the user&#8217;s input if any of the suggestions starts with the user&#8
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Implementation</th>
-<th class="tableblock halign-left valign-top">Use a <code>TreeSet</code> datastructure</th>
-<th class="tableblock halign-left valign-top">Use a <code>SuffixTree</code> datastructure</th>
+<th class="tableblock halign-left valign-top">Use a <code>TreeSet</code> data structure</th>
+<th class="tableblock halign-left valign-top">Use a <code>SuffixTree</code> data structure</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pros</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Implements the <code>NavigatableSet</code> interface and guarantees that elements are stored in sorted order, also allows for <em>O(log n)</em> time complexity for dynamic searching of elements</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Made for features like autocompletion, allows particularly fast implementation of <code>String</code> operations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implements the <code>NavigatableSet</code> interface and guarantees that elements are stored in sorted order, also allows for <em>O(log n)</em> time complexity for dynamic searching of elements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Made for features like autocompletion, allows particularly fast implementation of <code>String</code> operations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cons</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none at the moment</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">difficult to comprehend and implement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elements contained within the <code>TreeSet</code> data have to be a <em>Comparable</em> or a <em>Comparator</em> needs to be supplied. In this case, since we are only concerned with <code>Strings</code>, we do not
+need an extra step.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suffix Trees are difficult to comprehend &#8594; difficult to implement.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3327,4 +3350,4 @@ Expected: The application will show an error message: No more commands to redo!<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:01:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:23:45 UTC</div></div></div></body></html>
