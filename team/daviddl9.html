@@ -419,16 +419,16 @@ of of this by only keeping track of the start time of requests. Hence we can uti
     healthWorkerAppointments.add(date);</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Here is a pictorial representation of the algorithm:</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/assignRegionCheck.png" alt="assignRegionCheck">
 </div>
 </div>
 <div class="paragraph">
-<p>Figure 3.3.1.5 Shows visualisation of time ranges that are valid.</p>
-</div>
-<div class="paragraph">
-<p>The above mentioned code snippet checks that there are not clashing requests that fall within the red region, as depicted in Figure 3.3.1.5.</p>
+<p>Figure 3.3.1.5 Shows the visualisation of time ranges that are valid.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -468,10 +468,10 @@ add request n/NAME p/PHONE i/NRIC a/ADDRESS dt/DATETIME c/CONDITION.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>LogicManager&#8217;s execute is called when the administrator keys in `add request</code> and it calls upon <code>parseCommand</code> of <code>HealthHubParser</code> to parse the command</p>
+<p><code>LogicManager</code> 's execute is called when the administrator keys in <code>add request</code> and it calls upon <code>parseCommand</code> of <code>HealthHubParser</code> to parse the command</p>
 </li>
 <li>
-<p><code>HealthHubParser</code> will initialize <code>AddCommandParser</code> and invoke the method <code>parse</code> to further parse <code>request</code> command</p>
+<p><code>HealthHubParser</code> will initialize <code>AddCommandParser</code> and invoke the method <code>parse</code> to further parse the command.</p>
 </li>
 <li>
 <p><code>parse</code> will be invoked and passed the parameters of the add command.</p>
@@ -483,7 +483,7 @@ add request n/NAME p/PHONE i/NRIC a/ADDRESS dt/DATETIME c/CONDITION.</p>
 <p><code>LogicManger</code> will then calls the method <code>execute</code> method of <code>AddRequestCommand</code></p>
 </li>
 <li>
-<p><code>AddRequestCommand</code> will call <code>addRequest</code> passing <code>Request</code> as an argument to <code>Model</code> and after calls <code>commitRequestBook</code> method from <code>Model</code></p>
+<p><code>AddRequestCommand</code> will call <code>addRequest</code> passing <code>Request</code> as an argument to <code>Model</code> and after calls <code>commitRequestBook</code> method from <code>Model</code>, if all the arguments in the <code>Request</code> are valid.</p>
 </li>
 <li>
 <p>A <code>CommandResult</code> will be returned at the end.</p>
@@ -531,7 +531,7 @@ add request n/NAME p/PHONE i/NRIC a/ADDRESS dt/DATETIME c/CONDITION.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (Current Approach):</strong> All parameters in <code>Request</code> are abstracted out to have a class of its own (with the exception of the HealthWorker).</p>
+<p><strong>Alternative 1 (Current Approach):</strong> All parameters in <code>Request</code> are abstracted out to have a class of its own.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -594,4 +594,4 @@ ensuring that there are no invalid request statuses entered.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:27:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:42:39 UTC</div></div></div></body></html>

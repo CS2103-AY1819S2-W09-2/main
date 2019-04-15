@@ -653,7 +653,7 @@ denoting a duplicate worker will be displayed.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add request n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+<p><code>add request n/&lt;patient_name&gt; a/&lt;address&gt; i/&lt;patient_nric&gt; p/&lt;phone&gt; dt/&lt;date_time&gt; c/&lt;condition&gt;&#8230;&#8203;</code></p>
 </li>
 </ul>
 </div>
@@ -663,10 +663,10 @@ denoting a duplicate worker will be displayed.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add r n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+<p><code>add r n/&lt;patient_name&gt; a/&lt;address&gt; i/&lt;patient_nric&gt; p/&lt;phone&gt; dt/&lt;date_time&gt; c/&lt;condition&gt;&#8230;&#8203;</code></p>
 </li>
 <li>
-<p><code>add 2 n/&lt;patient_name&gt; c/&lt;condition&gt; d/&lt;date&gt; t/time</code></p>
+<p><code>add 2 n/&lt;patient_name&gt; a/&lt;address&gt; i/&lt;patient_nric&gt; p/&lt;phone&gt; dt/&lt;date_time&gt; c/&lt;condition&gt;&#8230;&#8203;</code></p>
 </li>
 <li>
 <p>Registers a new open request from <code>patient</code> of <code>&lt;patient_name&gt;</code> into the
@@ -679,12 +679,30 @@ stated by the <code>patient</code> and assign the appropriate health worker to h
 these requests in the <code>assign</code> command.</p>
 </li>
 <li>
-<p>Format for the time is <code>HH:mm:ss</code>.</p>
+<p>Format for the time is <code>HH:mm:ss</code>, where HH represents the hours in a 24hr clock.</p>
 </li>
 <li>
 <p>Format for the date is <code>dd-MM-yyyy</code>.</p>
 </li>
+<li>
+<p>Multiple conditions can be accepted. However, each condition has to be prepended with <code>c/</code> tag.</p>
+</li>
+<li>
+<p>Two requests are considered duplicates if they have the same patient NRIC, date, address <strong>and</strong> conditions. Adding duplicate requests are not allowed.</p>
+</li>
 </ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The arguments and their respective tags can also be reordered.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -692,11 +710,10 @@ these requests in the <code>assign</code> command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add 1 n/Dog Terr p/92837710 i/S98817471Z o/NUH s/GENERAL_PRACTICE
-s/ORTHOPAEDIC</code></p>
+<p><code>add request n/Pay Shun i/S9123456G a/NUS UTown p/91234567 c/Heart Attack dt/30-01-2019 10:00:00</code></p>
 </li>
 <li>
-<p><code>add request n/Pay Shun c/Heart Attack t/14:00:00 d/05:05:2019</code></p>
+<p><code>add request n/Jin Livingston i/S9123456G a/NUS UTown p/91234567 c/Heart Attack dt/30-01-2019 10:00:00 c/Physiotherapy</code></p>
 </li>
 </ul>
 </div>
@@ -821,9 +838,6 @@ worker list to be <code>91234567</code> and <code>John Doe</code> respectively.<
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>healthworker` command with valid inputs.</p>
-</div>
 </div>
 <div class="sect3">
 <h4 id="strong-editing-a-request-strong"><a class="link" href="#strong-editing-a-request-strong">5.4.2. <strong>Editing a request</strong></a></h4>
@@ -833,7 +847,8 @@ worker list to be <code>91234567</code> and <code>John Doe</code> respectively.<
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit request &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code></p>
+<p><code>edit request &lt;index&gt; &lt;additional_parameters&gt;&#8230;&#8203;</code><br>
+E.g <code>edit request 1 n/NAME p/PHONE a/ADDRESS i/NRIC c/CONDITION dt/DATE_TIME st/STATUS</code></p>
 </li>
 </ul>
 </div>
@@ -856,16 +871,16 @@ the <code>&lt;index&gt;</code> specified in the request list upon entering the <
 request</code> command with valid inputs.</p>
 </div>
 <div class="paragraph">
-<p>Upon entering the <code>edit</code> command with all the necessary and valid paramters,
+<p>Upon entering the <code>edit</code> command with all the necessary and valid parameters,
 the corresponding request/health worker at the specified <code>&lt;index&gt;</code>. The index refers to the
 index number shown in the displayed person list.</p>
 </div>
 <div class="paragraph">
-<p>Existing values of the health worker or request will be updated to the valid
+<p>Existing values of the request will be updated to the valid
 input values based on the prefix specified.</p>
 </div>
 <div class="paragraph">
-<p>Any changes made to existing fields in requests and healthworkers are
+<p>Any changes made to existing fields in requests are
 immediately reflected in the list shown on the HealthHub GUI.</p>
 </div>
 <div class="paragraph">
@@ -889,7 +904,34 @@ for other fields will only cause the last one to be accepted.</p>
 <p>Note that the healthworker cannot be edited using this command. To unassign an existing healthworker, <code>edit</code> the status to <code>PENDING</code>.
 To change the healthworker assigned, use the <code>assign</code> command instead.</p>
 </li>
+<li>
+<p>When a request status is changed to pending, any assigned healthworker will be disassigned.</p>
+</li>
+<li>
+<p>When changing the request status, there are only 3 valid statuses: PENDING, COMPLETED and ONGOING. Only these statuses will be accepted, and is not case-sensitive.</p>
+</li>
+<li>
+<p>Not all the tags need to be specified.</p>
+</li>
+<li>
+<p>The tags can be reordered. e.g <code>edit r 1 n/NAME p/91234567</code> is the same as <code>edit r 1 p/91234567 n/NAME</code></p>
+</li>
+<li>
+<p>Two requests are considered duplicates if they have the same patient NRIC, date, address <strong>and</strong> conditions. Duplicate requests are not allowed.</p>
+</li>
 </ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+When editing the date of a request, ensure that the date entered is correct. HealthHub accepts any valid calendar dates in the format dd-mm-yyyy HH:mm:ss (where HH represents the time in 24hr format).
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -906,6 +948,9 @@ To change the healthworker assigned, use the <code>assign</code> command instead
 <p><code>edit 2 2 n/Betsy Crower</code><br>
 All the 3 commands above edits the patient name of the 2nd request in the request list to be <code>Betsy
 Crower</code>.<br></p>
+</li>
+<li>
+<p><code>edit r 1 n/NAME p/PHONE a/ADDRESS i/NRIC c/CONDITION dt/DATE_TIME st/STATUS</code></p>
 </li>
 </ul>
 </div>
@@ -1311,7 +1356,7 @@ proceed to assign an existing health worker in the system to handle the request,
  <code>assign</code> command<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>assign &lt;request_index&gt; &lt;health_worker_index&gt;</code></p>
+<p>Format: <code>assign hw/&lt;health_worker_index&gt; r/&lt;request_index&gt;&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Where the <code>&lt;request_index&gt;</code> and <code>&lt;health_worker_index&gt;</code> are as shown in the
@@ -1327,10 +1372,10 @@ respective health worker and requests lists in the Health Hub GUI.</p>
 than the number of requests/health workers in the current list.</p>
 </li>
 <li>
-<p>Health worker that is assigned must be available at the current time stated by the request.</p>
+<p>The prefix <code>r/</code> has to be prepended to all requests indices that you would like to assign.</p>
 </li>
 <li>
-<p>Health worker must have the necessary skillset and certifications that allow him to be able to take up the corresponding request.</p>
+<p>Health worker that is assigned must be available at the current time stated by the request.</p>
 </li>
 </ul>
 </div>
@@ -1900,4 +1945,4 @@ to the <code>\data</code> folder of the app directory.</p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:27:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:42:39 UTC</div></div></div></body></html>
