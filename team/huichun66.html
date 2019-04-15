@@ -172,25 +172,25 @@ rewriting the same commands (e.g. adding 10 requests).</p>
 <div class="sect2">
 <h3 id="v2-0-release-notes"><a class="link" href="#v2-0-release-notes">v2.0 Release Notes</a></h3>
 <div class="paragraph">
-<p>After the release of v1.4, the team have planned for future enhancements to Health Hub to improve its existing functionalities,
-by also considering different aspects such as the ethical part of handling sensititve patient information within and outside of the app.</p>
+<p>After the release of v1.4, the team have planned for future enhancements to Health Hub to improve its existing
+functionalities, by also considering different aspects such as the ethical part of handling sensitive patient information within and outside of the app.</p>
 </div>
 <div class="paragraph">
-<p>For data management, it will be upgraded to an even higher level of encryption by professional standards to ensure that sensitive
+<p>For <strong>data management</strong>, it will be upgraded to an even higher level of encryption by professional standards to ensure that sensitive
 information is handled cautiously to prevent data leaks.</p>
 </div>
 <div class="paragraph">
-<p>For account management, hospital administrative staff will have to start logging in to their accounts (accounts which are given to them when they
+<p>For <strong>account management</strong>, hospital administrative staff will have to start logging in to their accounts (accounts which are given to them when they
 first joined the department) in order to use the app. These accounts are created and managed by a higher authority personnel, to add a
 second layer of security.</p>
 </div>
 <div class="paragraph">
 <p>So far, with the releases of v1.2 to v1.4, the focus is on registering the requests into the system and assigning them. In v2.0, there will be additional details
-added to health workers such as their availability to visit the home care patients, that will add value to when the user is assigning an open request.</p>
+added to health workers such as their <strong>availability to visit the home care patients</strong>, that will add value to when the user is assigning an open request.</p>
 </div>
 <div class="paragraph">
 <p>Last but not least, it is important that we gather our users' feedback from time to time to understand their frustrations and needs with the app. As such,
-there will be a "Feedback" option in v2.0 for users to submit their feedback to the developers of Health Hub.</p>
+there will be a <strong>"Feedback"</strong> option in v2.0 for users to submit their feedback to the developers of Health Hub.</p>
 </div>
 </div>
 <div class="sect2">
@@ -224,13 +224,24 @@ own message that you can customise to remind yourself.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>In the example below, a reminder has been set to notify the user at 1.30PM with
-the customised message to "to call patient John Doe for his appointment".</p>
+<p>In the example below, a reminder has been set to notify the user at 6.30PM with
+the customised message to "to call patient Tan Ah Hock for his appointment later at night".</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/reminder_command.png" alt="reminder command">
+<img src="../images/SetReminderCommandTextField.png" alt="SetReminderCommandTextField">
 </div>
+</div>
+<div class="paragraph">
+<p>Figure 5.14.1 shows the format of the <code>setreminder</code> command in the text field.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SetReminderResult.png" alt="SetReminderResult">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 5.14.2 shows the result of the reminder alert in the GUI after it is time for the app to notify the user.</p>
 </div>
 </div>
 </div>
@@ -424,11 +435,20 @@ the customised message to "to call patient John Doe for his appointment".</p>
 <h3 id="set-reminder-feature"><a class="link" href="#set-reminder-feature">Set Reminder Feature</a></h3>
 <div class="paragraph">
 <p>The <code>setreminder</code> command gives the user an option to set a reminder with a customised message.
-The reminder is in the form of an <code>AlertDialog</code> and is scheduled to show on the UI by a <code>TimerTask</code> at time
-<code>t + current time</code>.<br></p>
+The reminder is in the form of an <code>AlertDialog</code> and is scheduled to display on the UI by a <code>TimerTask</code> at time
+<code>t + current time</code>, where <code>t</code> is time in the format <code>hh:mm:ss</code>.<br></p>
 </div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The alert only pop ups when the application is running in the background.</p>
+<p>The following sequence diagram shows the sequence flow from when the <code>SetReminderCommandParser</code> receives the command and
+parses it to a <code>SetReminderCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SetReminderSequenceDiagram.png" alt="SetReminderSequenceDiagram" width="800">
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -468,4 +488,4 @@ against the user&#8217;s input if any of the suggestions starts with the user&#8
 <div class="sectionbody">
 <hr>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:40:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:57:09 UTC</div></div></div></body></html>

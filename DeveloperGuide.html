@@ -1917,11 +1917,20 @@ and extra cases for switch statements.</p></td>
 <h3 id="set-reminder-feature"><a class="link" href="#set-reminder-feature">3.9. Set Reminder Feature</a></h3>
 <div class="paragraph">
 <p>The <code>setreminder</code> command gives the user an option to set a reminder with a customised message.
-The reminder is in the form of an <code>AlertDialog</code> and is scheduled to show on the UI by a <code>TimerTask</code> at time
-<code>t + current time</code>.<br></p>
+The reminder is in the form of an <code>AlertDialog</code> and is scheduled to display on the UI by a <code>TimerTask</code> at time
+<code>t + current time</code>, where <code>t</code> is time in the format <code>hh:mm:ss</code>.<br></p>
 </div>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.9.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The alert only pop ups when the application is running in the background.</p>
+<p>The following sequence diagram shows the sequence flow from when the <code>SetReminderCommandParser</code> receives the command and
+parses it to a <code>SetReminderCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SetReminderSequenceDiagram.png" alt="SetReminderSequenceDiagram" width="800">
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -3293,4 +3302,4 @@ Expected: The application will show an error message: No more commands to redo!<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:40:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:57:09 UTC</div></div></div></body></html>
