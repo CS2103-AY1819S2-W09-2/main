@@ -244,150 +244,12 @@ the customised message to "to call patient Tan Ah Hock for his appointment later
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The table below demonstrates the importance of formatting key information for my users,
-so that they can easily find the summary of the commands.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>In addition to the sections above, I also formatted the Command Summary table in the user guide in a neat manner so users are able to look for the key
+information for the different commands.</em></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Base Command</th>
-<th class="tableblock halign-left valign-top">Additional Parameters</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Remarks</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not applicable</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">opens the user guide in a new window</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list healthworker/h/1</code><br></p>
-<p class="tableblock"><code>list request/r/2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not applicable</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lists all the health workers or requests</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add healthworker/h/1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>n/ (name)</code> - required<br>
- <code>i/ (nric)</code> - required<br>
- <code>p/ (phone)</code> - required<br>
- <code>o/ (organisation)</code> - required<br>
- <code>s/ (specialisations)</code> - required</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">registers a health worker into the system</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add request/r/2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>n/ (name)</code> - required<br>
- <code>i/ (nric)</code> - required<br>
- <code>p/ (phone)</code> - required<br>
- <code>a/ (address)</code> - required<br>
- <code>dt/ (request date)</code> - required<br>
- <code>c/ (patient conditions)</code> - required</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">registers a request into the system</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">any of the tags above (i.e. edit <code>n/</code> or <code>dt/</code> or <code>c/</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edits the details of a request or a health worker</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter healthworker/h/1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">any of the tags above belonging to health worker (i.e. filter by <code>n/</code> or <code>o/</code> or <code>s/</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filters through the list of health workers by a criteria</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter request/r/2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">any of the tags above belonging to request (i.e. filter by <code>n/</code> or <code>dt/</code> or <code>c/</code>).<br></p>
-<p class="tableblock">new filterable tag after request is added - <code>st/ (request status)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filters through the list of requests by a criteria</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete request</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>INDEX</code> of  request to delete</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">deletes a request</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>assign</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hw/&lt;index&gt;</code> - <code>INDEX</code> of the health worker to be assigned, required<br></p>
-<p class="tableblock"><code>r/&lt;index&gt;</code> - <code>INDEX</code> of the request, required</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">assigns a health worker to an open request</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">should a health worker be assigned to requests on the same date and time, it should be at least 2 hours apart.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>complete</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>INDEX</code> of the request to close</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">closes an ongoing request after it has been completed by the assigned staff</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">only used for requests that have the <strong>ONGOING</strong> status</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clr</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not applicable</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clears all <strong>COMPLETED</strong> requests from the list</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not applicable</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lists the previous commands entered in chronological order</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sr</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>INDEX</code> of request to display</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selects a request and display its details on the UI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>setreminder</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>t/&lt;hh:mm:ss&gt;</code> - time to schedule, required<br></p>
-<p class="tableblock"><code>m/</code> - customised message, required</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sets a reminder alert to notify the user at a certain time of the day</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">the alert will show only if Health Hub is still running</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>statistics</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not applicable</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows the occurences of the different requests by conditions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not applicable</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">undos the previous action</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not applicable</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">redos the previous undone command</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="sect1">
@@ -514,4 +376,4 @@ against the user&#8217;s input if any of the suggestions starts with the user&#8
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:34:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:01:37 UTC</div></div></div></body></html>
